@@ -1,6 +1,6 @@
 {
   "name": "@cisco-developer/api-insights-openapi-ruleset",
-  "version": "v0.0.1",
+  "version": "v0.0.0",
   "description": "API Insights Spectral ruleset",
   "scripts": {
     "build": "echo build tbd",
