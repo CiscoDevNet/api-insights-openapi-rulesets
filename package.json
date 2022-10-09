@@ -1,7 +1,7 @@
 {
-  "name": "@cisco-developer/api-insights-openapi-ruleset",
+  "name": "@cisco-developer/api-insights-openapi-rulesets",
   "version": "v0.0.0",
-  "description": "API Insights Spectral ruleset",
+  "description": "API Insights Spectral rulesets",
   "scripts": {
     "build": "echo build tbd",
     "test": "jest --config ./jest.config.js",
