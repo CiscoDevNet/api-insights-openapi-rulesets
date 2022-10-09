@@ -1,0 +1,39 @@
+swagger: '2.0'
+info:
+  title: Sample API
+  description: This is a sample API.
+  version: '1.0'
+  contact:
+    name: Scott Hardin
+tags:
+  - name: Sample
+    description: This is a sample tag.
+paths:
+  /test:
+    get:
+      description: Get some test data.
+      operationId: getTestData
+      produces:
+        - application/json
+      consumes:
+        - application/json
+      tags:
+        - Sample
+      responses:
+        '200':
+          description: OK
+  /anotherTest:
+    get:
+      description: Get some test data.
+      operationId: getAnotherTestData
+      produces:
+        - application/json; charset=utf-8
+        - application/json; charset=UTF-8
+      consumes:
+        - application/json; charset=utf-8
+        - application/json; charset=UTF-8
+      tags:
+        - Sample
+      responses:
+        '200':
+          description: OK

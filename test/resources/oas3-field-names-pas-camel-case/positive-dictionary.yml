@@ -1,0 +1,78 @@
+openapi: '3.0.3'
+info:
+  title: Sample API
+  description: This is a sample API.
+  version: '1.0'
+  contact:
+    name: Scott Hardin
+servers:
+  - url: http://api.example.com
+tags:
+  - name: Sample
+    description: This is a sample tag.
+paths:
+  /test:
+    get:
+      description: Get some test data.
+      operationId: getTestData
+      parameters:
+        - in: query
+          name: sourceAssetID
+          schema:
+            type: integer
+          required: true
+          description: Numeric ID of the user to get.
+      tags:
+        - Sample
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TestDataPoint'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ArrayOfTestData'
+components:
+  schemas:
+    TestDataPoint:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: The user's id.
+        myData:
+          type: string
+          description: The test data.
+        DeviceID:
+          type: string
+          description: The test data.
+        deviceID:
+          type: string
+          description: GitHub definitive valid word.
+        deviceSN:
+          type: string
+          description: GitHub definitive valid word.
+        IOStream:
+          type: string
+          description: GitHub definitive valid word.
+        StreamIO:
+          type: string
+          description: GitHub definitive valid word.
+        pathASNs:
+          type: string
+          description: GitHub definitive valid word.
+        dscpCP:
+          type: string
+          description: GitHub definitive valid word.
+        awsVPC:
+          type: string
+          description: GitHub definitive valid word.
+    ArrayOfTestData:
+      type: array
+      items:
+        $ref: '#/components/schemas/TestDataPoint'

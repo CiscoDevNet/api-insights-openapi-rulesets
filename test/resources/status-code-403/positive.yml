@@ -1,0 +1,41 @@
+openapi: '3.0.3'
+info:
+  title: Sample API
+  description: This is a sample API.
+  version: '1.0'
+  contact:
+    name: Scott Hardin
+components:
+  securitySchemes:
+    Auth:
+      type: http
+      scheme: bearer
+servers:
+  - url: http://api.example.com/v1
+tags:
+  - name: Sample
+    description: This is a sample tag.
+paths:
+  /myResource:
+    put:
+      description: Put my resource.
+      operationId: putMyResource
+      security:
+        - Auth: []
+      tags:
+        - Sample
+      responses:
+        '200':
+          description: OK
+        '403':
+          description: Forbidden
+    post:
+      description: Post my resource.
+      operationId: postMyResource
+      tags:
+        - Sample
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Unauthorized

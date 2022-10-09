@@ -1,0 +1,110 @@
+openapi: '3.0.3'
+info:
+  title: Sample API
+  description: This is a sample API.
+  version: '1.0'
+  contact:
+    name: Scott Hardin
+servers:
+  - url: http://api.example.com
+tags:
+  - name: Sample
+    description: This is a sample tag.
+paths:
+  /test:
+    get:
+      description: Get some test data.
+      operationId: getTestData
+      tags:
+        - Sample
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '500':
+          description: Internal Server Error
+    put:
+      description: Create or modify some test data.
+      operationId: putTestData
+      tags:
+        - Sample
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '500':
+          description: Internal Server Error
+    post:
+      description: Create some test data.
+      operationId: postTestData
+      tags:
+        - Sample
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '500':
+          description: Internal Server Error
+    delete:
+      description: Delete some test data.
+      operationId: deleteTestData
+      tags:
+        - Sample
+      responses:
+        '204':
+          description: No Content
+        '400':
+          description: Bad Request
+        '500':
+          description: Internal Server Error
+    options:
+      description: Get options of some test data.
+      operationId: optionsTestData
+      tags:
+        - Sample
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '500':
+          description: Internal Server Error
+    head:
+      description: Get information of some test data.
+      operationId: headTestData
+      tags:
+        - Sample
+      responses:
+        '204':
+          description: No Content
+        '400':
+          description: Bad Request
+        '500':
+          description: Internal Server Error
+    patch:
+      description: Patch some test data.
+      operationId: patchTestData
+      tags:
+        - Sample
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '500':
+          description: Internal Server Error
+    trace:
+      description: Trace some test data.
+      operationId: traceTestData
+      tags:
+        - Sample
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '500':
+          description: Internal Server Error

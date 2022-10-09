@@ -1,0 +1,58 @@
+openapi: '3.0.3'
+info:
+  title: Sample API
+  description: This is a sample API.
+  version: '1.0'
+  contact:
+    name: Scott Hardin
+servers:
+  - url: http://api.example.com
+tags:
+  - name: Sample
+    description: This is a sample tag.
+paths:
+  /test:
+    post:
+      description: Get some test data.
+      operationId: getTestData
+      parameters:
+        - in: query
+          name: user_id
+          schema:
+            type: integer
+          required: true
+          description: Numeric ID of the user to get.
+      tags:
+        - Sample
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TestDataPoint'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ArrayOfTestData'
+              
+components:
+  schemas:
+    TestDataPoint:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: The user's id.
+        MYData:
+          type: string
+          description: The test data.
+        awsVPCB:
+          type: string
+          description: The awsVPCB test data.
+    ArrayOfTestData:
+      type: array
+      items:
+        $ref: '#/components/schemas/TestDataPoint'

@@ -1,0 +1,49 @@
+openapi: '3.0.3'
+info:
+  title: Sample API
+  description: This is a sample API.
+  version: '1.0'
+  contact:
+    name: Scott Hardin
+servers:
+  - url: http://api.example.com
+tags:
+  - name: Sample
+    description: This is a sample tag.
+paths:
+  /veryLongEndpoint:
+    get:
+      description: Get some test data.
+      operationId: getTestData
+      tags:
+        - Sample
+      responses:
+        '200':
+          description: OK
+  /veryLongEndpoint/someLongEndpoint:
+    get:
+      description: Get some test data.
+      operationId: getTestData
+      tags:
+        - Sample
+      responses:
+        '200':
+          description: OK
+  /other/veryLongEndpoint:
+    get:
+      description: Get some test data.
+      operationId: getTestData
+      tags:
+        - Sample
+      responses:
+        '200':
+          description: OK
+  /veryVeryVeryLongEndpoint:
+    get:
+      description: Get some test data.
+      operationId: getLongTestData
+      tags:
+        - Sample
+      responses:
+        '200':
+          description: OK

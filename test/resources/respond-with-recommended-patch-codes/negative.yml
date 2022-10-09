@@ -1,0 +1,26 @@
+openapi: '3.0.3'
+info:
+  title: Sample API
+  description: This is a sample API.
+  version: '1.0'
+  contact:
+    name: Scott Hardin
+servers:
+  - url: http://api.example.com
+tags:
+  - name: Sample
+    description: This is a sample tag.
+paths:
+  /myResource:
+    patch:
+      description: Patch my resource.
+      operationId: patchMyResource
+      tags:
+        - Sample
+      responses:
+        '201':
+          description: Created
+        '202':
+          description: Accepted
+        '279':
+          description: something

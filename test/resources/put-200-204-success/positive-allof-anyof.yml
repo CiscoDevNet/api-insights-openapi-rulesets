@@ -1,0 +1,63 @@
+openapi: '3.0.3'
+info:
+  title: Sample API
+  description: This is a sample API.
+  version: '1.0'
+  contact:
+    name: Ava Thorn
+servers:
+  - url: http://api.example.com
+tags:
+  - name: Sample
+    description: This is a sample tag.
+paths:
+  /test:
+    put:
+      requestBody:
+        content:
+          'application/json':
+            schema:
+              allOf:
+                - type: string
+                - type: boolean
+      description: Create or modify some test data.
+      operationId: putTestData
+      tags:
+        - Sample
+      responses:
+        '200':
+          description: OK
+          content:
+            'application/json':
+              schema:
+                type: 'object'
+                properties:
+                  data:
+                    allOf:
+                      - type: string
+                      - type: boolean
+  /test2:
+    put:
+      requestBody:
+        content:
+          'application/json':
+            schema:
+              anyOf:
+                - type: string
+                - type: boolean
+      description: Create or modify some test data.
+      operationId: putTestDataAnyOf
+      tags:
+        - Sample
+      responses:
+        '200':
+          description: OK
+          content:
+            'application/json':
+              schema:
+                type: 'object'
+                properties:
+                  data:
+                    anyOf:
+                      - type: string
+                      - type: boolean

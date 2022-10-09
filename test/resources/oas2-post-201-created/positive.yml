@@ -1,0 +1,56 @@
+swagger: '2.0'
+info:
+  title: Sample API
+  description: This is a sample API.
+  version: '1.0'
+  contact:
+    name: Scott Hardin
+tags:
+  - name: Sample
+    description: This is a sample tag.
+paths:
+  /test:
+    post:
+      description: This is an endpoint that shouldn't raise an error.
+      operationId: postCorrectTestData
+      tags:
+        - Sample
+      responses:
+        '201':
+          description: Created
+          schema:
+            type: object
+            properties:
+              id:
+                type: integer
+                description: The user ID.
+  /otherTest:
+    post:
+      description: This is an endpoint that shouldn't raise an error.
+      operationId: postCorrectTestData
+      tags:
+        - Sample
+      responses:
+        '201':
+          description: CREATED
+          schema:
+            type: object
+            properties:
+              id:
+                type: integer
+                description: The user ID.
+  /otherOtherTest:
+    post:
+      description: This is an endpoint that shouldn't raise an error.
+      operationId: postCorrectTestData
+      tags:
+        - Sample
+      responses:
+        '201':
+          description: created
+          schema:
+            type: object
+            properties:
+              id:
+                type: integer
+                description: The user ID.

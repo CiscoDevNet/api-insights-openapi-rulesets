@@ -1,0 +1,67 @@
+openapi: '3.0.3'
+info:
+  title: Sample API
+  description: This is a sample API.
+  version: '1.0'
+  contact:
+    name: Scott Hardin
+servers:
+  - url: http://api.example.com
+tags:
+  - name: Sample
+    description: This is a sample tag.
+paths:
+  /snake_case/snake_case:
+    get:
+      description: Get some snake case test data.
+      operationId: snakeCaseData
+      tags:
+        - Sample
+      responses:
+        '200':
+          description: OK
+  /ALLCAPS/ALLCAPS:
+    get:
+      description: Get some all caps test data.
+      operationId: allCapsData
+      tags:
+        - Sample
+      responses:
+        '200':
+          description: OK
+  /awsVPCB/awsVPCB:
+    get:
+      description: Get some awsVPCB test data.
+      operationId: awsVPCBdata
+      tags:
+        - Sample
+      responses:
+        '200':
+          description: OK
+  /2awsVPC/2awsVPC:
+    get:
+      description: Get some 2awsVPC test data.
+      operationId: 2awsVPCdata
+      tags:
+        - Sample
+      responses:
+        '200':
+          description: OK
+  /200awsVPC/200awsVPC:
+    get:
+      description: Get some 200awsVPC test data.
+      operationId: 200awsVPCdata
+      tags:
+        - Sample
+      responses:
+        '200':
+          description: OK
+  /test:
+    get:
+      description: Get some test data.
+      operationId: getTestData
+      tags:
+        - Sample
+      responses:
+        '200':
+          description: OK

@@ -1,0 +1,48 @@
+openapi: '3.0.3'
+info:
+  title: Sample API
+  description: This is a sample API.
+  version: '1.0'
+  contact:
+    name: Scott Hardin
+servers:
+  - url: http://api.example.com/v1.0
+tags:
+  - name: Sample
+    description: This is a sample tag.
+paths:
+  /test:
+    patch:
+      description: Get some test data.
+      operationId: getTestData
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                prop:
+                  type: number
+      tags:
+        - Sample
+      responses:
+        '200':
+          description: OK
+          headers:
+            Date:
+              schema:
+                type: string
+                pattern: '^.*$'
+            TrackingID:
+              schema:
+                type: string
+            Cache-Control:
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  prop:
+                    type: number
