@@ -8,6 +8,22 @@ on:
     types: [created]
 
 jobs:
+  publish-to-npmjs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          registry-url: https://registry.npmjs.org/
+      - name: Set env
+        run: echo "RELEASE_VERSION=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
+      - run: npm ci
+      - run: npm publish --access=restricted
+      # - run: npm publish --access=public
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.npm_token}}
+
   publish-to-github:
     runs-on: ubuntu-latest
     permissions:
@@ -24,13 +40,14 @@ jobs:
           # scope: '@cisco-developer'
       - name: Set env
         run: echo "RELEASE_VERSION=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
-      - name: Test
+      - name: Show tag
         run: |
           echo $RELEASE_VERSION
           echo ${{ env.RELEASE_VERSION }}
       - run: npm --no-git-tag-version version ${{ env.RELEASE_VERSION }}
       - run: cat package.json
       - run: npm ci
+      # Seems access does not matter for github.
       - run: npm publish --access=restricted
       # - run: npm publish --access=public
         env:
