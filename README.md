@@ -9,23 +9,39 @@ For more details on guidelines please refer [guidelines docs](./docs/api-guideli
 
 These custom rulesets are implemented using [Spectral](https://github.com/stoplightio/spectral) open source linter. 
 
+## Installation
 
-## Get started
+npm install @cisco-develper/api-insights-openapi-rulesets
 
-* Install spectral cli globally. Refer to [spectral-cli](https://meta.stoplight.io/docs/spectral/b8391e051b7d8-installation).
+## Usage
+
+There are two rulesets in this repo, you can choose one of them:
 ```
-npm install -g @stoplight/spectral-cli
+api-insights-openapi-ruleset.js
+completeness.js
 ```
-* Install packages.
+
+* If you installed spectral cli globally refer to [spectral-cli](https://meta.stoplight.io/docs/spectral/b8391e051b7d8-installation), you can run:
 ```
-npm install
+spectral lint -r node_modules/@cisco-devloper/api-insights-openapi-ruleset/api-insights-openapi-ruleset.js your-spec.json/yaml
 ```
-* Run with global cli.
+* Run with locally installed cli:
 ```
-spectral lint -r api-insights-openapi-ruleset.js examples/petstore.json
+npx spectral lint -r node_modules/@cisco-devloper/api-insights-openapi-ruleset/api-insights-openapi-ruleset.js your-spec.json/yaml
 ```
-* Run with locally installed cli.
+
+Also you can refer to [use npm](https://meta.stoplight.io/docs/spectral/7895ff1196448-sharing-and-distributing-rulesets#npm), define your `.spectral.yaml` like this:
 ```
-npx spectral lint -r api-insights-openapi-ruleset.js examples/petstore.json
-spectral lint -r completeness.js examples/petstore.json
+extends: 
+  - "@cisco-developer/api-insights-openapi-rulesets"
+  - "@cisco-developer/api-insights-openapi-rulesets/api-insights-openapi-ruleset.js"
+  - "@cisco-developer/api-insights-openapi-rulesets/completeness.js"
 ```
+
+## Contributing
+
+If you are interested in this project, check out [CONTRIBUTING.md](CONTRIBUTING.md).
+
+## License
+
+[Apache License 2.0](LICENSE)
