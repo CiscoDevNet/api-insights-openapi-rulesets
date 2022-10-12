@@ -11,7 +11,9 @@ These custom rulesets are implemented using [Spectral](https://github.com/stopli
 
 ## Installation
 
+```
 npm install @cisco-develper/api-insights-openapi-rulesets
+```
 
 ## Usage
 
@@ -23,11 +25,11 @@ completeness.js
 
 * If you installed spectral cli globally refer to [spectral-cli](https://meta.stoplight.io/docs/spectral/b8391e051b7d8-installation), you can run:
 ```
-spectral lint -r node_modules/@cisco-devloper/api-insights-openapi-ruleset/api-insights-openapi-ruleset.js your-spec.json/yaml
+spectral lint -r node_modules/@cisco-developer/api-insights-openapi-rulesets/api-insights-openapi-ruleset.js your-spec.json/yaml
 ```
 * Run with locally installed cli:
 ```
-npx spectral lint -r node_modules/@cisco-devloper/api-insights-openapi-ruleset/api-insights-openapi-ruleset.js your-spec.json/yaml
+npx spectral lint -r node_modules/@cisco-developer/api-insights-openapi-rulesets/api-insights-openapi-ruleset.js your-spec.json/yaml
 ```
 
 Also you can refer to [use npm](https://meta.stoplight.io/docs/spectral/7895ff1196448-sharing-and-distributing-rulesets#npm), define your `.spectral.yaml` like this:
