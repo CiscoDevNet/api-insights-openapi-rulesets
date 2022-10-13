@@ -31,15 +31,16 @@ npx spectral lint -r completeness.js examples/petstore.json
 ```
 * You should see the linter result.
 
-## How to add new linter rule
+## How to add/modify linter rule
 
-Suppose you want to add a rule `rule1` in `api-insights-openapi-ruleset.js`:
+Suppose you want to add/modify a rule `rule1` in `api-insights-openapi-ruleset.js`:
 
-1. Document this rule in docs, explain its behavior.
+1. Open issue with proposal for new rules, details of scenario. Once maintainers have reviewed/accepted proposal please proceede to next step. 
 2. Write code for it in `api-insights-openapi-ruleset.js` and function if needed.
 3. Write test for the code you added.
 4. Run test to make sure all passed.
 5. Run lint to fix all lint issues.
+6. Document this rule in docs, explain its behavior.
 
 ## Any contributions you make will be under the Apache License, Version 2
 In short, when you submit code changes, your submissions are understood to be under the same [Apache License](LICENSE) that covers the project.
