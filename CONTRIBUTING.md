@@ -19,6 +19,29 @@ Pull requests are the best way to propose changes to the codebase. We actively w
 5. Make sure your code lints.
 6. Issue that pull request!
 
+## Local environment setup
+
+* Install dependencies.
+```
+npm install
+```
+* Try the command.
+```
+npx spectral lint -r completeness.js examples/petstore.json
+```
+* You should see the linter result.
+
+## How to add/modify linter rule
+
+Suppose you want to add/modify a rule `rule1` in `api-insights-openapi-ruleset.js`:
+
+1. Open issue with proposal for new rules, details of scenario. Once maintainers have reviewed/accepted proposal please proceede to next step. 
+2. Write code for it in `api-insights-openapi-ruleset.js` and function if needed.
+3. Write test for the code you added.
+4. Run test to make sure all passed.
+5. Run lint to fix all lint issues.
+6. Document this rule in docs, explain its behavior.
+
 ## Any contributions you make will be under the Apache License, Version 2
 In short, when you submit code changes, your submissions are understood to be under the same [Apache License](LICENSE) that covers the project.
 Feel free to contact the maintainers if that's a concern.
