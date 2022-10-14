@@ -8,6 +8,8 @@ This module implements set lintable REST API best practices, linter can be used 
 
 These custom rulesets are implemented using [Spectral](https://github.com/stoplightio/spectral) open source linter. 
 
+Note: In addition to above ruleset [API Insights](https://github.com/cisco-developer/api-insights) also includes "Inclusive Language" analyzer. [cisco-open/inclusive-language project](https://github.com/cisco-open/inclusive-language) is collection of tools and resources for working on eliminating biased language.
+
 ## Installation
 
 ```
