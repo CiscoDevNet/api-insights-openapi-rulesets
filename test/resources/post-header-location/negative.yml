@@ -1,0 +1,54 @@
+openapi: '3.0.3'
+info:
+  title: Sample API
+  description: This is a sample API.
+  version: '1.0'
+  contact:
+    name: Scott Hardin
+servers:
+  - url: http://api.example.com
+tags:
+  - name: Sample
+    description: This is a sample tag.
+paths:
+  /test:
+    post:
+      description: Create some test data.
+      operationId: postTestData
+      tags:
+        - Sample
+      responses:
+        '201':
+          description: Created
+          headers:
+            SomeHeader:
+              schema:
+                type: string
+        '404':
+          description: Not Found
+  /anotherTest:
+    post:
+      description: Create some more test data.
+      operationId: postAnotherTestData
+      tags:
+        - Sample
+      responses:
+        '201':
+          description: No Content
+          headers:
+            SomeHeader:
+              schema:
+                type: string
+  /correctTest:
+    post:
+      description: This is an endpoint that shouldn't raise an error.
+      operationId: postCorrectTestData
+      tags:
+        - Sample
+      responses:
+        '201':
+          description: No Content
+          headers:
+            Location:
+              schema:
+                type: string

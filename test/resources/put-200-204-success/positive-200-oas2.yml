@@ -1,0 +1,39 @@
+swagger: '2.0'
+info:
+  title: Sample API
+  description: This is a sample API.
+  version: '1.0'
+  contact:
+    name: Dan Hayduk
+host: api.example.com
+schemes:
+  - https
+tags:
+  - name: Sample
+    description: This is a sample tag.
+paths:
+  /test:
+    get:
+      description: Get some test data.
+      operationId: getTestData
+      tags:
+        - Sample
+      responses:
+        '200':
+          description: OK
+    put:
+      description: Create or modify some test data.
+      operationId: putTestData
+      tags:
+        - Sample
+      parameters:
+        - name: body
+          in: body
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: string

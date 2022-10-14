@@ -1,0 +1,63 @@
+swagger: '2.0'
+info:
+  title: Sample API
+  description: This is a sample API.
+  version: '1.0'
+  contact:
+    name: Scott Hardin
+host: api.example.com
+schemes:
+  - https
+tags:
+  - name: Sample
+    description: This is a sample tag.
+paths:
+  /test:
+    get:
+      description: Get some test data.
+      operationId: getTestData
+      tags:
+        - Sample
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/ArrayOfTestData'
+definitions:
+  TestDataPoint:
+    type: object
+    properties:
+      _id:
+        type: integer
+        description: The user's id.
+      myData:
+        type: string
+        description: The test data.
+      DeviceID:
+        type: string
+        description: The test data.
+      deviceID:
+        type: string
+        description: GitHub definitive valid word.
+      deviceSN:
+        type: string
+        description: GitHub definitive valid word.
+      IOStream:
+        type: string
+        description: GitHub definitive valid word.
+      StreamIO:
+        type: string
+        description: GitHub definitive valid word.
+      pathASNs:
+        type: string
+        description: GitHub definitive valid word.
+      dscpCP:
+        type: string
+        description: GitHub definitive valid word.
+      awsVPC:
+        type: string
+        description: GitHub definitive valid word.
+  ArrayOfTestData:
+    type: array
+    items:
+      $ref: '#/definitions/TestDataPoint'

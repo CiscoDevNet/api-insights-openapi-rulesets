@@ -1,0 +1,157 @@
+openapi: '3.0.3'
+info:
+  title: Sample API
+  description: This is a sample API.
+  version: '1.0'
+  contact:
+    name: Scott Hardin
+servers:
+  - url: http://api.example.com
+tags:
+  - name: Sample
+    description: This is a sample tag.
+paths:
+  /thisResourceIsCamelCase/myResource:
+    get:
+      description: Get my resource.
+      operationId: getMyResource
+      tags:
+        - Sample
+      responses:
+        '200':
+          description: OK
+  /DeviceID:
+    get:
+      description: Get my resource.
+      operationId: getMyResource
+      tags:
+        - Sample
+      responses:
+        '200':
+          description: OK
+  /deviceID:
+    get:
+      description: Get my resource.
+      operationId: getMyResource
+      tags:
+        - Sample
+      responses:
+        '200':
+          description: OK
+  /deviceSN:
+    get:
+      description: Get my resource.
+      operationId: getMyResource
+      tags:
+        - Sample
+      responses:
+        '200':
+          description: OK
+  /IOStream:
+    get:
+      description: Get my resource.
+      operationId: getMyResource
+      tags:
+        - Sample
+      responses:
+        '200':
+          description: OK
+  /StreamIO:
+    get:
+      description: Get my resource.
+      operationId: getMyResource
+      tags:
+        - Sample
+      responses:
+        '200':
+          description: OK
+  /pathASNs:
+    get:
+      description: Get my resource.
+      operationId: getMyResource
+      tags:
+        - Sample
+      responses:
+        '200':
+          description: OK
+  /dscpCP:
+    get:
+      description: Get my resource.
+      operationId: getMyResource
+      tags:
+        - Sample
+      responses:
+        '200':
+          description: OK
+  /awsVPC:
+    get:
+      description: Get my resource.
+      operationId: getMyResource
+      tags:
+        - Sample
+      responses:
+        '200':
+          description: OK
+  /AwsVPC:
+    get:
+      description: Get my resource.
+      operationId: getMyResource
+      tags:
+        - Sample
+      responses:
+        '200':
+          description: OK
+  /aws3VPC:
+    get:
+      description: Get my resource.
+      operationId: getMyResource
+      tags:
+        - Sample
+      responses:
+        '200':
+          description: OK
+  /Aws3VPC:
+    get:
+      description: Get my resource.
+      operationId: getMyResource
+      tags:
+        - Sample
+      responses:
+        '200':
+          description: OK
+  /awsVPC3:
+    get:
+      description: Get my resource.
+      operationId: getMyResource
+      tags:
+        - Sample
+      responses:
+        '200':
+          description: OK
+  /AwsVPC3:
+    get:
+      description: Get my resource.
+      operationId: getMyResource
+      tags:
+        - Sample
+      responses:
+        '200':
+          description: OK
+  /greaterThan60LessThan90DaysCount:
+    get:
+      description: Get my resource.
+      operationId: getMyResource
+      tags:
+        - Sample
+      responses:
+        '200':
+          description: OK
+  /GreaterThan60LessThan90DaysCount:
+    get:
+      description: Get my resource.
+      operationId: getMyResource
+      tags:
+        - Sample
+      responses:
+        '200':
+          description: OK

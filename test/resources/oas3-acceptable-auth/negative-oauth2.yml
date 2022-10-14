@@ -1,0 +1,35 @@
+openapi: '3.0.3'
+info:
+  title: Sample API
+  description: This is a sample API.
+  version: '1.0'
+  contact:
+    name: Scott Hardin
+components:
+  securitySchemes:
+    PasswordAuth:
+      type: oauth2
+      flows:
+        password:
+          tokenUrl: https://api.example.com
+          refreshUrl: https://api.example.com
+    ClientCredsAuth:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://example.com/api/oauth.access
+servers:
+  - url: https://api.example.com/v1
+tags:
+  - name: Sample
+    description: This is a sample tag.
+paths:
+  /test:
+    get:
+      description: Get some test data.
+      operationId: getTest
+      tags:
+        - Sample
+      responses:
+        '200':
+          description: OK

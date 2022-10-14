@@ -1,0 +1,29 @@
+swagger: '2.0'
+info:
+  title: Sample API
+  description: This is a sample API.
+  version: '1.0'
+  contact:
+    name: Scott Hardin
+securityDefinitions:
+  ApplicationOAuth2:
+    type: oauth2
+    flow: password
+    tokenUrl: https://example.com/oauth/token
+    scopes:
+      read: Grants read access
+      write: Grants write access
+      admin: Grants read and write access to administrative information
+tags:
+  - name: Sample
+    description: This is a sample tag.
+paths:
+  /v1/test:
+    get:
+      description: Get some test data.
+      operationId: getTest
+      tags:
+        - Sample
+      responses:
+        '200':
+          description: OK

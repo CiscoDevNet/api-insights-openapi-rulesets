@@ -1,0 +1,25 @@
+openapi: '3.0.3'
+info:
+  title: Sample API
+  description: This is a sample API.
+  version: '1.0'
+  contact:
+    name: Scott Hardin
+components:
+  securitySchemes:
+    Bearer:
+      type: http
+      scheme: bearer
+tags:
+  - name: Sample
+    description: This is a sample tag.
+paths:
+  /v1/test:
+    get:
+      description: Get some test data.
+      operationId: getTest
+      tags:
+        - Sample
+      responses:
+        '200':
+          description: OK

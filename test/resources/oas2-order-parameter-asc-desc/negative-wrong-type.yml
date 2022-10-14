@@ -1,0 +1,29 @@
+swagger: '2.0'
+info:
+  title: Sample API
+  description: This is a sample API.
+  version: '1.0'
+  contact:
+    name: Xinjie Xi
+host: api.example.com
+schemes:
+  - http
+tags:
+  - name: Sample
+    description: This is a sample tag.
+paths:
+  /test:
+    get:
+      description: Get some test data.
+      operationId: getTestData
+      tags:
+        - Sample
+      parameters:
+        - name: order
+          in: query
+          description: Order of results
+          required: false
+          type: integer
+      responses:
+        '200':
+          description: OK

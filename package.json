@@ -1,0 +1,43 @@
+{
+  "name": "@cisco-developer/api-insights-openapi-rulesets",
+  "version": "v0.0.0",
+  "description": "API Insights Spectral rulesets",
+  "scripts": {
+    "build": "echo build tbd",
+    "test": "jest --config ./jest.config.js",
+    "lint": "npx eslint --cache --ext '.js' .",
+    "lint-strict": "npx eslint --cache --quiet --ext '.js' .",
+    "lint-fix": "npx eslint --cache --quiet --ext '.js' --fix ."
+  },
+  "engines": {
+    "node": ">=16"
+  },
+  "license": "Apache2",
+  "keywords": [
+    "api-insights",
+    "openapi",
+    "ruleset"
+  ],
+  "main": "api-insights-openapi-ruleset.js",
+  "author": "DevRel",
+  "dependencies": {
+    "@jest/globals": "^29.0.3",
+    "@stoplight/spectral-cli": "^6.4.1",
+    "@stoplight/spectral-core": "^1.12.2",
+    "@stoplight/spectral-formats": "^1.2.0",
+    "@stoplight/spectral-functions": "^1.7.1",
+    "@stoplight/spectral-ruleset-migrator": "^1.7.3",
+    "@stoplight/spectral-rulesets": "^1.12.0",
+    "lodash": "^4.17.21",
+    "pluralize": "^8.0.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.18.5",
+    "@babel/eslint-parser": "^7.18.2",
+    "@babel/preset-env": "^7.18.2",
+    "@babel/preset-typescript": "^7.17.12",
+    "eslint": "^8.18.0",
+    "eslint-plugin-you-dont-need-lodash-underscore": "^6.12.0",
+    "jest": "^28.1.1"
+  }
+}

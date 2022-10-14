@@ -1,0 +1,25 @@
+swagger: "2.0"
+info:
+  title: Sample API
+  description: This is a sample API.
+  version: '1.0'
+  contact:
+    name: Scott Hardin
+host: example.com
+basePath: /v1
+tags:
+  - name: Sample
+    description: This is a sample tag.
+schemes:
+- "https"
+- "http"
+paths:
+  /test:
+    get:
+      description: Get some test data.
+      operationId: getTestData
+      tags:
+      - Sample
+      responses:
+        "200":
+          description: OK

@@ -1,0 +1,33 @@
+swagger: '2.0'
+info:
+  title: Sample API
+  description: This is a sample API.
+  version: '1.0'
+  contact:
+    name: Scott Hardin
+host: api.example.com
+schemes:
+  - https
+tags:
+  - name: Sample
+    description: This is a sample tag.
+paths:
+  /test/{id}/children:
+    get:
+      description: Get some test data.
+      operationId: getTestData
+      parameters:
+        - in: path
+          name: id
+          required: true
+          type: number
+      tags:
+        - Sample
+      responses:
+        '200':
+          schema:
+            properties:
+              items:
+                type: array
+            type: object
+          description: OK

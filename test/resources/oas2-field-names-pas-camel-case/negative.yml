@@ -1,0 +1,52 @@
+swagger: '2.0'
+info:
+  title: Sample API
+  description: This is a sample API.
+  version: '1.0'
+  contact:
+    name: Scott Hardin
+host: api.example.com
+schemes:
+  - https
+tags:
+  - name: Sample
+    description: This is a sample tag.
+paths:
+  /test:
+    post:
+      description: Get some test data.
+      operationId: getTestData
+      parameters:
+        - in: query
+          name: user_id
+          type: integer
+          required: true
+        - in: body
+          name: test
+          required: true
+          schema:
+            $ref: '#/definitions/TestDataPoint'
+      tags:
+        - Sample
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/ArrayOfTestData'
+definitions:
+  TestDataPoint:
+    type: object
+    properties:
+      id:
+        type: integer
+        description: The user's id.
+      MYData:
+        type: string
+        description: The test data.
+      awsVPCB:
+        type: string
+        description: The awsVPCB test data.
+  ArrayOfTestData:
+    type: array
+    items:
+      $ref: '#/definitions/TestDataPoint'

@@ -1,0 +1,79 @@
+openapi: '3.0.3'
+info:
+  title: Sample API
+  description: This is a sample API.
+  version: '1.0'
+  contact:
+    name: Scott Hardin
+servers:
+  - url: http://api.example.com
+tags:
+  - name: Sample
+    description: This is a sample tag.
+paths:
+  /test:
+    post:
+      description: This is an endpoint that shouldn't raise an error.
+      operationId: postCorrectTestData
+      tags:
+        - Sample
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  myEnum:
+                    type: string
+                    enum:
+                      - yes
+                      - no
+                      - maybe
+                  myBool:
+                    type: boolean
+  /otherTest:
+    post:
+      description: This is an endpoint that shouldn't raise an error.
+      operationId: postCorrectTestData
+      tags:
+        - Sample
+      responses:
+        '201':
+          description: CREATED
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  myEnum:
+                    type: string
+                    enum:
+                      - yes
+                      - no
+                      - maybe
+                  myBool:
+                    type: boolean
+  /otherOtherTest:
+    post:
+      description: This is an endpoint that shouldn't raise an error.
+      operationId: postCorrectTestData
+      tags:
+        - Sample
+      responses:
+        '201':
+          description: created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  myEnum:
+                    type: string
+                    enum:
+                      - yes
+                      - no
+                      - maybe
+                  myBool:
+                    type: boolean

@@ -1,0 +1,35 @@
+swagger: '2.0'
+info:
+  title: Sample API
+  description: This is a sample API.
+  version: '1.0'
+  contact:
+    name: Scott Hardin
+host: api.example.com
+schemes:
+  - https
+tags:
+  - name: Sample
+    description: This is a sample tag.
+paths:
+  /test:
+    get:
+      description: Get some test data.
+      operationId: getTestData
+      tags:
+        - Sample
+      responses:
+        '400':
+          description: Client Error
+          schema:
+            type: object
+            properties: 
+              message:
+                type: string
+        '500':
+          description: Server Error
+          schema:
+            type: object
+            properties: 
+              message:
+                type: string

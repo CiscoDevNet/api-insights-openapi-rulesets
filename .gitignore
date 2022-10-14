@@ -1,0 +1,12 @@
+.DS_Store
+.idea
+.vscode
+.eslintcache
+*.swp
+tmp
+
+# avoid tool artifacts (markdown TOC)
+node_modules
+
+# avoid office temporary docs
+*\~\$*
