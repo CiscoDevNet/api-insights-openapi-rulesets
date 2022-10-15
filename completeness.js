@@ -40,7 +40,7 @@ export default {
     'info-description': true,
     'info-license': true,
     'license-url': true,
-    'oas3-missing-schema-defination': {
+    'oas3-missing-schema-definition': {
       'description': 'There is no schema attribute for a component.',
       'message': '{{description}}; {{error}}',
       'severity': 'error',
@@ -57,7 +57,7 @@ export default {
         },
       },
     },
-    'oas2-missing-schema-defination': {
+    'oas2-missing-schema-definition': {
       'description': 'There is no schema attribute for a component.',
       'message': '{{description}}; {{error}}',
       'severity': 'error',
@@ -73,7 +73,7 @@ export default {
         },
       },
     },
-    'general-schema-defination': {
+    'general-schema-definition': {
       'description': 'Some of the defined schema use object as a final field when describing their object structure.',
       'message': '{{description}}; {{error}}',
       'severity': 'error',
