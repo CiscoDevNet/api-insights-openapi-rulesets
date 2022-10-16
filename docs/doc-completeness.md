@@ -1,29 +1,24 @@
-# Completeness of an API Contract
+# Documentation Completeness Ruleset
 
-How complete is an OpenAPI Specification (OAS) document ?
+The Documentation Completeness Ruleset of an OpenAPI Specification (OAS) document consists of 2 domains:
 
-Completeness of an OAS document considers 2 domains:
+- API definition completeness (paths, schemas, response status and error codes):
+  - Must be a well-formed JSON or YAML document   
+  - Must have an OAS version 
+  - Must be a well-formed OpenAPI document 
+  - Must contain meta information about the API itself 
+  - Must contain a schema definition
+  - Must have response schema defined
+  - Must have success status code definitions
+  - Must have error status code definitions 
 
-1. API Definition completeness (paths, schemas, response status and error codes)
+- Reference documentation completeness (descriptions, examples):
+  - Must have descriptions for every attribute 
+  - Must have examples for every schema 
 
-2. Reference Documentation completeness (descriptions, examples)
+## Rules
 
-
-1 STATIC - API Definition Completeness
-- Must Be a Well-formed JSON or YAML document   
-- Must have an OAS Version 
-- Must Be a Well-formed OpenAPI document 
-- Must contain Meta Information about the API itself 
-- Must Contain a Schema Definition
-- Must Have Response Schema Defined
-- Must have Success Status Code Definitions
-- Must have Error Status Code Definitions 
-
-2. STATIC: Reference Documentation Completeness 
-- Must have Descriptions for Every Attribute 
-- Must have Examples for Every Schema 
-
-| name_id                                  | description                                                               | severity | mitigation                                                                                                                                                                                                                                         |
+| name_id                                  | description                                                               | severity | recommendation                                                                                                                                                                                                                                         |
 | ---------------------------------------- | ------------------------------------------------------------------------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | oas[2/3]-schema                          | Malformed OAS document, not adhering to the OpenAPI v2/v3 specifications. | error    | Please fix the items identified to adhere to the OpenAPI v2/v3 specifications. [Reference](#oas23-schema-well-formed-openapi-document)                                                                                                             |
 | oas-version                              | The version of OpenAPI is not specified.                                  | error    | Please add the OpenAPI attributes identified as missing and provide values for these attributes. [Reference](#oas-version-version-of-the-oas-is-missing)                                                                                           |
@@ -42,7 +37,7 @@ Completeness of an OAS document considers 2 domains:
 
 Details on rules to check the level of completeness of an OAS document
 
-## 1. STATIC - API Definition Completeness
+## 1. API Definition Completeness
 No partial definitions such as no use of objects / array of objects. 
 
 ###   Well-formed JSON or YAML document
@@ -66,19 +61,20 @@ No partial definitions such as no use of objects / array of objects.
 
 ###  Meta Information about the API itself
 
-    The following fields must be present (note: list of fields depend on the OAS version) List for OAS v2:
-    - info
-    - title
-    - version
-    - basepath
-    - License
-    - SecurityDefinitions 
+The following fields must be present (note: list of fields depend on the OAS version) 
+List for OAS v2:
+- info
+- title
+- version
+- basepath
+- License
+- SecurityDefinitions 
 
-    List of that are implemented for this check. 
-    - oas[2|3]-meta-info
-    - info-contact
-    - info-description
-    - info-license
+List of that are implemented for this check. 
+- oas[2|3]-meta-info
+- info-contact
+- info-description
+- info-license
 
 ###  oas[2|3]-missing-schema-definition:  Missing Schema Definition
 
@@ -118,7 +114,7 @@ No partial definitions such as no use of objects / array of objects.
 - Mark as “Incomplete Definition: 'missing error status code for %d operations'” with %d = the number of operations that do not declare error status codes among their responses
 
 
-## 2. STATIC: Reference Documentation Completeness 
+## 2. Reference Documentation Completeness 
 
 ### description-for-every-attribute:  Descriptions for Every Attribute
 
