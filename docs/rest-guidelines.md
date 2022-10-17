@@ -1,4 +1,15 @@
-## REST API Conventions
+# REST Guidelines Ruleset
+
+The REST Guidelines Ruleset of an OpenAPI Specification (OAS) document consists of 3 domains:
+
+- REST Conventions (naming resources and representations)
+- REST Style (HTTP methods, headers, query parameters, and status codes)
+- REST Additional (errors, verbs, and authorization)
+
+## REST Conventions Rules
+
+Learn more about the [REST Conventions](rest-conventions.md) used to make the following rules.
+
 |name_id                                        |description                                                                                                                                                               |severity|mitigation                                                          |
 |-----------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------|--------------------------------------------------------------------------------------------|
 |resource-pas-camel-case-info                   |Resource names use lowerCamelCase.                                                                                                                                         |warning |Please update resource names in **PasCamelCase** format for the items identified.  Note that this is a variant of [Reference](rest-conventions.md#capitalization)|
@@ -16,7 +27,9 @@
 |oas2-no-boolean-string-enums                   |Representation fields use format-native true/false values for booleans.                                                                                                    |error   |Please update boolean fields for the items identified. [Reference](rest-conventions.md#data-types)                                                           |
 |oas3-no-boolean-string-enums                   |Representation fields use format-native true/false values for booleans.                                                                                                    |error   |Please update boolean fields for the items identified. [Reference](rest-conventions.md#data-types)  
 
-## REST API Style
+## REST Style Rules
+
+Learn more about the [REST Style](rest-style.md) used to make the following rules.
 
 |name_id                                        |description                                                                                                                                                               |severity|mitigation                                                          |
 |-----------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------|--------------------------------------------------------------------------------------------|
@@ -41,7 +54,7 @@
 |etag-header-match-required                     |In cases where ETag is supported, such resources should also support If-Match and If-None-Match request headers.                                                           |error   |Please add `If-Match` and `If-None-Match` headers for the items identified. [Reference](rest-style.md#cache-control-headers)                                                        |
 |no-etag-cache-control-header-required          |Where caching is not appropriate, operations must include a Cache-Control header (e.g. max-age=0, no-cache)                                                                |low     |Please add a `Cache-Control` header for the items identified. [Reference](rest-style.md#cache-control-headers)                                                                      |
 |oas2-order-parameter-asc-desc                  |Ordering collections is designed with an 'order' query parameter specifying 'asc' or 'desc'.                                                                               |error   |Please update `order` values for the items identified. [Reference](rest-style.md#sorting)                                                                             |
-|sort-recommend-order                           |Consider using 'order' with 'sort' in this operation.                                                                                                                      |low     |Please add `order` query for the items identified. [Reference](rest-style.md#sorting)                                                                                 ! 
+|sort-recommend-order                           |Consider using 'order' with 'sort' in this operation.                                                                                                                      |low     |Please add `order` query for the items identified. [Reference](rest-style.md#sorting)                                                                                  
 |oas3-order-parameter-asc-desc                  |Ordering collections is designed with an 'order' query parameter specifying 'asc' or 'desc'.                                                                               |error   |Please update `order` values for the items identified. [Reference](rest-style.md#sorting)                                                                             |
 |respond-with-recommended-get-codes             |My API responds with recommended HTTP status codes in the 2xx/3xx/4xx/5xx ranges                                                                                           |error   |Please update response codes for the items identified. [Reference](rest-style.md#returning-http-status-codes)                                                                             |
 |respond-with-recommended-post-codes            |My API responds with recommended HTTP status codes in the 2xx/3xx/4xx/5xx ranges                                                                                           |error   |Please update response codes for the items identified. [Reference](rest-style.md#returning-http-status-codes)                                                                             |
@@ -51,7 +64,10 @@
 |status-codes-in-2xx-4xx-5xx                    |API responds with recommended HTTP status codes in the 2xx/3xx/4xx/5xx ranges.                                                                                             |error   |Please update responses for the items identified. [Reference](rest-style.md#returning-http-status-codes)                                                                                  |
 |status-codes-in-2xx-3xx-4xx-5xx                |API responds with recommended HTTP status codes in the 2xx/3xx/4xx/5xx ranges.                                                                                             |error   |Please update responses for the items identified. [Reference](rest-style.md#returning-http-status-codes)                                                                                  |
 
-## REST API Additional
+## REST Additional Rules
+
+Learn more about the [REST Additional](rest-additional.md) used to make the following rules.
+
 |name_id                                        |description                                                                                                                                                               |severity|mitigation                                                          |
 |-----------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------|--------------------------------------------------------------------------------------------|
 |oas2-error-message                             |Error representations include a useful human-readable message.                                                                                                             |error   |Please update error message for the items identified.                                                                     |
