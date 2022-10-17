@@ -1,21 +1,22 @@
 # REST Conventions
 
-This section proposes conventions when designing REST APIs such as naming resources and representations in order to get better consistency across services APIs.
+This section proposes conventions when designing REST APIs such as naming resources and representations in order to get better consistency across APIs.
 
 <!-- toc -->
 
-- [REST Resources](#rest-resources)
-  * [Resource Names](#resource-names)
-  * [Functional Resources](#functional-resources)
-  * [Capitalization](#capitalization)
-  * [Case Sensitivity](#case-sensitivity)
-  * [Inclusive and Bias-Free Naming](#inclusive-and-bias-free-naming)
-- [REST Representations](#rest-representations)
-  * [Encoding](#encoding)
-  * [Returned Collections](#returned-collections)
-  * [Representation Fields](#representation-fields)
-  * [Data Types](#data-types)
-  * [Hypermedia Links](#hypermedia-links)
+- [REST Conventions](#rest-conventions)
+  - [REST Resources](#rest-resources)
+    - [Resource Names](#resource-names)
+    - [Functional Resources](#functional-resources)
+    - [Capitalization](#capitalization)
+    - [Case Sensitivity](#case-sensitivity)
+    - [Inclusive and Bias-Free Naming](#inclusive-and-bias-free-naming)
+  - [REST Representations](#rest-representations)
+    - [Encoding](#encoding)
+    - [Returned Collections](#returned-collections)
+    - [Representation Fields](#representation-fields)
+    - [Data Types](#data-types)
+    - [Hypermedia Links](#hypermedia-links)
 
 <!-- tocstop -->
 
