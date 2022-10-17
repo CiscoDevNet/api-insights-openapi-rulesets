@@ -1,3 +1,7 @@
+# REST Additional
+
+This section proposes additional best practices and recommendations for more consistency of APIs.
+
 ## Error Handling
 
 Just like an HTML error page shows a useful error message to a visitor, an API should provide a useful error message in a consumable format. 
