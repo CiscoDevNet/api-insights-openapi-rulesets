@@ -59,7 +59,7 @@ Even more helpful responses might include a detailed error description, perhaps 
 {
     "code": "3006",
     "message": "Incomplete request object",
-    "description": "Required field 'lastName' is missing'
+    "description": "Required field 'lastName' is missing"
 }
 ```
 
