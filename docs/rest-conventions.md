@@ -107,13 +107,13 @@ If you end up opting for a permissive implementation (aka supporting case-insens
 
 ### Inclusive and Bias-Free Naming 
 
-Your API design, documentation, and implementation must use bias-free and inclusive language where customer-facing, and we encourage careful consideration of language choice in source code also. Specifically, eliminate the use of "master/slave" and "whitelist/blacklist." Refer to the [API Documentation Inclusive and Bias-free Language section](../products/documenting.md#inclusive-and-bias-free-language) for guidance on replacements and alternatives.
+Your API design, documentation, and implementation must use bias-free and inclusive language where customer-facing, and we encourage careful consideration of language choice in source code also. Specifically, eliminate the use of "master/slave" and "whitelist/blacklist." Refer to the [Cisco API Guidelines Inclusive and Bias-free Language](https://developer.cisco.com/api-guidelines/#!apix-documentation/documenting-apis) for guidance on replacements and alternatives.
 
 ## REST Representations
 
 ### Encoding
 
-The format of representations used in request/responses should be based on established industry or domain standards. For example, RESTCONF defines a standard for Network Devices based on YANG. Check [Networking Fundamentals](../devices/fundamentals.md) for prescriptive guidance regarding RESTCONF.
+The format of representations used in request/responses should be based on established industry or domain standards. For example, RESTCONF defines a standard for Network Devices based on YANG. Check [Networking Fundamentals](https://developer.cisco.com/api-guidelines/#!devices-restconf) for prescriptive guidance regarding RESTCONF.
 
 When such standards do not exist, your API should pick among generic structured format such as JSON, YAML or XML.
 
@@ -141,7 +141,7 @@ If this qualification is absent, it is assumed that the entity data is encoded a
 
 **API operations should not return the result as an execution status in the response payloads**
 
-The success or failure of an API request should be reflected in the [HTTP status code](#http-status-code) of the response. In case of error, the response representation should provide additional details about the nature of the failure, as detailed in the [Error Handling](./patterns.md#error-handling) section in REST Patterns.
+The success or failure of an API request should be reflected in the [HTTP status code](#http-status-code) of the response. In case of error, the response representation should provide additional details about the nature of the failure, as detailed in the [Error Handling](https://developer.cisco.com/api-guidelines/#!rest-patterns/error-handling) section in REST Patterns.
 
 ### Returned Collections
 
@@ -173,7 +173,7 @@ When responding with a collection of objects, operations should return an array 
 
 _Note that using an encapsulated array is a pattern which brings extra flexibility to the design of APIs, with the possibility to support capabilities such as providing a count of the returned objects or returning a list of not found items in a query._
 
-APIs should return 'full' representations for singleton or collection responses by default, or may provide clients with the ability to request 'summary' representations including only key fields as a performance optimization for larger collections. See [Partial retrieval](./patterns.md#partial-retrieval) in the REST patterns section for further guidance.
+APIs should return 'full' representations for singleton or collection responses by default, or may provide clients with the ability to request 'summary' representations including only key fields as a performance optimization for larger collections. See [Partial retrieval](https://developer.cisco.com/api-guidelines/#!rest-patterns/partial-retrieval) in the REST patterns section for further guidance.
 
 ### Representation Fields
 
@@ -184,8 +184,7 @@ APIs should return 'full' representations for singleton or collection responses 
 > Linter Rule - API.REST.CONVENTIONS.oas-field-names-lower-camel-case: Representation field names use lowerCamelCase.
 <!-- recostop -->
 
-
-The general recommendation - detailled in the [Designing REST APIs](./designing.md#representation-fields) section - to use lowerCamelCase for capitalization also applies to the fields of your API operations representations.
+The general recommendation - detailled in the [Designing REST APIs](https://developer.cisco.com/api-guidelines/#rest-conventions/representation-fields) section - to use lowerCamelCase for capitalization also applies to the fields of your API operations representations.
 
 When naming representation fields:
 
@@ -235,7 +234,7 @@ Example:
 
 Representations for CRUD-based API Resources must include identifiers, generally as an `id` field. 
 
-Identifiers should be advertised to consumers as opaque, and should not be predictable or associated with the data itself, as detailled in [Constructing resource identifiers](./designing.md#API.REST.DESIGN.02).
+Identifiers should be advertised to consumers as opaque, and should not be predictable or associated with the data itself, as detailled in [Constructing resource identifiers](https://developer.cisco.com/api-guidelines/#!rest-design/constructing-resource-identifiers).
 
 <!-- reco API.REST.CONVENTIONS.10 -->
 <h6 id="API.REST.CONVENTIONS.10"></h6>

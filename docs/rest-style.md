@@ -298,7 +298,7 @@ Any request body data accompanying a HEAD request must be ignored by the operati
 
 An API may support OPTIONS requests for scenarios such as:
 
-- Implementing [CORS](https://www.w3.org/TR/cors/) to enable secure browser-based usage of the API, see ["Securing your APIs / CORS"](./security.md#cors-support)
+- Implementing [CORS](https://www.w3.org/TR/cors/) to enable secure browser-based usage of the API, see ["CORS Support"](https://developer.cisco.com/api-guidelines/#rest-security/cors-support)
 - Providing 'discovery' capabilities per resource, primarily for clients to query/negotiate support for particular HTTP verbs and/or request/response content formats, see [RFC-2616](https://tools.ietf.org/html/rfc2616#section-9.2)
 
 Any request body data accompanying an OPTIONS request should be ignored by the operation.
@@ -386,7 +386,7 @@ Accept-Encoding                   | Gzip, deflate                               
 Accept-Language                   | "en", "es", etc.                                 | Specifies the preferred language for the response. Operations are not required to support this, but if an operation supports localization it must do so through the Accept-Language header.
 Accept-Charset                    | Charset type like "UTF-8"                        | Default is UTF-8, but operations should be able to handle ISO-8859-1.
 Content-Type                      | Content type                                     | Mime type of request body (PUT/POST/PATCH)
-If-Match, If-None-Match, If-Range | String                                           | Operations that support updates to resources using optimistic concurrency control must support the [If-Match header](https://tools.ietf.org/html/rfc7232) to do so. Operations may also use other headers related to ETags as long as they follow the HTTP specification. See ["Concurrency Control"](patterns.md#concurrency-control) patterns for more details.
+If-Match, If-None-Match, If-Range | String                                           | Operations that support updates to resources using optimistic concurrency control must support the [If-Match header](https://tools.ietf.org/html/rfc7232) to do so. Operations may also use other headers related to ETags as long as they follow the HTTP specification. See ["Concurrency Control"](https://developer.cisco.com/api-guidelines/#rest-patterns/concurrency-control) patterns for more details.
 
 #### Accept Header
 
@@ -481,7 +481,7 @@ Operations should support the `ETag` header in any HTTP response where it is rea
 
 In cases where `ETag` is supported, such resources should also support `If-Match` and `If-None-Match` request headers, see [HTTP conditional requests](https://tools.ietf.org/html/rfc7232).
 
-Also, refer to the ["Conditional Requests"](patterns.md#conditional-requests) and ["Concurrency Control"](patterns.md#concurrency-control) patterns for more details on how to apply ETags in your design.
+Also, refer to the ["Conditional Requests"](https://developer.cisco.com/api-guidelines/#!rest-patterns/conditional-requests) and ["Concurrency Control"](https://developer.cisco.com/api-guidelines/#rest-patterns/concurrency-control) patterns for more details on how to apply ETags in your design.
 
 **Where caching is not appropriate**, operations must include a `Cache-Control` header (e.g. max-age=0, no-cache, no-store, must-revalidate) and must not include an `ETag` header.
 
@@ -514,7 +514,7 @@ It is possible to filter a collection on several attributes at the same time, an
 - Example with multiple filters: `GET /users?lastName=Doe&firstName=Jane`
 - Example with a repeated attribute: `GET /users?id=234&id=643&id=877`
 
-Check the [Advanced Querying](./patterns.md#advanced-querying) section for querying best practices that go beyond simple filtering.
+Check the [Advanced Querying](https://developer.cisco.com/api-guidelines/#rest-patterns/advanced-querying) section for querying best practices that go beyond simple filtering.
 
 ### Sorting
 
@@ -548,7 +548,7 @@ An `order` parameter m  ay indicate the ascending/descending order of the sortin
 GET /documents?sort=publishedDate&order=desc
 ```
 
-For querying requirements that go beyond simple sort, see the [Query Syntax](./patterns.md#query-syntax-use-cases) section.
+For querying requirements that go beyond simple sort, see the [Query Syntax](https://developer.cisco.com/api-guidelines/#!rest-patterns/query-syntaxes) section.
 
 ### Pagination
 
@@ -704,7 +704,7 @@ The purpose of the `GET` method is to retrieve an API resource.
 
 On success, a status code `200 OK` and a response with the content of the resource is expected, generally represented as a single object or a collection of objects.
 
-In cases where a GET operation returns an empty collection, the `200 OK` status code should be used, with a representation containing an empty  [encapsulated array](./conventions.md#returned-collections), as in the example below:
+In cases where a GET operation returns an empty collection, the `200 OK` status code should be used, with a representation containing an empty  [encapsulated array](https://developer.cisco.com/api-guidelines/#rest-conventions/returned-collections), as in the example below:
 
 ```json
 {
@@ -727,7 +727,7 @@ If the resource was successfully created as part of the execution, a `201 Create
 
 If if an operation attempts to create a sub-resource for a primary resource that is non-existent, `404 Not Found` is the appropriate status code response.
 
-**When invoking functional resources**, `200 OK` status code is generally the appropriate status code for successful execution of 'POST' operations. see [Extending CRUD with Functional Resources](./designing.md#extending-crud-with-functional-resources) for more details.
+**When invoking functional resources**, `200 OK` status code is generally the appropriate status code for successful execution of 'POST' operations. see [Extending CRUD with Functional Resources](https://developer.cisco.com/api-guidelines/#rest-design/extending-crud-with-functional-resources) for more details.
 
 ### PUT Responses
 

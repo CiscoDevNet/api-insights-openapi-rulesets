@@ -95,8 +95,7 @@ List of that are implemented for this check.
 
 ### error-status-code:  Missing Error Status Codes There should be at least one error status code either 4xx or 5xx (or default per the OpenAPI spec / search for Default Response)
 
-- Example here: there are no error codes, only 200 OK https://wwwin-github.cisco.com/stsfartz/oas_docs/blob/master/threatresponse/raw/iroh-enrich.20220324.json#L6698
-
+- There are no error codes, only 200 OK
 
 
 ## Reference Documentation Completeness 
