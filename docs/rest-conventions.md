@@ -193,8 +193,8 @@ When naming representation fields:
   *  Choose meaningful and succinct names
   *  Don't reuse any names reserved for other purposes
   *  Avoid internal naming conflicts, e.g. reusing names for dissimilar purposes
-  *  [(_INVESTIGATING_)](../introduction.md#classes-of-recommendations)
- Follow [SCIM Schema](http://www.simplecloud.info/specs/draft-scim-core-schema-01.html) naming conventions when a field represents data from a directory system
+  *  Include a [classification label](https://developer.cisco.com/api-guidelines/#!cisco-api-guidelines/classes-of-recommendations) for the field.
+  *  Follow [SCIM Schema](http://www.simplecloud.info/specs/draft-scim-core-schema-01.html) naming conventions when a field represents data from a directory system
 
 <!-- reco API.REST.CONVENTIONS.09 -->
 <h6 id="API.REST.CONVENTIONS.09"></h6>
