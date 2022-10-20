@@ -450,7 +450,7 @@ Your API operations should include a unique `TrackingID` header with every respo
 
 This TrackingID is intended to identify the operation/transaction across time and space, as a key for later support and serviceability needs, including trace log analysis across multiple nodes/instances.
 
-The actual informational content of the `TrackingID` header can be opaque to the API user, but could incorporate multiple pieces of info helpful to the [support team](../products/supporting.md), including:
+The actual informational content of the `TrackingID` header can be opaque to the API user, but could incorporate multiple pieces of info helpful to the API Insights support team, including:
 
 * Processing entity identifier: to identify the operation/node/instance that handled the request (and where the corresponding trace logs would be found)
 * A globally unique transaction identifier: i.e. a UUID
