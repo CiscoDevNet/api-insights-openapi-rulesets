@@ -2,7 +2,7 @@
 
 The API Insights OpenAPI ruleset is a project to programatically check conformance of API specification against REST API Guidelines. These guidelines are developed and supported as part of [API Insights](https://github.com/cisco-developer/api-insights). 
 
-This module implements a set of lintable REST API best practices, linters can be used validate API Specs in Swagger2 or OAS3 format. Project implements 2 linter rulesets. 
+This module implements a set of lintable REST API best practices, linters can be used validate API Specs in Swagger2 or OAS3 format. The project implements 2 linter rulesets. 
 1. REST Guidelines :  Lintable REST API best practices related to API Design, API implementation, API testing and developer experience. For details refer [rest-guidelines.md](docs/rest-guidelines.md)
 2. Doc Completeness: set of rules provided to ensure the end user document generated from API specs are of good quality. It includes rules and examples are included for every schema, description provided for every attribute, etc. For details refer to [doc-completeness.md](docs/doc-completeness.md)
 
