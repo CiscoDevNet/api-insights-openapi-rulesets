@@ -130,7 +130,7 @@ export default {
     'error-status-code': {
       'description': 'There should be at least one error status code either 4xx or 5xx.',
       'message': '{{description}}; {{error}}',
-      'severity': 'warning',
+      'severity': 'warn',
       'given': '$.paths.*.*.responses',
       'then': {
         'function': keyMatchAnyPattern,
@@ -146,7 +146,7 @@ export default {
     'description-for-every-attribute': {
       'description': 'DEA - Descriptions for Every Attribute',
       'message': 'For every attribute that is present in the OAS document, if a description is proposed as optional to complement that attribute, then yes it must be present; {{error}}',
-      'severity': 'warning',
+      'severity': 'warn',
       'given': [
         '$.tags[*]',
         '$.info',
@@ -201,7 +201,7 @@ export default {
     'examples-for-every-schema': {
       'description': 'For every schema provided in the OAS document, at least one example must be present',
       'message': '{{description}}; {{error}}',
-      'severity': 'warning',
+      'severity': 'warn',
       'given': [
         '$.paths.*.*.*.*.content[?(@.schema)]',
         '$.paths.*.*.*.content[?(@.schema)]',
