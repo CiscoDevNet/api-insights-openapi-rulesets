@@ -36,7 +36,6 @@ npx spectral lint -r node_modules/@cisco-developer/api-insights-openapi-rulesets
 Also you can refer to [use npm](https://meta.stoplight.io/docs/spectral/7895ff1196448-sharing-and-distributing-rulesets#npm), define your `.spectral.yaml` like this:
 ```
 extends:
-  - "@cisco-developer/api-insights-openapi-rulesets"
   - "@cisco-developer/api-insights-openapi-rulesets/api-insights-openapi-ruleset.js"
   - "@cisco-developer/api-insights-openapi-rulesets/completeness.js"
 ```
