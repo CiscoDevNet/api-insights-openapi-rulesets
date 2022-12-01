@@ -78,10 +78,12 @@ export default {
       'message': '{{description}}; {{error}}',
       'severity': 'error',
       'given': [
-        '$..headers..[?(@ && @.schema)].schema',
-        '$..parameters..[?(@ && @.schema)].schema',
-        '$..content..[?(@ && @.schema)].schema',
-        '$..responses..[?(@ && @.schema)].schema',
+        '$.paths.*.*.*.*.content[?(@ && @.schema)].schema',
+        '$.paths.*.*.*.content[?(@ && @.schema)].schema',
+        '$.paths.*.*.responses[*].headers[?(@ && @.schema)].schema',
+        '$.paths.*.*.parameters[?(@ && @.schema)].schema',
+        '$.paths.*.*.responses[?(@ && @.schema)].schema',
+        "$.paths.*.*.parameters[?(@ && @.schema && @.in === 'body')].schema",
       ],
       'then': [
         {
@@ -203,12 +205,12 @@ export default {
       'message': '{{description}}; {{error}}',
       'severity': 'warn',
       'given': [
-        '$.paths.*.*.*.*.content[?(@.schema)]',
-        '$.paths.*.*.*.content[?(@.schema)]',
-        '$.paths.*.*.responses[*].headers[?(@.schema)]',
-        '$.paths.*.*.parameters[?(@.schema)]',
-        '$.paths.*.*.responses[?(@.schema)]',
-        "$.paths.*.*.parameters[?(@.schema && @.in === 'body')]",
+        '$.paths.*.*.*.*.content[?(@ && @.schema)]',
+        '$.paths.*.*.*.content[?(@ && @.schema)]',
+        '$.paths.*.*.responses[*].headers[?(@ && @.schema)]',
+        '$.paths.*.*.parameters[?(@ && @.schema)]',
+        '$.paths.*.*.responses[?(@ && @.schema)]',
+        "$.paths.*.*.parameters[?(@ && @.schema && @.in === 'body')]",
       ],
       'then': {
         'function': ensureExamples,
