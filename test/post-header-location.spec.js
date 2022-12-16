@@ -88,4 +88,63 @@ describe(ruleName, () => {
 
     expect(res).toEqual([]);
   });
+  test('should catch an OAS 2 document with POSTs with 201 response codes but without the Location header', async () => {
+    const spec = await fsPromises.readFile(`${ resPath }/negative-oas2.yml`);
+    const res = await spectral.run(spec.toString());
+
+    expect(res).toEqual([
+      {
+        code: ruleName,
+        message: 'POST operations that create resources should include a Location header (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+        path: [
+          'paths',
+          '/test',
+          'post',
+          'responses',
+          '201',
+          'headers',
+        ],
+        range: {
+          start: {
+            line: 23,
+            character: 20,
+          },
+          end: {
+            line: 25,
+            character: 28,
+          },
+        },
+        severity: 0,
+      },
+      {
+        code: ruleName,
+        message: 'POST operations that create resources should include a Location header (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+        path: [
+          'paths',
+          '/anotherTest',
+          'post',
+          'responses',
+          '201',
+          'headers',
+        ],
+        range: {
+          start: {
+            line: 35,
+            character: 20,
+          },
+          end: {
+            line: 37,
+            character: 28,
+          },
+        },
+        severity: 0,
+      },
+    ]);
+  });
+  test('should pass an OAS 2 document with POSTs with 201 response codes and with headers', async () => {
+    const spec = await fsPromises.readFile(`${ resPath }/positive-oas2.yml`);
+    const res = await spectral.run(spec.toString());
+
+    expect(res).toEqual([]);
+  });
 });
