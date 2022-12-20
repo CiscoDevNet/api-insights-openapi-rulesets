@@ -11,5 +11,7 @@ jobs:
         with:
           node-version: 16
           registry-url: https://registry.npmjs.org/
+      - name: prepare jest
+        run: npm install -g jest
       - name: test
         run: npm test
