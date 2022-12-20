@@ -1,0 +1,26 @@
+swagger: '2.0'
+info:
+  title: Sample API
+  description: This is a sample API.
+  version: '1.0'
+  contact:
+    name: Toby Vestal
+host: api.example.com
+schemes:
+  - http
+tags:
+  - name: Sample
+    description: This is a sample tag.
+paths:
+  /correctTest:
+    post:
+      description: This is an endpoint that shouldn't raise an error.
+      operationId: postCorrectTestData
+      tags:
+        - Sample
+      responses:
+        '201':
+          description: Created
+          headers:
+            Location:
+                type: string
