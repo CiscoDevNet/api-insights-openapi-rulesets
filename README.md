@@ -4,8 +4,8 @@ The API Insights OpenAPI ruleset is a project to programatically check conforman
 
 This module implements a set of lintable REST API best practices, linters can be used validate API Specs in Swagger2 or OAS3 format. The project implements 2 linter rulesets. 
 1. REST Guidelines :  Lintable REST API best practices related to API Design, API implementation, API testing and developer experience. For details refer [rest-guidelines.md](docs/rest-guidelines.md)
-2. Contract: set of rules provided to ensure the end user document generated from API specs are of good quality. For details refer to [doc-completeness.md](docs/doc-completeness.md)
-2. Documentation: It includes rules and examples are included for every schema, description provided for every attribute, etc. For details refer to [doc-completeness.md](docs/doc-completeness.md)
+2. API Contract: Set of rules provided to ensure the API contract is reliable and complete in terms of API metadata, schema definition, operation status code & responses. For details refer to [doc-completeness.md](docs/doc-completeness.md).
+3. API Documentation Completeness: Set of rules provided to ensure the end user document generated from API specs is of good quality. It includes rules like description provided for every attribute, examples are included for every schema, etc. For details refer to [doc-completeness.md](docs/doc-completeness.md).
 
 These custom rulesets are implemented using [Spectral](https://github.com/stoplightio/spectral) open source linter. 
 
