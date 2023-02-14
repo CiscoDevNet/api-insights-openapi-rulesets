@@ -1,0 +1,49 @@
+swagger: '2.0'
+info:
+  contact:
+    name: Scott Hardin
+  description: This is a sample API.
+  title: Sample API
+  version: '1.0'
+host: api.example.com
+basePath: /
+schemes:
+- http
+paths:
+  /test:
+    patch:
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: body
+        schema:
+          properties:
+            myBool:
+              type: boolean
+            myEnum:
+              enum:
+              - 'yes'
+              - 'no'
+              - maybe
+              type: string
+          type: object
+      responses:
+        '200':
+          description: OK
+          schema:
+            properties:
+              myBool:
+                type: boolean
+              myEnum:
+                enum:
+                - 'yes'
+                - 'no'
+                - maybe
+                type: string
+            type: object
+tags:
+- description: This is a sample tag.
+  name: Sample

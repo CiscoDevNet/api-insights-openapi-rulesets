@@ -12,15 +12,9 @@ tags:
     description: This is a sample tag.
 paths:
   /test:
-    get:
-      description: Get some test data.
-      operationId: getTestData
-      tags:
-        - Sample
-      responses:
-        '200':
-          description: OK
-          content:
+    patch:
+      requestBody:
+        content:
             application/json:
               schema:
                 type: object
@@ -33,26 +27,6 @@ paths:
                       - maybe
                   myBool:
                     type: boolean
-    patch:
-      description: Create or modify some test data.
-      operationId: patchTestData
-      tags:
-        - Sample
-      requestBody:
-        content:
-          application/json:
-              schema:
-                type: object
-                properties:
-                  myEnum:
-                    type: string
-                    enum:
-                      - yes
-                      - no
-                      - maybe
-                  myBool:
-                    type: boolean
-
       responses:
         '200':
           description: OK
