@@ -1,0 +1,39 @@
+swagger: '2.0'
+info:
+  contact:
+    name: Scott Hardin
+  description: This is a sample API.
+  title: Sample API
+  version: '1.0'
+host: api.example.com
+basePath: /
+schemes:
+- http
+paths:
+  /test:
+    get:
+      parameters: []
+      responses:
+        '200':
+          description: OK
+          headers:
+            X-RateLimit-Limit:
+              type: integer
+      tags:
+      - Sample
+      description: Get some test data.
+      operationId: getTestData
+    patch:
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: body
+      responses:
+        '200':
+          description: OK
+tags:
+- description: This is a sample tag.
+  name: Sample
