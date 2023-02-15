@@ -34,9 +34,6 @@ export default {
   'rules': {
     'oas3-schema': true,
     'oas2-schema': true,
-    'info-contact': true,
-    'info-description': true,
-    'info-license': true,
     'license-url': true,
     'oas3-missing-schema-definition': {
       'description': 'There is no schema attribute for a component.',
