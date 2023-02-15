@@ -26,10 +26,10 @@ The Documentation Completeness Ruleset consists of 2 domains:
 | info-license                             | Info object must have `license` object.                                   | warning  | Please add missing `license` object. [Reference](#meta-information-about-the-api-itself)                                                                                                                                                           |
 | license-url                              | License object must have a `url`.                                         | warning  | Please add missing `url`. [Reference](#meta-information-about-the-api-itself)                                                                                                                                                                      |
 | oas[2/3]-missing-schema-definition       | Some schema definitions are missing.                                      | error    | Please add schema definitions for the items detected. [Reference](#oas23-missing-schema-definition-missing-schema-definition)                                                                                                                      |
-| general-schema-definition                | Some schemas are partially defined.                                       | error    | Please fully describe the schema for the items detected as using object. [Reference](#general-schema-definatio-generic-schema-definition)                                                                                                          |
+| general-schema-definition                | Some schemas are partially defined.                                       | error    | Please fully describe the schema for the items detected as using object. [Reference](#general-schema-definition-generic-schema-definition)                                                                                                          |
 | oas[2/3]-missing-returned-representation | Some responses do not define a schema.                                    | error    | Please add a schema for the items detected. [Reference](#oas2-3-missing-returned-representation-missing-returned-representation)                                                                                                                   |
 | success-status-code                      | Some operations do not define a success status code.                      | error    | Please add a success status code in the 1xx, 2xx or 3xx range for the items identified. [Reference](#success-status-code-missing-success-status-code)                                                                                              |
-| error-status-code                        | Some operations do not define errors.                                     | warning  | Please add an error status code for the items identified. [Reference](#error-status-code-missing-error-status-codes-there-should-be-at-least-one-error-status-code-either-4xx-or-5xx-or-default-per-the-openapi-spec--search-for-default-response) |
+| error-status-code                        | Some operations do not define errors.                                     | warning  | Please add an error status code for the items identified. [Reference](#error-status-code-missing-error-status-codes) |
 | description-for-every-attribute          | Some attributes do not provide a description.                             | warning  | Please add a description for the items identified. [Reference](#description-for-every-attribute-descriptions-for-every-attribute)                                                                                                                  |
 | examples-for-every-schema                | Examples are not provided for some of the schemas.                        | warning  | Please add examples for the schemas identified. [Reference](#examples-for-every-schemaexamples-for-every-schema)                                                                                                                                   |
 
@@ -40,22 +40,22 @@ The Documentation Completeness Ruleset consists of 2 domains:
 Check the completeness of an OAS document.
 
 
-###   Well-formed JSON or YAML document
+### Well-formed JSON or YAML document
 
 - The document must be syntactically correct regarding the JSON or YAML syntax, parser should not complain
 
-###  oas-version: Version of the OAS is missing
+### oas-version: Version of the OAS is missing
 
 - The document must specify the OAS version it is supporting.
 
 
-###  oas[2|3]-schema: Well-formed OpenAPI document
+### oas[2|3]-schema: Well-formed OpenAPI document
 
 - The document must be syntactically correct regarding the version of OAS it declares 
 
 
 
-###  Meta Information about the API itself
+### Meta Information about the API itself
 
 The following fields must be present (note: list of fields depend on the OAS version) 
 List for OAS v2:
@@ -72,17 +72,17 @@ List of that are implemented for this check.
 - info-description
 - info-license
 
-###  oas[2|3]-missing-schema-definition:  Missing Schema Definition
+### oas[2|3]-missing-schema-definition: Missing Schema Definition
 
 - There is no schema attribute for a component
 
 
-###  general-schema-definatio:  Generic Schema Definition
+### general-schema-definition: Generic Schema Definition
 
 - Some of the defined schema use object as a final field when describing their object structure.
 
 
-### oas[2-3]-missing-returned-representation:  Missing Returned Representation
+### oas[2-3]-missing-returned-representation: Missing Returned Representation
 
 - 2XX (except 204) and 4xx responses must have a response schema defined.
 
@@ -93,19 +93,21 @@ List of that are implemented for this check.
 
 - A successful status code is in the 1xx, 2xx or 3xx range series, and generally a 200, 201 or 204. Missing response schema object properties.
 
-### error-status-code:  Missing Error Status Codes There should be at least one error status code either 4xx or 5xx (or default per the OpenAPI spec / search for Default Response)
+### error-status-code: Missing Error Status Codes
+
+- There should be at least one error status code either 4xx or 5xx (or default per the OpenAPI spec / search for Default Response)
 
 - There are no error codes, only 200 OK
 
 
 ## Reference Documentation Completeness 
 
-### description-for-every-attribute:  Descriptions for Every Attribute
+### description-for-every-attribute: Descriptions for Every Attribute
 
 - For every attribute that is present in the OAS document, if a description is proposed as optional to complement that attribute, then yes it must be present.
 
 
-### examples-for-every-schema:Examples for Every Schema
+### examples-for-every-schema: Examples for Every Schema
 
 - For every schema provided in the OAS document, at least one example must be present
 
