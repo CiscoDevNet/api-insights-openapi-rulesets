@@ -25,7 +25,7 @@ export default {
     ],
   ],
   'rules': {
-    'oas3-schema': true,
-    'oas2-schema': true,
+    'oas3-schema': 'error',
+    'oas2-schema': 'error',
   },
 };

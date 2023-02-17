@@ -27,7 +27,7 @@ npm install
 ```
 * Try the command.
 ```
-npx spectral lint -r completeness.js examples/petstore.json
+npx spectral lint -r documentation.js examples/petstore.json
 ```
 * You should see the linter result.
 

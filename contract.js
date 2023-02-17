@@ -32,8 +32,8 @@ export default {
     ],
   ],
   'rules': {
-    'oas3-schema': true,
-    'oas2-schema': true,
+    'oas3-schema': 'error',
+    'oas2-schema': 'error',
     'oas3-missing-schema-definition': {
       'description': 'There is no schema attribute for a component.',
       'message': '{{description}}; {{error}}',
@@ -140,9 +140,9 @@ export default {
       },
     },
     'oas2-meta-info': {
-      'description': 'The following fields must be present (note',
+      'description': 'Some meta fields must be present',
       'message': '{{description}} {{error}}',
-      'severity': 'warn',
+      'severity': 'error',
       'formats': [oas2],
       'type': 'validation',
       'given': '$',

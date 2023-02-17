@@ -27,10 +27,10 @@ export default {
     ],
   ],
   'rules': {
-    'info-contact': true,
-    'info-description': true,
-    'info-license': true,
-    'license-url': true,
+    'info-contact': 'warn',
+    'info-description': 'warn',
+    'info-license': 'warn',
+    'license-url': 'warn',
     'description-for-every-attribute': {
       'description': 'DEA - Descriptions for Every Attribute',
       'message': 'For every attribute that is present in the OAS document, if a description is proposed as optional to complement that attribute, then yes it must be present; {{error}}',
