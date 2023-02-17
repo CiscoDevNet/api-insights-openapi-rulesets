@@ -34,7 +34,7 @@ export default {
     'description-for-every-attribute': {
       'description': 'DEA - Descriptions for Every Attribute',
       'message': 'For every attribute that is present in the OAS document, if a description is proposed as optional to complement that attribute, then yes it must be present; {{error}}',
-      'severity': 'warn',
+      'severity': 'error',
       'given': [
         '$.tags[*]',
         '$.info',
