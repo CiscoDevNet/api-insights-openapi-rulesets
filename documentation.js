@@ -16,9 +16,16 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
+import { oas } from '@stoplight/spectral-rulesets';
 import ensureExamples from './functions/ensureExamples.js';
 import ensureField from './functions/ensureField.js';
 export default {
+  'extends': [
+    [
+      oas,
+      'off',
+    ],
+  ],
   'rules': {
     'info-contact': true,
     'info-description': true,
