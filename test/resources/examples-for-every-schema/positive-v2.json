@@ -1,0 +1,192 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "contact": {
+      "name": "Dan Hayduk"
+    },
+    "description": "This is a sample API.",
+    "title": "Sample API",
+    "version": "1.0"
+  },
+  "host": "api.example.com",
+  "basePath": "/",
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/test": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "description": "How many items to return at one time (max 100)",
+            "format": "int32",
+            "in": "query",
+            "name": "limit",
+            "required": false,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {
+              "X-RateLimit-Limit": {
+                "type": "integer"
+              }
+            },
+            "schema": {
+              "example": {
+                "id": 1,
+                "name": "tom",
+                "tag": "man"
+              },
+              "properties": {
+                "id": {
+                  "format": "int64",
+                  "type": "integer"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "tag": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "id",
+                "name"
+              ]
+            }
+          },
+          "500": {
+            "description": "unexpected error",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        },
+        "tags": [
+          "Sample"
+        ],
+        "description": "Get some test data.",
+        "operationId": "getTestData"
+      },
+      "patch": {
+        "consumes": [
+          "application/merge-patch+json",
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "description": "descllla",
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "example": "s",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "example": "s",
+              "type": "string"
+            }
+          },
+          "202": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Pet"
+            },
+            "examples": {
+              "application/json": {
+                "id": 1,
+                "name": "tom",
+                "tag": "man"
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        },
+        "tags": [
+          "Sample"
+        ],
+        "description": "Modify some test data.",
+        "operationId": "patchTestData"
+      }
+    }
+  },
+  "definitions": {
+    "Error": {
+      "example": {
+        "code": 2,
+        "message": "m"
+      },
+      "properties": {
+        "code": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "message": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "code",
+        "message"
+      ]
+    },
+    "Pet": {
+      "properties": {
+        "id": {
+          "format": "int64",
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        },
+        "tag": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "name"
+      ]
+    },
+    "Pets": {
+      "items": {
+        "$ref": "#/definitions/Pet"
+      },
+      "type": "array"
+    }
+  },
+  "securityDefinitions": {
+    "api_key": {
+      "description": "desc",
+      "in": "header",
+      "name": "api_key",
+      "type": "apiKey"
+    }
+  },
+  "tags": [
+    {
+      "description": "This is a sample tag.",
+      "name": "Sample"
+    }
+  ],
+  "x-components": {}
+}
