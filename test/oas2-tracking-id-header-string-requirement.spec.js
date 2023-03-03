@@ -58,7 +58,7 @@ describe(ruleName, () => {
             character: 27,
           },
         },
-        severity: 2,
+        severity: 1,
       },
     ]);
   });

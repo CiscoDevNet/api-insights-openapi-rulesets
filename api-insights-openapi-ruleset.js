@@ -101,7 +101,7 @@ export default {
     'resource-pas-camel-case-info': {
       'description': 'Resource names use PasCamelCase.',
       'message': '{{error}}',
-      'severity': 'info',
+      'severity': 'warn',
       'given': '$.paths[*]~',
       'then': {
         'function': resourcePasCamelCase,
@@ -156,7 +156,7 @@ export default {
     'status-codes-in-2xx-4xx-5xx': {
       'description': 'API responds with recommended HTTP status codes in the 2xx/3xx/4xx/5xx ranges.',
       'message': '{{error}}',
-      'severity': 'warn',
+      'severity': 'error',
       'given': "$.paths.*[?( @property === 'get' || @property === 'put' || @property === 'post' || @property === 'delete' || @property === 'options' || @property === 'head' || @property === 'patch' || @property === 'trace' )]",
       'then': {
         'field': 'responses',
@@ -268,7 +268,7 @@ export default {
     'date-response-header-format-pattern-requirement': {
       'description': "All responses include a 'Date' header in the GMT timezone and RFC 5322 format.",
       'message': "All 'Date' response headers should use a custom pattern match for RFC 5322. date-time or other given formats should not be used (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)",
-      'severity': 'info',
+      'severity': 'warn',
       'given': '$.paths.*.*.responses[*].headers.Date.schema',
       'then': [
         {
@@ -284,7 +284,7 @@ export default {
     'date-response-header-regex-check': {
       'description': "All responses include a 'Date' header in the GMT timezone and RFC 5322 format.",
       'message': '{{error}}',
-      'severity': 'info',
+      'severity': 'warn',
       'given': '$.paths.*.*.responses[*].headers.Date.schema',
       'then': {
         'field': 'pattern',
@@ -366,7 +366,7 @@ export default {
     'oas2-tracking-id-header-string-requirement': {
       'description': "'TrackingID' header should be a string in order to accommodate a UUID.",
       'message': "'TrackingID' header should be a string in order to accommodate a UUID (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)",
-      'severity': 'info',
+      'severity': 'warn',
       'given': '$.paths.*.*.responses[*].headers[?( /^trackingid$/i.test(@property) )]',
       'then': {
         'field': 'type',
@@ -379,7 +379,7 @@ export default {
     'oas3-tracking-id-header-string-requirement': {
       'description': "'TrackingID' header should be a string in order to accommodate a UUID.",
       'message': "'TrackingID' header should be a string in order to accommodate a UUID (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)",
-      'severity': 'info',
+      'severity': 'warn',
       'given': '$.paths.*.*.responses[*].headers[?( /^trackingid$/i.test(@property) )].schema',
       'then': {
         'field': 'type',
@@ -674,7 +674,7 @@ export default {
     'oas2-error-response-identifier': {
       'description': 'Error representations include an identifier to help with troubleshooting.',
       'message': 'Error representations include an identifier to help with troubleshooting (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
-      'severity': 'info',
+      'severity': 'warn',
       'given': "$.paths.*[?(@property !== 'head')].responses[?(/^4\\d\\d.*$/i.test(@property) || /^5\\d\\d.*$/i.test(@property))]",
       'formats': [oas2],
       'then': [
@@ -686,7 +686,7 @@ export default {
     'oas3-error-response-identifier': {
       'description': 'Error representations include an identifier to help with troubleshooting.',
       'message': 'Error representations include an identifier to help with troubleshooting (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
-      'severity': 'info',
+      'severity': 'warn',
       'given': "$.paths.*[?(@property !== 'head')].responses[?(/^4\\d\\d.*$/i.test(@property) || /^5\\d\\d.*$/i.test(@property))]",
       'formats': [oas3],
       'then': [
@@ -1218,7 +1218,7 @@ export default {
       'description': "Sorting collections is designed with a 'sort' query parameter.",
       'formats': [oas2],
       'message': '{{error}} (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
-      'severity': 'info',
+      'severity': 'warn',
       'given': '$.paths[?( !(/\\/{.*}$/.test(@property)) )].get',
       'then': {
         'function': checkForSort,
@@ -1228,7 +1228,7 @@ export default {
       'description': "Sorting collections is designed with a 'sort' query parameter.",
       'formats': [oas3],
       'message': '{{error}} (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
-      'severity': 'info',
+      'severity': 'warn',
       'given': '$.paths[?( !(/\\/{.*}$/.test(@property)) )].get',
       'then': {
         'function': checkForSort,
@@ -1307,7 +1307,7 @@ export default {
     'authenticate-requests': {
       'description': 'API.REST.SECURITY.03: My API authenticates and authorizes all requests',
       'message': 'API.REST.SECURITY.03: My API authenticates and authorizes all requests (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
-      'severity': 'warn',
+      'severity': 'error',
       'given': '$.paths.*.*',
       'then': [
         {
@@ -1326,7 +1326,7 @@ export default {
     'reason-phrase': {
       'description': 'Reason phrase needs to match',
       'message': '{{error}}',
-      'severity': 'warn',
+      'severity': 'error',
       'given': '$.paths.*.*.responses.*.description',
       'then': [
         {

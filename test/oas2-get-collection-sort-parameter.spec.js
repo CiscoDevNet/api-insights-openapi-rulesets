@@ -54,7 +54,7 @@ describe(ruleName, () => {
             character: 25,
           },
         },
-        severity: 2,
+        severity: 1,
       },
     ]);
   });
@@ -81,7 +81,7 @@ describe(ruleName, () => {
             character: 25,
           },
         },
-        severity: 2,
+        severity: 1,
       },
     ]);
   });

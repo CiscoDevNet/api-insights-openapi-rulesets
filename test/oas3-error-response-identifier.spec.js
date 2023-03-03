@@ -56,7 +56,7 @@ describe(ruleName, () => {
               character: 50,
             },
           },
-          severity: 2,
+          severity: 1,
         },
         {
           code: ruleName,
@@ -78,7 +78,7 @@ describe(ruleName, () => {
               character: 50,
             },
           },
-          severity: 2,
+          severity: 1,
         },
       ]);
     });
