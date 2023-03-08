@@ -28,26 +28,16 @@ module.exports = function (targetVal) {
     return;
   }
 
-  if (targetVal.schema) {
-    if (targetVal.examples || targetVal.example || targetVal.schema.example) {
-      return;
-    }
+  if (!targetVal.schema) {
+    return;
+  }
 
-    if (targetVal.schema.properties) {
-      const props = targetVal.schema.properties;
-      let missing = false;
+  if (targetVal.examples || targetVal.example || targetVal.schema.example) {
+    return;
+  }
 
-      for (const key in props) {
-        if (props[key] && !props[key].example) {
-          missing = true;
-          break;
-        }
-      }
-
-      if (!missing) {
-        return;
-      }
-    }
+  if (hasExample(targetVal.schema)) {
+    return;
   }
 
   return [
@@ -56,3 +46,25 @@ module.exports = function (targetVal) {
     },
   ];
 };
+
+function hasExample(target) {
+  if (target == null || target.examples || target.example) {
+    return true;
+  }
+
+  if (target.type === 'array') {
+    return hasExample(target.items);
+  }
+
+  if (!target.type || target.type === 'object') {
+    for (const key in target.properties) {
+      if (!hasExample(target.properties[key])) {
+        return false;
+      }
+    }
+
+    return true;
+  }
+
+  return false;
+}

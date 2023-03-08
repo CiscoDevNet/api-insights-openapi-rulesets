@@ -79,6 +79,29 @@
               }
             }
           },
+          "400": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AnotherError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/AnotherError"
+                  }
+                }
+              }
+            }
+          },
           "500": {
             "description": "unexpected error",
             "content": {
@@ -247,6 +270,43 @@
         "example": {
           "code": 2,
           "message": "m"
+        }
+      },
+      "AnotherError": {
+        "required": [
+          "code",
+          "message"
+        ],
+        "properties": {
+          "code": {
+            "type": "integer",
+            "format": "int32",
+            "example": 3
+          },
+          "message": {
+            "type": "string",
+            "example": "mm"
+          },
+          "errors": {
+            "type": "object",
+            "example": {
+              "a": 1
+            }
+          },
+          "details": {
+            "type": "object",
+            "properties": {
+              "a": {
+                "type": "integer",
+                "format": "int32",
+                "example": 3
+              },
+              "b": {
+                "type": "string",
+                "example": "s"
+              }
+            }
+          }
         }
       }
     },

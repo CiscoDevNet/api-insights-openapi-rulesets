@@ -88,6 +88,54 @@ describe(ruleName, () => {
         path: [
           'paths',
           '/test',
+          'get',
+          'responses',
+          '400',
+          'content',
+          'application/json',
+        ],
+        range: {
+          end: {
+            character: 61,
+            line: 79,
+          },
+          start: {
+            character: 33,
+            line: 77,
+          },
+        },
+        severity: 1,
+      },
+      {
+        code: ruleName,
+        message: 'For every schema provided in the OAS document, at least one example must be present; example or examples is missing in the object',
+        path: [
+          'paths',
+          '/test',
+          'get',
+          'responses',
+          '401',
+          'content',
+          'application/json',
+        ],
+        range: {
+          end: {
+            character: 63,
+            line: 91,
+          },
+          start: {
+            character: 33,
+            line: 87,
+          },
+        },
+        severity: 1,
+      },
+      {
+        code: ruleName,
+        message: 'For every schema provided in the OAS document, at least one example must be present; example or examples is missing in the object',
+        path: [
+          'paths',
+          '/test',
           'patch',
           'responses',
           '400',
@@ -97,11 +145,11 @@ describe(ruleName, () => {
         range: {
           end: {
             character: 38,
-            line: 137,
+            line: 160,
           },
           start: {
             character: 33,
-            line: 124,
+            line: 147,
           },
         },
         severity: 1,
