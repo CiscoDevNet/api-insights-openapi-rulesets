@@ -41,28 +41,6 @@ describe(ruleName, () => {
           'paths',
           '/test',
           'get',
-          'parameters',
-          '0',
-        ],
-        range: {
-          end: {
-            character: 34,
-            line: 37,
-          },
-          start: {
-            character: 11,
-            line: 30,
-          },
-        },
-        severity: 1,
-      },
-      {
-        code: ruleName,
-        message: 'For every schema provided in the OAS document, at least one example must be present; example or examples is missing in the object',
-        path: [
-          'paths',
-          '/test',
-          'get',
           'responses',
           '200',
           'headers',

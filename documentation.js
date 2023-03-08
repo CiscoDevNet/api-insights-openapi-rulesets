@@ -63,9 +63,7 @@ export default {
         '$.paths.*.*.*.*.content[?(@ && @.schema)]',
         '$.paths.*.*.*.content[?(@ && @.schema)]',
         '$.paths.*.*.responses[*].headers[?(@ && @.schema)]',
-        '$.paths.*.*.parameters[?(@ && @.schema)]',
         '$.paths.*.*.responses[?(@ && @.schema)]',
-        "$.paths.*.*.parameters[?(@ && @.schema && @.in === 'body')]",
       ],
       'then': {
         'function': ensureExamples,
