@@ -104,6 +104,30 @@ describe(ruleName, () => {
         },
         severity: 1,
       },
+      {
+        code: ruleName,
+        message: 'For every schema provided in the OAS document, at least one example must be present; example or examples is missing in the object',
+        path: [
+          'paths',
+          '/test',
+          'patch',
+          'responses',
+          '400',
+          'content',
+          'application/json',
+        ],
+        range: {
+          end: {
+            character: 38,
+            line: 137,
+          },
+          start: {
+            character: 33,
+            line: 124,
+          },
+        },
+        severity: 1,
+      },
     ]);
   });
   test('should pass with provided example', async () => {

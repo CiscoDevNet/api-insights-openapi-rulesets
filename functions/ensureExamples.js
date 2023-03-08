@@ -28,8 +28,26 @@ module.exports = function (targetVal) {
     return;
   }
 
-  if (targetVal.schema && (targetVal.examples || targetVal.schema.example)) {
-    return;
+  if (targetVal.schema) {
+    if (targetVal.examples || targetVal.example || targetVal.schema.example) {
+      return;
+    }
+
+    if (targetVal.schema.properties) {
+      const props = targetVal.schema.properties;
+      let missing = false;
+
+      for (const key in props) {
+        if (props[key] && !props[key].example) {
+          missing = true;
+          break;
+        }
+      }
+
+      if (!missing) {
+        return;
+      }
+    }
   }
 
   return [

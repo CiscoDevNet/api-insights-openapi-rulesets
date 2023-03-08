@@ -126,6 +126,24 @@
               }
             }
           },
+          "201": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Pet"
+                },
+                "example": {
+                  "summary": "test1",
+                  "value": {
+                    "id": 1,
+                    "name": "tom",
+                    "tag": "man"
+                  }
+                }
+              }
+            }
+          },
           "202": {
             "description": "OK",
             "content": {
@@ -140,6 +158,30 @@
                       "id": 1,
                       "name": "tom",
                       "tag": "man"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "required": [
+                    "code",
+                    "message"
+                  ],
+                  "properties": {
+                    "code": {
+                      "type": "integer",
+                      "format": "int32",
+                      "example": 10
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "msg"
                     }
                   }
                 }
