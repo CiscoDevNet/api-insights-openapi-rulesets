@@ -36,7 +36,6 @@ export default {
       'message': 'For every attribute that is present in the OAS document, if a description is proposed as optional to complement that attribute, then yes it must be present; {{error}}',
       'severity': 'error',
       'given': [
-        '$.tags[*]',
         '$.info',
         '$.server',
         '$.externalDocs',
