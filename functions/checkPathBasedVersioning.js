@@ -36,7 +36,7 @@ export default function (input, opts) {
         ? input?.servers?.every((server) => {
           // check variables
           const vars = Object.values(server?.variables ?? {});
-          const versionInVariables = vars.find((v) => re.test(v.default) && (v.enum || []).every((e) => re.test(e)));
+          const versionInVariables = vars.find((v) => _checkPath(v.default) && (v.enum || []).every((e) => _checkPath(e)));
 
           // TODO: Possibly make this be an XOR (versionInVariables !== re.test(server.url))
           // since it would be strange to have multiple versions...

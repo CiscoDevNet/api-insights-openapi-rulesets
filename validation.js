@@ -27,5 +27,7 @@ export default {
   'rules': {
     'oas3-schema': 'error',
     'oas2-schema': 'error',
+    'oas3-operation-security-defined': 'error',
+    'oas2-operation-security-defined': 'error',
   },
 };
