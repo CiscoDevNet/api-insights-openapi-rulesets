@@ -1,0 +1,169 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "contact": {
+      "name": "Dan Hayduk"
+    },
+    "description": "This is a sample API.",
+    "title": "Sample API",
+    "version": "1.0"
+  },
+  "servers": [
+    {
+      "url": "http://api.example.com/"
+    }
+  ],
+  "paths": {
+    "/test": {
+      "get": {
+        "parameters": [
+          {
+            "description": "How many items to return at one time (max 100)",
+            "in": "query",
+            "name": "limit",
+            "required": false,
+            "schema": {
+              "format": "int32",
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {
+              "X-RateLimit-Limit": {
+                "schema": {
+                  "type": "integer"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+              }
+            }
+          },
+          "500": {
+            "description": "unexpected error"
+          }
+        },
+        "tags": [
+          "Sample"
+        ],
+        "description": "Get some test data.",
+        "operationId": "getTestData"
+      },
+      "patch": {
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": "s",
+                  "type": "string"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "description": "unexpected error"
+          }
+        },
+        "tags": [
+          "Sample"
+        ],
+        "description": "Modify some test data.",
+        "operationId": "patchTestData",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "example": "s",
+                "type": "string"
+              }
+            },
+            "application/merge-patch+json": {
+              "schema": {
+                "example": "s",
+                "type": "string"
+              }
+            }
+          },
+          "description": "descllla"
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Error": {
+        "example": {
+          "code": 2,
+          "message": "m"
+        },
+        "properties": {
+          "code": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "message": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "code",
+          "message"
+        ],
+        "type": "object"
+      },
+      "Pet": {
+        "properties": {
+          "id": {
+            "format": "int64",
+            "type": "integer"
+          },
+          "name": {
+            "type": "string"
+          },
+          "tag": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "name"
+        ],
+        "type": "object"
+      },
+      "Pets": {
+        "items": {
+          "$ref": "#/components/schemas/Pet"
+        },
+        "type": "array"
+      }
+    },
+    "securitySchemes": {
+      "api_key": {
+        "description": "desc",
+        "in": "header",
+        "name": "api_key",
+        "type": "apiKey"
+      }
+    }
+  },
+  "tags": [
+    {
+      "description": "This is a sample tag.",
+      "name": "Sample"
+    }
+  ],
+  "x-components": {}
+}

@@ -40,9 +40,8 @@ export default {
       'severity': 'error',
       'formats': [oas3],
       'given': [
-        '$.paths.*.*.responses[?(@property != 204)].content[*]',
-        '$.*.*.*.*.*.headers[*]',
-        '$.*.*.*.parameters[*]',
+        '$.paths.*.*.responses[?(@property.match(/^[2]\\d{2}$/i) && @property!=204)].content[*]',
+        '$.*.*.*.requestBody.content[*]',
       ],
       'then': {
         'function': ensureField,
@@ -57,7 +56,7 @@ export default {
       'severity': 'error',
       'formats': [oas2],
       'given': [
-        '$.*.*.responses[?(@property != 204)]',
+        '$.paths.*.*.responses[?(@property.match(/^[2]\\d{2}$/i) && @property!=204 )]',
         "$.*.*.*.parameters[?(@ != null && @.in === 'body')]",
       ],
       'then': {
@@ -86,11 +85,11 @@ export default {
       ],
     },
     'oas3-missing-returned-representation': {
-      'description': '2XX (except 204) and 4xx responses must have a response schema defined.',
+      'description': '2XX (except 204) responses must have a response schema defined',
       'message': '{{description}}; {{error}}',
       'severity': 'error',
       'formats': [oas3],
-      'given': ['$.paths.*.*.responses[?(@property.match(/^[24]\\d{2}$/i) && @property!=204)].content[*]'],
+      'given': ['$.paths.*.*.responses[?(@property.match(/^[2]\\d{2}$/i) && @property!=204)].content[*]'],
       'then': {
         'function': ensureField,
         'functionOptions': {
@@ -99,11 +98,11 @@ export default {
       },
     },
     'oas2-missing-returned-representation': {
-      'description': 'MRR – Missing Returned Representation. 2XX (except 204) and 4xx responses must have a response schema defined',
+      'description': '2XX (except 204) responses must have a response schema defined',
       'message': '{{description}}; {{error}}',
       'severity': 'error',
       'formats': [oas2],
-      'given': ['$.paths.*.*.responses[?(@property.match(/^[24]\\d{2}$/i) && @property!=204 )]'],
+      'given': ['$.paths.*.*.responses[?(@property.match(/^[2]\\d{2}$/i) && @property!=204 )]'],
       'then': {
         'function': ensureField,
         'functionOptions': {
