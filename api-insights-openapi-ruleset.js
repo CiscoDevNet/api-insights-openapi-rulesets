@@ -421,7 +421,7 @@ export default {
       'description': 'Representation fields use format-native true/false values for booleans.',
       'message': 'Representation fields use format-native true/false values for booleans (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
       'severity': 'warn',
-      'given': "$.paths.*.*.responses.*.schema..[?( @.type === 'string' && @.enum )]",
+      'given': "$.paths.*.*.responses.*.schema..[?(@ && @.type === 'string' && @.enum )]",
       'formats': [oas2],
       'then': {
         'field': 'enum',
