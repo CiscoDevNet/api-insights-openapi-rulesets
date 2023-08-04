@@ -36,7 +36,7 @@ describe(ruleName, () => {
     expect(res).toEqual([
       {
         code: ruleName,
-        message: 'DELETE operation must return \'204 No Content\' on success (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+        message: 'DELETE operations return \'204 No Content\' on success.; "responses[204]" property must be truthy',
         path: [
           'paths',
           '/test',

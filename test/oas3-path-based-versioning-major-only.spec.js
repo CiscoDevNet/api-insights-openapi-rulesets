@@ -37,7 +37,7 @@ describe(ruleName, () => {
     expect(res).toEqual([
       {
         code: ruleName,
-        message: 'API shows only major version numbers on the path; not the revision numbers. (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+        message: 'API shows only major version numbers on the path; not the revision numbers.; API shows only major version numbers on the path; not the revision numbers.',
         path: [],
         range: {
           start: {

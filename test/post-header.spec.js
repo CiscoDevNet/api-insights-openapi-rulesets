@@ -36,7 +36,7 @@ describe(ruleName, () => {
     expect(res).toEqual([
       {
         code: ruleName,
-        message: 'POST operations that create resources should include a Location header (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+        message: 'POST operations that create resources should include a Location header.; "[201].headers" property must be truthy',
         path: [
           'paths',
           '/test',
@@ -71,7 +71,7 @@ describe(ruleName, () => {
     expect(res).toEqual([
       {
         code: ruleName,
-        message: 'POST operations that create resources should include a Location header (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+        message: 'POST operations that create resources should include a Location header.; "[201].headers" property must be truthy',
         path: [
           'paths',
           '/test',

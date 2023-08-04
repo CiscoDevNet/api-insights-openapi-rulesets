@@ -37,7 +37,7 @@ describe(ruleName, () => {
     expect(res).toEqual([
       {
         code: ruleName,
-        message: 'My API supports HTTPS only. (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+        message: 'My API supports HTTPS only.; "http://api.example.com/v1" must match the pattern "^https://"',
         path: [
           'servers',
           '0',

@@ -37,7 +37,7 @@ describe(ruleName, () => {
     expect(res).toEqual([
       {
         code: ruleName,
-        message: 'API uses path-based versioning. (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+        message: 'API uses path-based versioning.; API uses path-based versioning.',
         path: [],
         range: {
           start: {

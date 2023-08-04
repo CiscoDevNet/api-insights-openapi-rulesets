@@ -38,7 +38,7 @@ describe(ruleName, () => {
     expect(res).toEqual([
       {
         code: ruleName,
-        message: 'API.REST.SECURITY.03: My API authenticates and authorizes all requests (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+        message: 'API.REST.SECURITY.03: My API authenticates and authorizes all requests; "get.security" property must be truthy',
         path: [
           'paths',
           '/test',
@@ -58,7 +58,7 @@ describe(ruleName, () => {
       },
       {
         code: ruleName,
-        message: 'API.REST.SECURITY.03: My API authenticates and authorizes all requests (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+        message: 'API.REST.SECURITY.03: My API authenticates and authorizes all requests; "post.security" property must be truthy',
         path: [
           'paths',
           '/test',
@@ -78,7 +78,7 @@ describe(ruleName, () => {
       },
       {
         code: ruleName,
-        message: 'API.REST.SECURITY.03: My API authenticates and authorizes all requests (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+        message: 'API.REST.SECURITY.03: My API authenticates and authorizes all requests; "put.security" property must be truthy',
         path: [
           'paths',
           '/test',
@@ -98,7 +98,7 @@ describe(ruleName, () => {
       },
       {
         code: ruleName,
-        message: 'API.REST.SECURITY.03: My API authenticates and authorizes all requests (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+        message: 'API.REST.SECURITY.03: My API authenticates and authorizes all requests; "delete.security" property must be truthy',
         path: [
           'paths',
           '/test',
@@ -118,7 +118,7 @@ describe(ruleName, () => {
       },
       {
         code: ruleName,
-        message: 'API.REST.SECURITY.03: My API authenticates and authorizes all requests (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+        message: 'API.REST.SECURITY.03: My API authenticates and authorizes all requests; "options.security" property must be truthy',
         path: [
           'paths',
           '/test',

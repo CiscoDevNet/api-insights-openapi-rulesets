@@ -37,7 +37,7 @@ describe(ruleName, () => {
     expect(res).toEqual([
       {
         code: ruleName,
-        message: 'POST operations which create objects return 201 Created, with a full or reference-only representation. (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+        message: 'POST operations which create objects return 201 Created, with a full or reference-only representation.; "[201].content" property must be truthy',
         path: [
           'paths',
           '/test',
@@ -59,7 +59,7 @@ describe(ruleName, () => {
       },
       {
         code: ruleName,
-        message: 'POST operations which create objects return 201 Created, with a full or reference-only representation. (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+        message: 'POST operations which create objects return 201 Created, with a full or reference-only representation.; "[201].content" property must be truthy',
         path: [
           'paths',
           '/other/test',

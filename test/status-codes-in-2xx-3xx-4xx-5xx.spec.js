@@ -36,7 +36,7 @@ describe(ruleName, () => {
     expect(res).toEqual([
       {
         code: ruleName,
-        message: 'Status Code(s) [110] must be in the 2xx/3xx/4xx/5xx ranges: (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+        message: 'API responds with recommended HTTP status codes in the 2xx/3xx/4xx/5xx ranges.; Status Code(s) [110] must be in the 2xx/3xx/4xx/5xx ranges',
         path: [
           'paths',
           '/test',
@@ -57,7 +57,7 @@ describe(ruleName, () => {
       },
       {
         code: ruleName,
-        message: 'Status Code(s) [110] must be in the 2xx/3xx/4xx/5xx ranges: (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+        message: 'API responds with recommended HTTP status codes in the 2xx/3xx/4xx/5xx ranges.; Status Code(s) [110] must be in the 2xx/3xx/4xx/5xx ranges',
         path: [
           'paths',
           '/test',
@@ -78,7 +78,7 @@ describe(ruleName, () => {
       },
       {
         code: ruleName,
-        message: 'Status Code(s) [110] must be in the 2xx/3xx/4xx/5xx ranges: (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+        message: 'API responds with recommended HTTP status codes in the 2xx/3xx/4xx/5xx ranges.; Status Code(s) [110] must be in the 2xx/3xx/4xx/5xx ranges',
         path: [
           'paths',
           '/test',
@@ -99,7 +99,7 @@ describe(ruleName, () => {
       },
       {
         code: ruleName,
-        message: 'Status Code(s) [110] must be in the 2xx/3xx/4xx/5xx ranges: (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+        message: 'API responds with recommended HTTP status codes in the 2xx/3xx/4xx/5xx ranges.; Status Code(s) [110] must be in the 2xx/3xx/4xx/5xx ranges',
         path: [
           'paths',
           '/test',
@@ -120,7 +120,7 @@ describe(ruleName, () => {
       },
       {
         code: ruleName,
-        message: 'Status Code(s) [110] must be in the 2xx/3xx/4xx/5xx ranges: (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+        message: 'API responds with recommended HTTP status codes in the 2xx/3xx/4xx/5xx ranges.; Status Code(s) [110] must be in the 2xx/3xx/4xx/5xx ranges',
         path: [
           'paths',
           '/test',
@@ -141,7 +141,7 @@ describe(ruleName, () => {
       },
       {
         code: ruleName,
-        message: 'Status Code(s) [110] must be in the 2xx/3xx/4xx/5xx ranges: (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+        message: 'API responds with recommended HTTP status codes in the 2xx/3xx/4xx/5xx ranges.; Status Code(s) [110] must be in the 2xx/3xx/4xx/5xx ranges',
         path: [
           'paths',
           '/test',
@@ -162,7 +162,7 @@ describe(ruleName, () => {
       },
       {
         code: ruleName,
-        message: 'Status Code(s) [110] must be in the 2xx/3xx/4xx/5xx ranges: (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+        message: 'API responds with recommended HTTP status codes in the 2xx/3xx/4xx/5xx ranges.; Status Code(s) [110] must be in the 2xx/3xx/4xx/5xx ranges',
         path: [
           'paths',
           '/test',
@@ -183,7 +183,7 @@ describe(ruleName, () => {
       },
       {
         code: ruleName,
-        message: 'Status Code(s) [110] must be in the 2xx/3xx/4xx/5xx ranges: (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+        message: 'API responds with recommended HTTP status codes in the 2xx/3xx/4xx/5xx ranges.; Status Code(s) [110] must be in the 2xx/3xx/4xx/5xx ranges',
         path: [
           'paths',
           '/test',
@@ -211,7 +211,7 @@ describe(ruleName, () => {
     expect(res).toEqual([
       {
         code: ruleName,
-        message: 'Status Code(s) [110] must be in the 2xx/3xx/4xx/5xx ranges: (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+        message: 'API responds with recommended HTTP status codes in the 2xx/3xx/4xx/5xx ranges.; Status Code(s) [110] must be in the 2xx/3xx/4xx/5xx ranges',
         path: [
           'paths',
           '/test',

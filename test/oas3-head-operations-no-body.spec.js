@@ -37,7 +37,7 @@ describe(ruleName, () => {
     expect(res).toEqual([
       {
         code: ruleName,
-        message: 'HEAD operations with a corresponding GET operation must return no body content (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+        message: 'HEAD operations with a corresponding GET operation must return no body content.; "content" property must be falsy',
         path: [
           'paths',
           '/test',

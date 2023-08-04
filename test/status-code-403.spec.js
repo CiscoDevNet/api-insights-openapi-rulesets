@@ -36,7 +36,7 @@ describe(ruleName, () => {
     expect(res).toEqual([
       {
         code: 'status-code-403',
-        message: 'A 403 status code is returned if a consumer is not authorized to access an operation. (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+        message: 'A 403 status code is returned if a consumer is not authorized to access an operation.; An expected pathway is missing. Prerequisite: "undefined", search: "403"',
         path: [
           'paths',
           '/myResource',

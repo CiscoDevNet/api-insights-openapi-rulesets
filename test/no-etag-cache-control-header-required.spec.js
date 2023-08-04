@@ -36,7 +36,7 @@ describe(ruleName, () => {
     expect(res).toEqual([
       {
         code: ruleName,
-        message: 'Where caching is not appropriate, operations must include a Cache-Control header (e.g. max-age=0, no-cache, no-store, must-revalidate) and must not include an ETag header (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+        message: 'Where caching is not appropriate, operations must include a Cache-Control header (e.g. max-age=0, no-cache, no-store, must-revalidate) and must not include an ETag header.; "headers.Cache-Control" property must be truthy',
         path: [
           'paths',
           '/test',

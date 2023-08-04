@@ -38,7 +38,7 @@ describe(ruleName, () => {
     expect(res).toEqual([
       {
         code: ruleName,
-        message: 'When returning a paginated collection, include a "max" query parameter (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+        message: 'Pagination is designed using a \'max\' query parameter and \'Link\' headers per RFC 5988.; When returning a paginated collection, include a "max" query parameter',
         path: [
           'paths',
           '/test',
@@ -58,7 +58,7 @@ describe(ruleName, () => {
       },
       {
         code: ruleName,
-        message: 'When returning a paginated collection, include a "Link" header in the response (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+        message: 'Pagination is designed using a \'max\' query parameter and \'Link\' headers per RFC 5988.; When returning a paginated collection, include a "Link" header in the response',
         path: [
           'paths',
           '/test',
@@ -87,7 +87,7 @@ describe(ruleName, () => {
     expect(res).toEqual([
       {
         code: ruleName,
-        message: 'When returning a paginated collection, include a "max" query parameter (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+        message: 'Pagination is designed using a \'max\' query parameter and \'Link\' headers per RFC 5988.; When returning a paginated collection, include a "max" query parameter',
         path: [
           'paths',
           '/test',
@@ -107,7 +107,7 @@ describe(ruleName, () => {
       },
       {
         code: ruleName,
-        message: 'When returning a paginated collection, include a "Link" header in the response (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+        message: 'Pagination is designed using a \'max\' query parameter and \'Link\' headers per RFC 5988.; When returning a paginated collection, include a "Link" header in the response',
         path: [
           'paths',
           '/test',
@@ -142,7 +142,7 @@ describe(ruleName, () => {
     expect(res).toEqual([
       {
         code: ruleName,
-        message: 'When returning a paginated collection, include a "max" query parameter (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+        message: 'Pagination is designed using a \'max\' query parameter and \'Link\' headers per RFC 5988.; When returning a paginated collection, include a "max" query parameter',
         path: [
           'paths',
           '/test',
@@ -169,7 +169,7 @@ describe(ruleName, () => {
     expect(res).toEqual([
       {
         code: ruleName,
-        message: 'When returning a paginated collection, include a "Link" header in the response (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+        message: 'Pagination is designed using a \'max\' query parameter and \'Link\' headers per RFC 5988.; When returning a paginated collection, include a "Link" header in the response',
         path: [
           'paths',
           '/test',
@@ -198,7 +198,7 @@ describe(ruleName, () => {
     expect(res).toEqual([
       {
         code: ruleName,
-        message: 'When returning a paginated collection, include a "max" query parameter (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+        message: 'Pagination is designed using a \'max\' query parameter and \'Link\' headers per RFC 5988.; When returning a paginated collection, include a "max" query parameter',
         path: [
           'paths',
           '/test/{id}/children',
@@ -218,7 +218,7 @@ describe(ruleName, () => {
       },
       {
         code: ruleName,
-        message: 'When returning a paginated collection, include a "Link" header in the response (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+        message: 'Pagination is designed using a \'max\' query parameter and \'Link\' headers per RFC 5988.; When returning a paginated collection, include a "Link" header in the response',
         path: [
           'paths',
           '/test/{id}/children',

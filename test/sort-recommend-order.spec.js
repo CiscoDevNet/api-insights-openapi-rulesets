@@ -36,7 +36,7 @@ describe(ruleName, () => {
     expect(res).toEqual([
       {
         code: ruleName,
-        message: 'Consider using \'order\' with \'sort\' in this operation (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+        message: 'Consider using \'order\' with \'sort\' in this operation.; Consider changing the "sort" param to an "order" param.',
         path: [
           'paths',
           '/test',

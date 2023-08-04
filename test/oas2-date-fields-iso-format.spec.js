@@ -38,7 +38,7 @@ describe(ruleName, () => {
     expect(res).toEqual([
       {
         code: ruleName,
-        message: 'Representation fields use strings in \'iso-date-time\' format (RFC-3339) for date/time (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+        message: 'Representation fields use strings in \'iso-date-time\' format (RFC-3339) for date/time.; Field timestamp should be type "string" with a format of "date-time".',
         path: [
           'paths',
           '/test',
@@ -66,7 +66,7 @@ describe(ruleName, () => {
       },
       {
         code: ruleName,
-        message: 'Representation fields use strings in \'iso-date-time\' format (RFC-3339) for date/time (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+        message: 'Representation fields use strings in \'iso-date-time\' format (RFC-3339) for date/time.; Field requestDate should be type "string" with a format of "date-time".',
         path: [
           'paths',
           '/test',
@@ -91,7 +91,7 @@ describe(ruleName, () => {
       },
       {
         code: ruleName,
-        message: 'Representation fields use strings in \'iso-date-time\' format (RFC-3339) for date/time (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+        message: 'Representation fields use strings in \'iso-date-time\' format (RFC-3339) for date/time.; Field date should be type "string" with a format of "date-time".',
         path: [
           'paths',
           '/test',
@@ -116,7 +116,7 @@ describe(ruleName, () => {
       },
       {
         code: ruleName,
-        message: 'Representation fields use strings in \'iso-date-time\' format (RFC-3339) for date/time (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+        message: 'Representation fields use strings in \'iso-date-time\' format (RFC-3339) for date/time.; Field dates\'s items should be type "string" with a format of "date-time".',
         path: [
           'paths',
           '/test',

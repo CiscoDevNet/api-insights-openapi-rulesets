@@ -36,7 +36,7 @@ describe(ruleName, () => {
     expect(res).toEqual([
       {
         code: ruleName,
-        message: 'snake_case must be PasCamelCase: (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+        message: 'Resource names use PasCamelCase.; snake_case must be PasCamelCase',
         path: [
           'paths',
           '/snake_case/snake_case',
@@ -55,7 +55,7 @@ describe(ruleName, () => {
       },
       {
         code: ruleName,
-        message: 'ALLCAPS must be PasCamelCase: (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+        message: 'Resource names use PasCamelCase.; ALLCAPS must be PasCamelCase',
         path: [
           'paths',
           '/ALLCAPS/ALLCAPS',

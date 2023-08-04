@@ -38,7 +38,7 @@ describe(ruleName, () => {
     expect(res).toEqual([
       {
         code: ruleName,
-        message: 'Accept-Charset must allow UTF-8 and ISO-8859-1. (The following values are missing from the enum: ISO-8859-1.) (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+        message: 'HTTP headers follow the syntax specified in the corresponding RFCs.; The following values are missing from the enum: ISO-8859-1.',
         path: [
           'paths',
           '/test',

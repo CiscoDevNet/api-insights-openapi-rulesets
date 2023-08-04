@@ -36,7 +36,7 @@ describe(ruleName, () => {
     expect(res).toEqual([
       {
         code: ruleName,
-        message: 'POST operations that create resources should include a Location header (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+        message: 'POST operations that create resources should include a Location header.; "headers.Location" property must be truthy',
         path: [
           'paths',
           '/test',
@@ -59,7 +59,7 @@ describe(ruleName, () => {
       },
       {
         code: ruleName,
-        message: 'POST operations that create resources should include a Location header (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+        message: 'POST operations that create resources should include a Location header.; "headers.Location" property must be truthy',
         path: [
           'paths',
           '/anotherTest',
@@ -95,7 +95,7 @@ describe(ruleName, () => {
     expect(res).toEqual([
       {
         code: ruleName,
-        message: 'POST operations that create resources should include a Location header (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+        message: 'POST operations that create resources should include a Location header.; "headers.Location" property must be truthy',
         path: [
           'paths',
           '/test',
@@ -118,7 +118,7 @@ describe(ruleName, () => {
       },
       {
         code: ruleName,
-        message: 'POST operations that create resources should include a Location header (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+        message: 'POST operations that create resources should include a Location header.; "headers.Location" property must be truthy',
         path: [
           'paths',
           '/anotherTest',

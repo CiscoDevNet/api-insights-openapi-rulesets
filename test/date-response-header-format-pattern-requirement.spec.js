@@ -36,7 +36,7 @@ describe(ruleName, () => {
     expect(res).toEqual([
       {
         code: ruleName,
-        message: 'All \'Date\' response headers should use a custom pattern match for RFC 5322. date-time or other given formats should not be used (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+        message: 'All responses include a \'Date\' header in the GMT timezone and RFC 5322 format.; "schema.pattern" property must be truthy',
         path: [
           'paths',
           '/test',
@@ -61,7 +61,7 @@ describe(ruleName, () => {
       },
       {
         code: ruleName,
-        message: 'All \'Date\' response headers should use a custom pattern match for RFC 5322. date-time or other given formats should not be used (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+        message: 'All responses include a \'Date\' header in the GMT timezone and RFC 5322 format.; "format" property must be falsy',
         path: [
           'paths',
           '/test',
@@ -87,7 +87,7 @@ describe(ruleName, () => {
       },
       {
         code: ruleName,
-        message: 'All \'Date\' response headers should use a custom pattern match for RFC 5322. date-time or other given formats should not be used (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+        message: 'All responses include a \'Date\' header in the GMT timezone and RFC 5322 format.; "schema.pattern" property must be truthy',
         path: [
           'paths',
           '/anotherTest',

@@ -36,7 +36,7 @@ describe(ruleName, () => {
     expect(res).toEqual([
       {
         code: ruleName,
-        message: 'Standard CRUD lifecycle operations map to HTTP verbs; Functional resources are used when non-standard CRUD are needed (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+        message: 'Standard CRUD lifecycle operations map to HTTP verbs; Functional resources are used when non-standard CRUD are needed.; Standard CRUD lifecycle operations map to HTTP verbs; Functional resources are used when non-standard CRUD are needed',
         path: [
           'paths',
           '/test/get',
