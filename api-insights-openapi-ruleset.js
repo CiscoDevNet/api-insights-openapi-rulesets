@@ -52,7 +52,7 @@ export default {
   rules: {
     'oas3-jwt-format': {
       'description': "My API access tokens are passed via the HTTP 'Authorization' header, with a 'Bearer' prefix.",
-      'message': "My API access tokens are passed via the HTTP 'Authorization' header, with a 'Bearer' prefix. Need to add \"bearerFormat: jwt\". (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)",
+      'message': '{{description}}; {{error}}',
       'severity': 'error',
       'formats': [oas3],
       'given': "$.components.securitySchemes.[?(@.type === 'http' && @.scheme === 'bearer')]",
@@ -72,7 +72,7 @@ export default {
     },
     'delete-204-success': {
       'description': "DELETE operations return '204 No Content' on success.",
-      'message': "DELETE operation must return '204 No Content' on success (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)",
+      'message': '{{description}}; {{error}}',
       'severity': 'error',
       'given': "$.paths.*[?( @property === 'delete' )].responses",
       'then': {
@@ -82,7 +82,7 @@ export default {
     },
     'patch-200-204-success': {
       'description': "PATCH operations return either '200 OK' with full representation or '204 No Content'.",
-      'message': "PATCH operations return either '200 OK' with full representation or '204 No Content' (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)",
+      'message': '{{description}}; {{error}}',
       'severity': 'error',
       'given': "$.paths.*[?( @property === 'patch' )]",
       'then': {
@@ -91,7 +91,7 @@ export default {
     },
     'put-200-204-success': {
       'description': "PUT operations return either '200 OK' with full representation or '204 No Content'.",
-      'message': "PUT operations return either '200 OK' with full representation or '204 No Content' (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)",
+      'message': '{{description}}; {{error}}',
       'severity': 'error',
       'given': '$.paths.*[?( @property === \'put\' )]',
       'then': {
@@ -100,7 +100,7 @@ export default {
     },
     'resource-pas-camel-case-info': {
       'description': 'Resource names use PasCamelCase.',
-      'message': '{{error}}',
+      'message': '{{description}}; {{error}}',
       'severity': 'warn',
       'given': '$.paths[*]~',
       'then': {
@@ -112,7 +112,7 @@ export default {
     },
     'resource-pas-camel-case-error': {
       'description': 'Resource names use PasCamelCase.',
-      'message': '{{error}}',
+      'message': '{{description}}; {{error}}',
       'severity': 'error',
       'given': '$.paths[*]~',
       'then': {
@@ -124,7 +124,7 @@ export default {
     },
     'status-codes-in-2xx-3xx-4xx-5xx': {
       'description': 'API responds with recommended HTTP status codes in the 2xx/3xx/4xx/5xx ranges.',
-      'message': '{{error}}',
+      'message': '{{description}}; {{error}}',
       'severity': 'error',
       'given': "$.paths.*[?( @property === 'get' || @property === 'put' || @property === 'post' || @property === 'delete' || @property === 'options' || @property === 'head' || @property === 'patch' || @property === 'trace' )]",
       'then': {
@@ -155,7 +155,7 @@ export default {
     },
     'status-codes-in-2xx-4xx-5xx': {
       'description': 'API responds with recommended HTTP status codes in the 2xx/3xx/4xx/5xx ranges.',
-      'message': '{{error}}',
+      'message': '{{description}}; {{error}}',
       'severity': 'error',
       'given': "$.paths.*[?( @property === 'get' || @property === 'put' || @property === 'post' || @property === 'delete' || @property === 'options' || @property === 'head' || @property === 'patch' || @property === 'trace' )]",
       'then': {
@@ -182,7 +182,7 @@ export default {
     },
     'post-header': {
       'description': 'POST operations that create resources should include a Location header.',
-      'message': 'POST operations that create resources should include a Location header (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+      'message': '{{description}}; {{error}}',
       'severity': 'error',
       'given': '$.paths.*.post.responses[?( /^201$/i.test(@property) )]',
       'then': {
@@ -192,7 +192,7 @@ export default {
     },
     'post-header-location': {
       'description': 'POST operations that create resources should include a Location header.',
-      'message': 'POST operations that create resources should include a Location header (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+      'message': '{{description}}; {{error}}',
       'severity': 'error',
       'given': '$.paths.*.post.responses[?( /^201$/i.test(@property) )].headers',
       'then': {
@@ -202,7 +202,7 @@ export default {
     },
     'oas2-post-201-created': {
       'description': 'POST operations which create objects return 201 Created, with a full or reference-only representation.',
-      'message': 'POST operations which create objects return 201 Created, with a full or reference-only representation. (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+      'message': '{{description}}; {{error}}',
       'formats': [oas2],
       'severity': 'error',
       'given': '$.paths.*.post.responses.201',
@@ -215,7 +215,7 @@ export default {
     },
     'oas3-post-201-created': {
       'description': 'POST operations which create objects return 201 Created, with a full or reference-only representation.',
-      'message': 'POST operations which create objects return 201 Created, with a full or reference-only representation. (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+      'message': '{{description}}; {{error}}',
       'formats': [oas3],
       'severity': 'error',
       'given': '$.paths.*.post.responses.201',
@@ -228,7 +228,7 @@ export default {
     },
     'oas2-application-json-charset-utf8-required': {
       'description': "JSON representations should be declared using 'application/json' or 'application/json; charset=UTF-8' media types.",
-      'message': "JSON representations should be declared using 'application/json' or 'application/json; charset=UTF-8' media types (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)",
+      'message': '{{description}}; {{error}}',
       'severity': 'error',
       'formats': [oas2],
       'given': '$.paths.*.*[produces,consumes].*',
@@ -241,7 +241,7 @@ export default {
     },
     'oas3-application-json-charset-utf8-required': {
       'description': "JSON representations should be declared using 'application/json' or 'application/json; charset=UTF-8' media types.",
-      'message': "JSON representations should be declared using 'application/json' or 'application/json; charset=UTF-8' media types (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)",
+      'message': '{{description}}; {{error}}',
       'severity': 'error',
       'formats': [oas3],
       'given': '$.paths.*.*.responses[*].content[*]~',
@@ -254,7 +254,7 @@ export default {
     },
     'date-response-header-requirement': {
       'description': "All responses include a 'Date' header in the GMT timezone and RFC 5322 format.",
-      'message': "All responses must include a 'Date' header (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)",
+      'message': '{{description}}; {{error}}',
       'severity': 'error',
       'given': '$.paths.*.*.responses[*]',
       'then': {
@@ -267,7 +267,7 @@ export default {
     },
     'date-response-header-format-pattern-requirement': {
       'description': "All responses include a 'Date' header in the GMT timezone and RFC 5322 format.",
-      'message': "All 'Date' response headers should use a custom pattern match for RFC 5322. date-time or other given formats should not be used (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)",
+      'message': '{{description}}; {{error}}',
       'severity': 'warn',
       'given': '$.paths.*.*.responses[*].headers.Date.schema',
       'then': [
@@ -283,7 +283,7 @@ export default {
     },
     'date-response-header-regex-check': {
       'description': "All responses include a 'Date' header in the GMT timezone and RFC 5322 format.",
-      'message': '{{error}}',
+      'message': '{{description}}; {{error}}',
       'severity': 'warn',
       'given': '$.paths.*.*.responses[*].headers.Date.schema',
       'then': {
@@ -293,7 +293,7 @@ export default {
     },
     'head-operations-match-headers-with-get': {
       'description': 'HEAD operations must return response headers identical to the corresponding GET.',
-      'message': '{{error}} (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+      'message': '{{description}}; {{error}}',
       'severity': 'error',
       'given': '$.paths[?( @.get && @.head )]',
       'then': {
@@ -302,7 +302,7 @@ export default {
     },
     'oas2-head-operations-no-body': {
       'description': 'HEAD operations with a corresponding GET operation must return no body content.',
-      'message': 'HEAD operations with a corresponding GET operation must return no body content (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+      'message': '{{description}}; {{error}}',
       'formats': [oas2],
       'severity': 'error',
       'given': '$.paths[?( @.get && @.head )].head.responses.*',
@@ -313,7 +313,7 @@ export default {
     },
     'oas3-head-operations-no-body': {
       'description': 'HEAD operations with a corresponding GET operation must return no body content.',
-      'message': 'HEAD operations with a corresponding GET operation must return no body content (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+      'message': '{{description}}; {{error}}',
       'formats': [oas3],
       'severity': 'error',
       'given': '$.paths[?( @.get && @.head )].head.responses.*',
@@ -324,7 +324,7 @@ export default {
     },
     'oas2-field-names-pas-camel-case': {
       'description': 'Representation field names use PasCamelCase.',
-      'message': '{{error}} field is not PasCamelCase (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+      'message': '{{description}}; {{error}}',
       'formats': [oas2],
       'severity': 'error',
       'given': [
@@ -338,7 +338,7 @@ export default {
     },
     'oas3-field-names-pas-camel-case': {
       'description': 'Representation field names use PasCamelCase.',
-      'message': '{{error}} field is not PasCamelCase (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+      'message': '{{description}}; {{error}}',
       'formats': [oas3],
       'severity': 'error',
       'given': [
@@ -352,7 +352,7 @@ export default {
     },
     'tracking-id-header-requirement': {
       'description': "All responses must include a 'TrackingID' header.",
-      'message': "All responses must include a 'TrackingID' header (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)",
+      'message': '{{description}}; {{error}}',
       'severity': 'warn',
       'given': '$.paths.*.*.responses[*]',
       'then': {
@@ -365,7 +365,7 @@ export default {
     },
     'oas2-tracking-id-header-string-requirement': {
       'description': "'TrackingID' header should be a string in order to accommodate a UUID.",
-      'message': "'TrackingID' header should be a string in order to accommodate a UUID (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)",
+      'message': '{{description}}; {{error}}',
       'severity': 'warn',
       'given': '$.paths.*.*.responses[*].headers[?( /^trackingid$/i.test(@property) )]',
       'then': {
@@ -378,7 +378,7 @@ export default {
     },
     'oas3-tracking-id-header-string-requirement': {
       'description': "'TrackingID' header should be a string in order to accommodate a UUID.",
-      'message': "'TrackingID' header should be a string in order to accommodate a UUID (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)",
+      'message': '{{description}}; {{error}}',
       'severity': 'warn',
       'given': '$.paths.*.*.responses[*].headers[?( /^trackingid$/i.test(@property) )].schema',
       'then': {
@@ -391,7 +391,7 @@ export default {
     },
     'oas2-collections-returned-as-arrays': {
       'description': "Collections are returned as arrays encapsulated with a named field such as 'items'.",
-      'message': 'Collections should be encapsulated within an object. Do not return un-encapsulated arrays (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+      'message': '{{description}}; {{error}}',
       'severity': 'error',
       'given': '$.paths.*.*.responses.*.schema',
       'formats': [oas2],
@@ -405,7 +405,7 @@ export default {
     },
     'oas3-collections-returned-as-arrays': {
       'description': "Collections are returned as arrays encapsulated with a named field such as 'items'.",
-      'message': 'Collections should be encapsulated within an object. Do not return un-encapsulated arrays (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+      'message': '{{description}}; {{error}}',
       'severity': 'error',
       'given': '$.paths.*.*.responses.*.content[*].schema',
       'formats': [oas3],
@@ -419,7 +419,7 @@ export default {
     },
     'oas2-no-boolean-string-enums': {
       'description': 'Representation fields use format-native true/false values for booleans.',
-      'message': 'Representation fields use format-native true/false values for booleans (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+      'message': '{{description}}; {{error}}',
       'severity': 'warn',
       'given': "$.paths.*.*.responses.*.schema..[?(@ && @.type === 'string' && @.enum )]",
       'formats': [oas2],
@@ -448,7 +448,7 @@ export default {
     },
     'oas3-no-boolean-string-enums': {
       'description': 'Representation fields use format-native true/false values for booleans.',
-      'message': 'Representation fields use format-native true/false values for booleans (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+      'message': '{{description}}; {{error}}',
       'severity': 'warn',
       'given': "$.paths.*.*.responses.*.content.*.schema..[?(@ && @.type === 'string' && @.enum )]",
       'formats': [oas3],
@@ -477,7 +477,7 @@ export default {
     },
     'etag-header-match-required': {
       'description': 'In cases where ETag is supported, such resources should also support If-Match and If-None-Match request headers.',
-      'message': 'In cases where ETag is supported, such resources should also support If-Match and If-None-Match request headers (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+      'message': '{{description}}; {{error}}',
       'severity': 'error',
       'given': '$.paths.*.*.responses[?(@.headers && @.headers.ETag)].headers',
       'then': [
@@ -493,7 +493,7 @@ export default {
     },
     'no-etag-cache-control-header-required': {
       'description': 'Where caching is not appropriate, operations must include a Cache-Control header (e.g. max-age=0, no-cache, no-store, must-revalidate) and must not include an ETag header.',
-      'message': 'Where caching is not appropriate, operations must include a Cache-Control header (e.g. max-age=0, no-cache, no-store, must-revalidate) and must not include an ETag header (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+      'message': '{{description}}; {{error}}',
       'severity': 'hint',
       'given': '$.paths.*.*.responses[?( !(@.headers && @.headers.ETag) )].headers',
       'then': {
@@ -503,7 +503,7 @@ export default {
     },
     'oas2-order-parameter-asc-desc': {
       'description': "Ordering collections is designed with an 'order' query parameter specifying 'asc' or 'desc'.",
-      'message': "Ordering collections is designed with an 'order' query parameter specifying 'asc' or 'desc' (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)",
+      'message': '{{description}}; {{error}}',
       'severity': 'warn',
       'formats': [oas2],
       'given': "$.paths.*.get.parameters[?( @.in === 'query' && @.name === 'order' )]",
@@ -532,7 +532,7 @@ export default {
     },
     'oas3-order-parameter-asc-desc': {
       'description': "Ordering collections is designed with an 'order' query parameter specifying 'asc' or 'desc'.",
-      'message': "Ordering collections is designed with an 'order' query parameter specifying 'asc' or 'desc' (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)",
+      'message': '{{description}}; {{error}}',
       'severity': 'warn',
       'formats': [oas3],
       'given': "$.paths.*.get.parameters[?( @.in === 'query' && @.name === 'order' )].schema",
@@ -561,7 +561,7 @@ export default {
     },
     'no-crud-verbs': {
       'description': 'Standard CRUD lifecycle operations map to HTTP verbs; Functional resources are used when non-standard CRUD are needed.',
-      'message': 'Standard CRUD lifecycle operations map to HTTP verbs; Functional resources are used when non-standard CRUD are needed (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+      'message': '{{description}}; {{error}}',
       'severity': 'error',
       'given': '$.paths[*~]',
       'then': {
@@ -570,7 +570,7 @@ export default {
     },
     'respond-with-recommended-get-codes': {
       'description': 'My API responds with recommended HTTP status codes in the 2xx/3xx/4xx/5xx ranges',
-      'message': '{{error}}',
+      'message': '{{description}}; {{error}}',
       'severity': 'error',
       'given': "$.paths.*.[?(@property === 'get')].responses.*~",
       'then': [
@@ -584,7 +584,7 @@ export default {
     },
     'respond-with-recommended-post-codes': {
       'description': 'My API responds with recommended HTTP status codes in the 2xx/3xx/4xx/5xx ranges',
-      'message': '{{error}}',
+      'message': '{{description}}; {{error}}',
       'severity': 'error',
       'given': "$.paths.*.[?(@property === 'post')].responses.*~",
       'then': [
@@ -598,7 +598,7 @@ export default {
     },
     'respond-with-recommended-patch-codes': {
       'description': 'My API responds with recommended HTTP status codes in the 2xx/3xx/4xx/5xx ranges',
-      'message': '{{error}}',
+      'message': '{{description}}; {{error}}',
       'severity': 'error',
       'given': "$.paths.*.[?(@property === 'patch')].responses.*~",
       'then': [
@@ -612,7 +612,7 @@ export default {
     },
     'respond-with-recommended-put-codes': {
       'description': 'My API responds with recommended HTTP status codes in the 2xx/3xx/4xx/5xx ranges',
-      'message': '{{error}}',
+      'message': '{{description}}; {{error}}',
       'severity': 'error',
       'given': "$.paths.*.[?(@property === 'put')].responses.*~",
       'then': [
@@ -626,7 +626,7 @@ export default {
     },
     'respond-with-recommended-delete-codes': {
       'description': 'My API responds with recommended HTTP status codes in the 2xx/3xx/4xx/5xx ranges',
-      'message': '{{error}}',
+      'message': '{{description}}; {{error}}',
       'severity': 'error',
       'given': "$.paths.*.[?(@property === 'delete')].responses.*~",
       'then': [
@@ -640,7 +640,7 @@ export default {
     },
     'sort-recommend-order': {
       'description': "Consider using 'order' with 'sort' in this operation.",
-      'message': "Consider using 'order' with 'sort' in this operation (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)",
+      'message': '{{description}}; {{error}}',
       'severity': 'hint',
       'given': '$.paths.*.get.parameters',
       'then': {
@@ -649,7 +649,7 @@ export default {
     },
     'oas2-error-message': {
       'description': 'Error representations include a useful human-readable message.',
-      'message': 'Error representations include a useful human-readable message. (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+      'message': '{{description}}; {{error}}',
       'severity': 'error',
       'formats': [oas2],
       'given': "$.paths.*[?(@property != 'head')].responses[?(/^4\\d\\d.*$/i.test(@property) || /^5\\d\\d.*$/i.test(@property))]",
@@ -661,7 +661,7 @@ export default {
     },
     'oas3-error-message': {
       'description': 'Error representations include a useful human-readable message.',
-      'message': 'Error representations include a useful human-readable message. (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+      'message': '{{description}}; {{error}}',
       'severity': 'error',
       'formats': [oas3],
       'given': "$.paths.*[?(@property != 'head')].responses[?(/^4\\d\\d.*$/i.test(@property) || /^5\\d\\d.*$/i.test(@property))]",
@@ -673,7 +673,7 @@ export default {
     },
     'oas2-error-response-identifier': {
       'description': 'Error representations include an identifier to help with troubleshooting.',
-      'message': 'Error representations include an identifier to help with troubleshooting (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+      'message': '{{description}}; {{error}}',
       'severity': 'warn',
       'given': "$.paths.*[?(@property !== 'head')].responses[?(/^4\\d\\d.*$/i.test(@property) || /^5\\d\\d.*$/i.test(@property))]",
       'formats': [oas2],
@@ -685,7 +685,7 @@ export default {
     },
     'oas3-error-response-identifier': {
       'description': 'Error representations include an identifier to help with troubleshooting.',
-      'message': 'Error representations include an identifier to help with troubleshooting (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+      'message': '{{description}}; {{error}}',
       'severity': 'warn',
       'given': "$.paths.*[?(@property !== 'head')].responses[?(/^4\\d\\d.*$/i.test(@property) || /^5\\d\\d.*$/i.test(@property))]",
       'formats': [oas3],
@@ -697,7 +697,7 @@ export default {
     },
     'oas2-request-header-date-correct-type': {
       'description': 'HTTP headers follow the syntax specified in the corresponding RFCs.',
-      'message': "Date header should be type 'string' and should not use the built-in OpenAPI format. Instead, 'pattern' should be used to specify a custom format (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)",
+      'message': '{{description}}; {{error}}',
       'severity': 'error',
       'formats': [oas2],
       'given': "$.paths.*.*.parameters[?( /^Date$/i.test(@.name) && @.in === 'header' )]",
@@ -721,7 +721,7 @@ export default {
     },
     'oas2-request-header-date-correct-regex': {
       'description': 'HTTP headers follow the syntax specified in the corresponding RFCs.',
-      'message': "Date header should not use the built-in OpenAPI format. Instead, 'pattern' should be used to specify a custom format (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)",
+      'message': '{{description}}; {{error}}',
       'severity': 'error',
       'formats': [oas2],
       'given': "$.paths.*.*.parameters[?( /^Date$/i.test(@.name) && @.in === 'header' )]",
@@ -732,7 +732,7 @@ export default {
     },
     'oas2-request-header-accept-language-enum': {
       'description': 'HTTP headers follow the syntax specified in the corresponding RFCs.',
-      'message': 'Accept-Language should have a list of accepted values (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+      'message': '{{description}}; {{error}}',
       'severity': 'error',
       'formats': [oas2],
       'given': "$.paths.*.*.parameters[?( /^Accept-Language$/i.test(@.name) && @.in === 'header' )]",
@@ -743,7 +743,7 @@ export default {
     },
     'oas2-request-header-accept-encoding-enum': {
       'description': 'HTTP headers follow the syntax specified in the corresponding RFCs.',
-      'message': 'Accept-Encoding should have a list of accepted values (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+      'message': '{{description}}; {{error}}',
       'severity': 'error',
       'formats': [oas2],
       'given': "$.paths.*.*.parameters[?( /^Accept-Encoding$/i.test(@.name) && @.in === 'header' )]",
@@ -754,7 +754,7 @@ export default {
     },
     'oas2-request-header-accept-encoding-valid-enum': {
       'description': 'HTTP headers follow the syntax specified in the corresponding RFCs.',
-      'message': 'Accept-Encoding accepts a value that is not valid per RFC 7231. ({{error}}) (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer) Please see https://www.iana.org/assignments/http-parameters/http-parameters.xhtml',
+      'message': '{{description}}; {{error}}',
       'severity': 'error',
       'formats': [oas2],
       'given': "$.paths.*.*.parameters[?( /^Accept-Encoding$/i.test(@.name) && @.in === 'header' )]",
@@ -778,7 +778,7 @@ export default {
     },
     'oas2-request-header-accept-charset-default-required': {
       'description': 'HTTP headers follow the syntax specified in the corresponding RFCs.',
-      'message': 'Accept-Charset must have a default defined (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+      'message': '{{description}}; {{error}}',
       'severity': 'error',
       'formats': [oas2],
       'given': "$.paths.*.*.parameters[?( /^Accept-Charset$/i.test(@.name) && @.in === 'header' )]",
@@ -789,7 +789,7 @@ export default {
     },
     'oas2-request-header-accept-charset-valid-default': {
       'description': 'HTTP headers follow the syntax specified in the corresponding RFCs.',
-      'message': 'Default for Accept-Charset must be UTF-8 (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+      'message': '{{description}}; {{error}}',
       'severity': 'error',
       'formats': [oas2],
       'given': "$.paths.*.*.parameters[?( /^Accept-Charset$/i.test(@.name) && @.in === 'header' )]",
@@ -803,7 +803,7 @@ export default {
     },
     'oas2-request-header-accept-charset-enum-required': {
       'description': 'HTTP headers follow the syntax specified in the corresponding RFCs.',
-      'message': 'Accept-Charset must have a default defined (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+      'message': '{{description}}; {{error}}',
       'severity': 'error',
       'formats': [oas2],
       'given': "$.paths.*.*.parameters[?( /^Accept-Charset$/i.test(@.name) && @.in === 'header' )]",
@@ -814,7 +814,7 @@ export default {
     },
     'oas2-request-header-accept-charset-valid-enum': {
       'description': 'HTTP headers follow the syntax specified in the corresponding RFCs.',
-      'message': 'Accept-Charset must allow UTF-8 and ISO-8859-1. ({{error}}) (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+      'message': '{{description}}; {{error}}',
       'severity': 'error',
       'formats': [oas2],
       'given': "$.paths.*.*.parameters[?( /^Accept-Charset$/i.test(@.name) && @.in === 'header' )]",
@@ -831,7 +831,7 @@ export default {
     },
     'oas2-request-header-if-match-is-string': {
       'description': 'HTTP headers follow the syntax specified in the corresponding RFCs.',
-      'message': 'If-Match must be a string (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+      'message': '{{description}}; {{error}}',
       'severity': 'error',
       'formats': [oas2],
       'given': "$.paths.*.*.parameters[?( /^If-Match$/i.test(@.name) && @.in === 'header' )]",
@@ -845,7 +845,7 @@ export default {
     },
     'oas2-request-header-if-none-match-is-string': {
       'description': 'HTTP headers follow the syntax specified in the corresponding RFCs.',
-      'message': 'If-None-Match must be a string (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+      'message': '{{description}}; {{error}}',
       'severity': 'error',
       'formats': [oas2],
       'given': "$.paths.*.*.parameters[?( /^If-None-Match$/i.test(@.name) && @.in === 'header' )]",
@@ -859,7 +859,7 @@ export default {
     },
     'oas2-request-header-if-range-is-string': {
       'description': 'HTTP headers follow the syntax specified in the corresponding RFCs.',
-      'message': 'If-Range must be a string (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+      'message': '{{description}}; {{error}}',
       'severity': 'error',
       'formats': [oas2],
       'given': "$.paths.*.*.parameters[?( /^If-Range$/i.test(@.name) && @.in === 'header' )]",
@@ -873,7 +873,7 @@ export default {
     },
     'oas3-request-header-date-correct-type': {
       'description': 'HTTP headers follow the syntax specified in the corresponding RFCs.',
-      'message': "Date header should be type 'string' and should not use the built-in OpenAPI format. Instead, 'pattern' should be used to specify a custom format (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)",
+      'message': '{{description}}; {{error}}',
       'severity': 'error',
       'formats': [oas3],
       'given': "$.paths.*.*.parameters[?( /^Date$/i.test(@.name) && @.in === 'header' )].schema",
@@ -897,7 +897,7 @@ export default {
     },
     'oas3-request-header-date-correct-regex': {
       'description': 'HTTP headers follow the syntax specified in the corresponding RFCs.',
-      'message': "Date header should not use the built-in OpenAPI format. Instead, 'pattern' should be used to specify a custom format (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)",
+      'message': '{{description}}; {{error}}',
       'severity': 'error',
       'formats': [oas3],
       'given': "$.paths.*.*.parameters[?( /^date$/i.test(@.name) && @.in === 'header' )].schema",
@@ -908,7 +908,7 @@ export default {
     },
     'oas3-request-header-accept-language-enum': {
       'description': 'HTTP headers follow the syntax specified in the corresponding RFCs.',
-      'message': 'Accept-Language should have a list of accepted values (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+      'message': '{{description}}; {{error}}',
       'severity': 'error',
       'formats': [oas3],
       'given': "$.paths.*.*.parameters[?( /^Accept-Language$/i.test(@.name) && @.in === 'header' )].schema",
@@ -919,7 +919,7 @@ export default {
     },
     'oas3-request-header-accept-encoding-enum': {
       'description': 'HTTP headers follow the syntax specified in the corresponding RFCs.',
-      'message': 'Accept-Encoding should have a list of accepted values (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+      'message': '{{description}}; {{error}}',
       'severity': 'error',
       'formats': [oas3],
       'given': "$.paths.*.*.parameters[?( /^Accept-Encoding$/i.test(@.name) && @.in === 'header' )].schema",
@@ -930,7 +930,7 @@ export default {
     },
     'oas3-request-header-accept-encoding-valid-enum': {
       'description': 'HTTP headers follow the syntax specified in the corresponding RFCs.',
-      'message': 'Accept-Encoding accepts a value that is not valid per RFC 7231. ({{error}}) (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer) Please see https://www.iana.org/assignments/http-parameters/http-parameters.xhtml',
+      'message': '{{description}}; {{error}}',
       'severity': 'error',
       'formats': [oas3],
       'given': "$.paths.*.*.parameters[?( /^Accept-Encoding$/i.test(@.name) && @.in === 'header' )].schema",
@@ -954,7 +954,7 @@ export default {
     },
     'oas3-request-header-accept-charset-default-required': {
       'description': 'HTTP headers follow the syntax specified in the corresponding RFCs.',
-      'message': 'Accept-Charset must have a default defined (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+      'message': '{{description}}; {{error}}',
       'severity': 'error',
       'formats': [oas3],
       'given': "$.paths.*.*.parameters[?( /^Accept-Charset$/i.test(@.name) && @.in === 'header' )].schema",
@@ -965,7 +965,7 @@ export default {
     },
     'oas3-request-header-accept-charset-valid-default': {
       'description': 'HTTP headers follow the syntax specified in the corresponding RFCs.',
-      'message': 'Default for Accept-Charset must be UTF-8 (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+      'message': '{{description}}; {{error}}',
       'severity': 'error',
       'formats': [oas3],
       'given': "$.paths.*.*.parameters[?( /^Accept-Charset$/i.test(@.name) && @.in === 'header' )].schema",
@@ -979,7 +979,7 @@ export default {
     },
     'oas3-request-header-accept-charset-enum-required': {
       'description': 'HTTP headers follow the syntax specified in the corresponding RFCs.',
-      'message': 'Accept-Charset must have a default defined (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+      'message': '{{description}}; {{error}}',
       'severity': 'error',
       'formats': [oas3],
       'given': "$.paths.*.*.parameters[?( /^Accept-Charset$/i.test(@.name) && @.in === 'header' )].schema",
@@ -990,7 +990,7 @@ export default {
     },
     'oas3-request-header-accept-charset-valid-enum': {
       'description': 'HTTP headers follow the syntax specified in the corresponding RFCs.',
-      'message': 'Accept-Charset must allow UTF-8 and ISO-8859-1. ({{error}}) (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+      'message': '{{description}}; {{error}}',
       'severity': 'error',
       'formats': [oas3],
       'given': "$.paths.*.*.parameters[?( /^Accept-Charset$/i.test(@.name) && @.in === 'header' )].schema",
@@ -1007,7 +1007,7 @@ export default {
     },
     'oas3-request-header-if-match-is-string': {
       'description': 'HTTP headers follow the syntax specified in the corresponding RFCs.',
-      'message': 'If-Match must be a string (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+      'message': '{{description}}; {{error}}',
       'severity': 'error',
       'formats': [oas3],
       'given': "$.paths.*.*.parameters[?( /^If-Match$/i.test(@.name) && @.in === 'header' )].schema",
@@ -1021,7 +1021,7 @@ export default {
     },
     'oas3-request-header-if-none-match-is-string': {
       'description': 'HTTP headers follow the syntax specified in the corresponding RFCs.',
-      'message': 'If-None-Match must be a string (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+      'message': '{{description}}; {{error}}',
       'severity': 'error',
       'formats': [oas3],
       'given': "$.paths.*.*.parameters[?( /^If-None-Match$/i.test(@.name) && @.in === 'header' )].schema",
@@ -1035,7 +1035,7 @@ export default {
     },
     'oas3-request-header-if-range-is-string': {
       'description': 'HTTP headers follow the syntax specified in the corresponding RFCs.',
-      'message': 'If-Range must be a string (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+      'message': '{{description}}; {{error}}',
       'severity': 'error',
       'formats': [oas3],
       'given': "$.paths.*.*.parameters[?( /^If-Range$/i.test(@.name) && @.in === 'header' )].schema",
@@ -1049,7 +1049,7 @@ export default {
     },
     'oas2-path-based-versioning-error': {
       'description': 'API uses path-based versioning.',
-      'message': 'API uses path-based versioning. (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+      'message': '{{description}}; {{error}}',
       'severity': 'error',
       'formats': [oas2],
       'given': '$',
@@ -1063,7 +1063,7 @@ export default {
     },
     'oas3-path-based-versioning-error': {
       'description': 'API uses path-based versioning.',
-      'message': 'API uses path-based versioning. (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+      'message': '{{description}}; {{error}}',
       'severity': 'error',
       'formats': [oas3],
       'given': '$',
@@ -1077,7 +1077,7 @@ export default {
     },
     'path-based-versioning-warn': {
       'description': 'Versioning should not be done in endpoint path.',
-      'message': 'Versioning should not be done in endpoint path. (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+      'message': '{{description}}; {{error}}',
       'severity': 'warn',
       'given': '$.paths.*~',
       'then': {
@@ -1089,7 +1089,7 @@ export default {
     },
     'oas2-path-based-versioning-major-only': {
       'description': 'API shows only major version numbers on the path; not the revision numbers.',
-      'message': 'API shows only major version numbers on the path; not the revision numbers. (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+      'message': '{{description}}; {{error}}',
       'severity': 'error',
       'formats': [oas2],
       'given': '$',
@@ -1103,7 +1103,7 @@ export default {
     },
     'oas3-path-based-versioning-major-only': {
       'description': 'API shows only major version numbers on the path; not the revision numbers.',
-      'message': 'API shows only major version numbers on the path; not the revision numbers. (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+      'message': '{{description}}; {{error}}',
       'severity': 'error',
       'formats': [oas3],
       'given': '$',
@@ -1118,7 +1118,7 @@ export default {
     'oas2-get-collection-max-parameter-link-header-required-possible': {
       'description': "Pagination is designed using a 'max' query parameter and 'Link' headers per RFC 5988.",
       'formats': [oas2],
-      'message': '{{error}}',
+      'message': '{{description}}; {{error}}',
       'severity': 'warn',
       'given': '$.paths[?( !(/\\/{.*}$/.test(@property)) )].get',
       'then': {
@@ -1128,7 +1128,7 @@ export default {
     'oas3-get-collection-max-parameter-link-header-required-possible': {
       'description': "Pagination is designed using a 'max' query parameter and 'Link' headers per RFC 5988.",
       'formats': [oas3],
-      'message': '{{error}}',
+      'message': '{{description}}; {{error}}',
       'severity': 'warn',
       'given': '$.paths[?( !(/\\/{.*}$/.test(@property)) )].get',
       'then': {
@@ -1138,7 +1138,7 @@ export default {
     'oas2-get-collection-max-parameter-link-header-required-likely': {
       'description': "Pagination is designed using a 'max' query parameter and 'Link' headers per RFC 5988.",
       'formats': [oas2],
-      'message': '{{error}}',
+      'message': '{{description}}; {{error}}',
       'severity': 'error',
       'given': '$.paths[?( !(/\\/{.*}$/.test(@property)) )].get',
       'then': {
@@ -1148,7 +1148,7 @@ export default {
     'oas3-get-collection-max-parameter-link-header-required-likely': {
       'description': "Pagination is designed using a 'max' query parameter and 'Link' headers per RFC 5988.",
       'formats': [oas3],
-      'message': '{{error}}',
+      'message': '{{description}}; {{error}}',
       'severity': 'error',
       'given': '$.paths[?( !(/\\/{.*}$/.test(@property)) )].get',
       'then': {
@@ -1157,7 +1157,7 @@ export default {
     },
     'oas2-https-only': {
       'description': 'My API supports HTTPS only.',
-      'message': 'My API supports HTTPS only. (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+      'message': '{{description}}; {{error}}',
       'severity': 'error',
       'formats': [oas2],
       'given': '$.schemes.*',
@@ -1170,7 +1170,7 @@ export default {
     },
     'oas3-https-only': {
       'description': 'My API supports HTTPS only.',
-      'message': 'My API supports HTTPS only. (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+      'message': '{{description}}; {{error}}',
       'severity': 'error',
       'formats': [oas3],
       'given': '$.servers.*',
@@ -1184,7 +1184,7 @@ export default {
     },
     'oas2-acceptable-auth': {
       'description': 'My API authenticates requests using access tokens; NOT username/passwords.',
-      'message': 'My API authenticates requests using access tokens; NOT username/passwords. (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+      'message': '{{description}}; {{error}}',
       'severity': 'error',
       'formats': [oas2],
       'given': '$.securityDefinitions.*',
@@ -1194,7 +1194,7 @@ export default {
     },
     'oas3-acceptable-auth': {
       'description': 'My API authenticates requests using access tokens; NOT username/passwords.',
-      'message': 'My API authenticates requests using access tokens; NOT username/passwords. (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+      'message': '{{description}}; {{error}}',
       'severity': 'error',
       'formats': [oas3],
       'given': '$.components.securitySchemes.*',
@@ -1204,7 +1204,7 @@ export default {
     },
     'resource-name-too-long': {
       'description': 'Resource names are consistent and succinct; do not use abbreviations.',
-      'message': '{{error}} (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+      'message': '{{description}}; {{error}}',
       'severity': 'info',
       'given': '$.paths[*]~',
       'then': {
@@ -1217,7 +1217,7 @@ export default {
     'oas2-get-collection-sort-parameter': {
       'description': "Sorting collections is designed with a 'sort' query parameter.",
       'formats': [oas2],
-      'message': '{{error}} (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+      'message': '{{description}}; {{error}}',
       'severity': 'warn',
       'given': '$.paths[?( !(/\\/{.*}$/.test(@property)) )].get',
       'then': {
@@ -1227,7 +1227,7 @@ export default {
     'oas3-get-collection-sort-parameter': {
       'description': "Sorting collections is designed with a 'sort' query parameter.",
       'formats': [oas3],
-      'message': '{{error}} (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+      'message': '{{description}}; {{error}}',
       'severity': 'warn',
       'given': '$.paths[?( !(/\\/{.*}$/.test(@property)) )].get',
       'then': {
@@ -1236,7 +1236,7 @@ export default {
     },
     'status-code-401': {
       'description': 'A 401 status code is returned when authentication fails.',
-      'message': 'A 401 status code is returned when authentication fails. (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+      'message': '{{description}}; {{error}}',
       'severity': 'error',
       'given': '$.paths.*[?(@.security && @.security.length)]',
       'then': [
@@ -1251,7 +1251,7 @@ export default {
     },
     'status-code-403': {
       'description': 'A 403 status code is returned if a consumer is not authorized to access an operation.',
-      'message': 'A 403 status code is returned if a consumer is not authorized to access an operation. (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+      'message': '{{description}}; {{error}}',
       'severity': 'error',
       'given': '$.paths.*[?(@.security && @.security.length)]',
       'then': [
@@ -1267,7 +1267,7 @@ export default {
     'oas2-array-plural-representation': {
       'description': 'Representation fields use plural noun names for collections.',
       'formats': [oas2],
-      'message': 'Representation fields use plural noun names for collections (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+      'message': '{{description}}; {{error}}',
       'severity': 'warn',
       'given': '$.paths.*.*.responses.*.schema',
       'then': {
@@ -1277,7 +1277,7 @@ export default {
     'oas3-array-plural-representation': {
       'description': 'Representation fields use plural noun names for collections.',
       'formats': [oas3],
-      'message': 'Representation fields use plural noun names for collections (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+      'message': '{{description}}; {{error}}',
       'severity': 'warn',
       'given': '$.paths.*.*.responses.*.content.*.schema',
       'then': {
@@ -1287,7 +1287,7 @@ export default {
     'oas2-date-fields-iso-format': {
       'description': "Representation fields use strings in 'iso-date-time' format (RFC-3339) for date/time.",
       'formats': [oas2],
-      'message': "Representation fields use strings in 'iso-date-time' format (RFC-3339) for date/time (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)",
+      'message': '{{description}}; {{error}}',
       'severity': 'info',
       'given': '$.paths.*.*.responses.*.schema',
       'then': {
@@ -1297,7 +1297,7 @@ export default {
     'oas3-date-fields-iso-format': {
       'description': "Representation fields use strings in 'iso-date-time' format (RFC-3339) for date/time.",
       'formats': [oas3],
-      'message': "Representation fields use strings in 'iso-date-time' format (RFC-3339) for date/time (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)",
+      'message': '{{description}}; {{error}}',
       'severity': 'info',
       'given': '$.paths.*.*.responses.*.content.*.schema',
       'then': {
@@ -1306,7 +1306,7 @@ export default {
     },
     'authenticate-requests': {
       'description': 'API.REST.SECURITY.03: My API authenticates and authorizes all requests',
-      'message': 'API.REST.SECURITY.03: My API authenticates and authorizes all requests (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+      'message': '{{description}}; {{error}}',
       'severity': 'error',
       'given': '$.paths.*.*',
       'then': [
@@ -1325,7 +1325,7 @@ export default {
     },
     'reason-phrase': {
       'description': 'Reason phrase needs to match',
-      'message': '{{error}}',
+      'message': '{{description}}; {{error}}',
       'severity': 'error',
       'given': '$.paths.*.*.responses.*.description',
       'then': [
