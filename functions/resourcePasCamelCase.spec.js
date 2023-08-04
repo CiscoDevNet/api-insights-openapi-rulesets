@@ -69,28 +69,28 @@ describe('resourcePasCamelCase', () => {
 
     expect(res).toEqual([
       {
-        message: '30DaysCount must be PasCamelCase: (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+        message: '30DaysCount must be PasCamelCase',
       },
     ]);
 
     res = resourcePasCamelCase('30LessThan60DaysCount');
     expect(res).toEqual([
       {
-        message: '30LessThan60DaysCount must be PasCamelCase: (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+        message: '30LessThan60DaysCount must be PasCamelCase',
       },
     ]);
 
     res = resourcePasCamelCase('60LessThan90DaysCount');
     expect(res).toEqual([
       {
-        message: '60LessThan90DaysCount must be PasCamelCase: (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+        message: '60LessThan90DaysCount must be PasCamelCase',
       },
     ]);
 
     res = resourcePasCamelCase('90DaysCount');
     expect(res).toEqual([
       {
-        message: '90DaysCount must be PasCamelCase: (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+        message: '90DaysCount must be PasCamelCase',
       },
     ]);
   });
@@ -100,21 +100,21 @@ describe('resourcePasCamelCase', () => {
 
     expect(res).toEqual([
       {
-        message: 'THISISALLCAPS must be PasCamelCase: (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+        message: 'THISISALLCAPS must be PasCamelCase',
       },
     ]);
 
     res = resourcePasCamelCase('this_is_snake_case');
     expect(res).toEqual([
       {
-        message: 'this_is_snake_case must be PasCamelCase: (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+        message: 'this_is_snake_case must be PasCamelCase',
       },
     ]);
 
     res = resourcePasCamelCase('THISHastoBePasCamelCase?!1');
     expect(res).toEqual([
       {
-        message: 'THISHastoBePasCamelCase?!1 must be PasCamelCase: (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+        message: 'THISHastoBePasCamelCase?!1 must be PasCamelCase',
       },
     ]);
   });

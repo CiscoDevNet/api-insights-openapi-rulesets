@@ -48,7 +48,7 @@ describe('acceptableAuth', () => {
 
     expect(res).toEqual([
       {
-        message: 'My API authenticates requests using access tokens; NOT username/passwords. (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+        message: 'My API authenticates requests using access tokens; NOT username/passwords.',
       },
     ]);
   });
@@ -68,7 +68,7 @@ describe('acceptableAuth', () => {
 
     expect(res).toEqual([
       {
-        message: 'My API authenticates requests using access tokens; NOT username/passwords. (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+        message: 'My API authenticates requests using access tokens; NOT username/passwords.',
       },
     ]);
   });
@@ -79,7 +79,7 @@ describe('acceptableAuth', () => {
 
     expect(res).toEqual([
       {
-        message: 'My API authenticates requests using access tokens; NOT username/passwords. (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+        message: 'My API authenticates requests using access tokens; NOT username/passwords.',
       },
     ]);
   });

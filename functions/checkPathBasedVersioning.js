@@ -51,7 +51,7 @@ export default function (input, opts) {
   if (!(defaultVersioning || paths || onlyMajor)) {
     return [
       {
-        message: 'API uses path-based versioning. (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+        message: 'API uses path-based versioning.',
       },
     ];
   }
@@ -60,7 +60,7 @@ export default function (input, opts) {
   if ((defaultVersioning || paths) && onlyMajor) {
     return [
       {
-        message: 'API shows only major version numbers on the path; not the revision numbers. (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+        message: 'API shows only major version numbers on the path; not the revision numbers.',
       },
     ];
   }

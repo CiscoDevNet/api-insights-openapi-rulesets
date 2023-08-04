@@ -23,11 +23,11 @@ const path = [
   '/test',
 ];
 const maxQueryMessage = {
-  message: 'When returning a paginated collection, include a "max" query parameter (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+  message: 'When returning a paginated collection, include a "max" query parameter',
   path: [...path],
 };
 const linkHeaderMessage = {
-  message: 'When returning a paginated collection, include a "Link" header in the response (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+  message: 'When returning a paginated collection, include a "Link" header in the response',
   path: [
     ...path,
     'responses',

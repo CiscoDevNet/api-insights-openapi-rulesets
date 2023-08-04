@@ -59,7 +59,7 @@ describe('correctResponseRange', () => {
 
     expect(res).toEqual([
       {
-        message: 'Status Code(s) [99,100,782] must be in the 2xx/3xx/4xx/5xx ranges: (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+        message: 'Status Code(s) [99,100,782] must be in the 2xx/3xx/4xx/5xx ranges',
       },
     ]);
   });
