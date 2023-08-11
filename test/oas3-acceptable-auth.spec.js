@@ -37,7 +37,7 @@ describe(ruleName, () => {
     expect(res).toEqual([
       {
         code: 'oas3-acceptable-auth',
-        message: 'My API authenticates requests using access tokens; NOT username/passwords.; My API authenticates requests using access tokens; NOT username/passwords.',
+        message: 'My API authenticates requests using access tokens; NOT username/passwords.',
         path: [
           'components',
           'securitySchemes',
@@ -64,7 +64,7 @@ describe(ruleName, () => {
     expect(res).toEqual([
       {
         code: 'oas3-acceptable-auth',
-        message: 'My API authenticates requests using access tokens; NOT username/passwords.; My API authenticates requests using access tokens; NOT username/passwords.',
+        message: 'My API authenticates requests using access tokens; NOT username/passwords.',
         path: [
           'components',
           'securitySchemes',

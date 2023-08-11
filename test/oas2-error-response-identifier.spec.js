@@ -38,7 +38,7 @@ describe(ruleName, () => {
       expect(res).toEqual([
         {
           code: ruleName,
-          message: 'Error representations include an identifier to help with troubleshooting.; Error representations include an identifier to help with troubleshooting.',
+          message: 'Error representations include an identifier to help with troubleshooting.',
           path: [
             'paths',
             '/test',
@@ -60,7 +60,7 @@ describe(ruleName, () => {
         },
         {
           code: ruleName,
-          message: 'Error representations include an identifier to help with troubleshooting.; Error representations include an identifier to help with troubleshooting.',
+          message: 'Error representations include an identifier to help with troubleshooting.',
           path: [
             'paths',
             '/test',

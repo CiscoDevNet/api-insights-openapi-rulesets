@@ -42,7 +42,7 @@ describe(ruleName, () => {
     expect(res).toEqual([
       {
         code: ruleName,
-        message: 'My API responds with recommended HTTP status codes in the 2xx/3xx/4xx/5xx ranges; 201 is not an acceptable response code for PATCH. My API responds with recommended HTTP status codes in the 2xx/3xx/4xx/5xx ranges',
+        message: '201 is not an acceptable response code for PATCH. My API responds with recommended HTTP status codes in the 2xx/3xx/4xx/5xx ranges.',
         path: [
           'paths',
           '/myResource',
@@ -64,7 +64,7 @@ describe(ruleName, () => {
       },
       {
         code: ruleName,
-        message: 'My API responds with recommended HTTP status codes in the 2xx/3xx/4xx/5xx ranges; 202 is not an acceptable response code for PATCH. My API responds with recommended HTTP status codes in the 2xx/3xx/4xx/5xx ranges',
+        message: '202 is not an acceptable response code for PATCH. My API responds with recommended HTTP status codes in the 2xx/3xx/4xx/5xx ranges.',
         path: [
           'paths',
           '/myResource',
@@ -86,7 +86,7 @@ describe(ruleName, () => {
       },
       {
         code: 'respond-with-recommended-patch-codes',
-        message: 'My API responds with recommended HTTP status codes in the 2xx/3xx/4xx/5xx ranges; 279 is not an acceptable response code for PATCH. My API responds with recommended HTTP status codes in the 2xx/3xx/4xx/5xx ranges',
+        message: '279 is not an acceptable response code for PATCH. My API responds with recommended HTTP status codes in the 2xx/3xx/4xx/5xx ranges.',
         path: [
           'paths',
           '/myResource',

@@ -36,7 +36,7 @@ describe(ruleName, () => {
     expect(res).toEqual([
       {
         code: 'status-code-401',
-        message: 'A 401 status code is returned when authentication fails.; An expected pathway is missing. Prerequisite: "undefined", search: "401"',
+        message: 'A 401 status code is returned when authentication fails.',
         path: [
           'paths',
           '/myResource',

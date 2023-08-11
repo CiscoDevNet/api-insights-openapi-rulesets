@@ -86,7 +86,7 @@ export default function (input, opts) {
   if (!acceptableCodes.includes(`${ input }`)) {
     return [
       {
-        message: `${ input } is not an acceptable response code for ${ method.toUpperCase() }. My API responds with recommended HTTP status codes in the 2xx/3xx/4xx/5xx ranges`,
+        message: `${ input } is not an acceptable response code for ${ method.toUpperCase() }. My API responds with recommended HTTP status codes in the 2xx/3xx/4xx/5xx ranges.`,
       },
     ];
   }

@@ -36,7 +36,7 @@ describe(ruleName, () => {
     expect(res).toEqual([
       {
         code: ruleName,
-        message: 'All responses must include a \'TrackingID\' header.; An expected pathway is missing. Prerequisite: "headers", search: "TrackingID"',
+        message: 'All responses must include a \'TrackingID\' header.',
         path: [
           'paths',
           '/test',
@@ -65,7 +65,7 @@ describe(ruleName, () => {
     expect(res).toEqual([
       {
         code: ruleName,
-        message: 'All responses must include a \'TrackingID\' header.; An expected pathway is missing. Prerequisite: "headers", search: "TrackingID"',
+        message: 'All responses must include a \'TrackingID\' header.',
         path: [
           'paths',
           '/test',

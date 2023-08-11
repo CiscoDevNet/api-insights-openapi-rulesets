@@ -37,7 +37,7 @@ describe(ruleName, () => {
     expect(res).toEqual([
       {
         code: ruleName,
-        message: 'API shows only major version numbers on the path; not the revision numbers.; API shows only major version numbers on the path; not the revision numbers.',
+        message: 'API shows only major version numbers on the path; not the revision numbers.',
         path: [],
         range: {
           start: {

@@ -36,7 +36,7 @@ describe(ruleName, () => {
     expect(res).toEqual([
       {
         code: ruleName,
-        message: 'All responses include a \'Date\' header in the GMT timezone and RFC 5322 format.; An expected pathway is missing. Prerequisite: "headers", search: "Date"',
+        message: 'All responses include a \'Date\' header in the GMT timezone and RFC 5322 format.',
         path: [
           'paths',
           '/test',
@@ -58,7 +58,7 @@ describe(ruleName, () => {
       },
       {
         code: ruleName,
-        message: 'All responses include a \'Date\' header in the GMT timezone and RFC 5322 format.; An expected pathway is missing. Prerequisite: "headers", search: "Date"',
+        message: 'All responses include a \'Date\' header in the GMT timezone and RFC 5322 format.',
         path: [
           'paths',
           '/test',
@@ -87,7 +87,7 @@ describe(ruleName, () => {
     expect(res).toEqual([
       {
         code: ruleName,
-        message: 'All responses include a \'Date\' header in the GMT timezone and RFC 5322 format.; An expected pathway is missing. Prerequisite: "headers", search: "Date"',
+        message: 'All responses include a \'Date\' header in the GMT timezone and RFC 5322 format.',
         path: [
           'paths',
           '/test',
@@ -109,7 +109,7 @@ describe(ruleName, () => {
       },
       {
         code: ruleName,
-        message: 'All responses include a \'Date\' header in the GMT timezone and RFC 5322 format.; An expected pathway is missing. Prerequisite: "headers", search: "Date"',
+        message: 'All responses include a \'Date\' header in the GMT timezone and RFC 5322 format.',
         path: [
           'paths',
           '/test',

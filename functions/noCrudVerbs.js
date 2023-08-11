@@ -27,7 +27,7 @@ export default function (input) {
   if (foundVerb) {
     return [
       {
-        message: 'Standard CRUD lifecycle operations map to HTTP verbs; Functional resources are used when non-standard CRUD are needed',
+        message: 'Standard CRUD lifecycle operations map to HTTP verbs; Functional resources are used when non-standard CRUD are needed.',
       },
     ];
   }
