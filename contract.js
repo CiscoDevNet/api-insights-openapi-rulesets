@@ -139,8 +139,8 @@ export default {
       },
     },
     'oas2-meta-info': {
-      'description': 'Some meta fields must be present',
-      'message': '{{description}} {{error}}',
+      'description': 'Some meta fields must be present.',
+      'message': '{{description}}; {{error}}',
       'severity': 'error',
       'formats': [oas2],
       'type': 'validation',

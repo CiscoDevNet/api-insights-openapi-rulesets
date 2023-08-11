@@ -66,7 +66,7 @@ describe('includeAll', () => {
 
     expect(res).toEqual([
       {
-        message: 'opts.values is required to be an non-empty array',
+        message: 'opts.values is required to be an non-empty array.',
       },
     ]);
   });
@@ -81,7 +81,7 @@ describe('includeAll', () => {
 
     expect(res).toEqual([
       {
-        message: 'The following values must be incuded: info,title.',
+        message: 'The following values must be included: info,title.',
       },
     ]);
   });

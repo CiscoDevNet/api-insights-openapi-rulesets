@@ -34,7 +34,7 @@ module.exports = function (targetVal, opts) {
   if (values.length === 0) {
     return [
       {
-        message: 'opts.values is required to be an non-empty array',
+        message: 'opts.values is required to be an non-empty array.',
       },
     ];
   }
@@ -53,7 +53,7 @@ module.exports = function (targetVal, opts) {
   if (missing.length > 0) {
     return [
       {
-        message: `The following values must be incuded: ${ missing.toString() }.`,
+        message: `The following values must be included: ${ missing.toString() }.`,
       },
     ];
   }
