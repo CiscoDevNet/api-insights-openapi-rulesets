@@ -80,7 +80,7 @@ describe('hasRecommendedStatusCodes', () => {
     for (const res of badCodes) {
       expect(hasRecommendedStatusCodes(res, { method: 'get' })).toEqual([
         {
-          message: `${ res } is not an acceptable response code for GET. My API responds with recommended HTTP status codes in the 2xx/3xx/4xx/5xx ranges`,
+          message: `${ res } is not an acceptable response code for GET. My API responds with recommended HTTP status codes in the 2xx/3xx/4xx/5xx ranges.`,
         },
       ]);
     }
@@ -96,7 +96,7 @@ describe('hasRecommendedStatusCodes', () => {
     for (const res of badCodes) {
       expect(hasRecommendedStatusCodes(res, { method: 'get' })).toEqual([
         {
-          message: `${ res } is not an acceptable response code for GET. My API responds with recommended HTTP status codes in the 2xx/3xx/4xx/5xx ranges`,
+          message: `${ res } is not an acceptable response code for GET. My API responds with recommended HTTP status codes in the 2xx/3xx/4xx/5xx ranges.`,
         },
       ]);
     }
@@ -116,7 +116,7 @@ describe('hasRecommendedStatusCodes', () => {
     for (const res of badCodes) {
       expect(hasRecommendedStatusCodes(res, { method: 'post' })).toEqual([
         {
-          message: `${ res } is not an acceptable response code for POST. My API responds with recommended HTTP status codes in the 2xx/3xx/4xx/5xx ranges`,
+          message: `${ res } is not an acceptable response code for POST. My API responds with recommended HTTP status codes in the 2xx/3xx/4xx/5xx ranges.`,
         },
       ]);
     }
@@ -136,7 +136,7 @@ describe('hasRecommendedStatusCodes', () => {
     for (const res of badCodes) {
       expect(hasRecommendedStatusCodes(res, { method: 'put' })).toEqual([
         {
-          message: `${ res } is not an acceptable response code for PUT. My API responds with recommended HTTP status codes in the 2xx/3xx/4xx/5xx ranges`,
+          message: `${ res } is not an acceptable response code for PUT. My API responds with recommended HTTP status codes in the 2xx/3xx/4xx/5xx ranges.`,
         },
       ]);
     }
@@ -159,7 +159,7 @@ describe('hasRecommendedStatusCodes', () => {
     for (const res of badCodes) {
       expect(hasRecommendedStatusCodes(res, { method: 'patch' })).toEqual([
         {
-          message: `${ res } is not an acceptable response code for PATCH. My API responds with recommended HTTP status codes in the 2xx/3xx/4xx/5xx ranges`,
+          message: `${ res } is not an acceptable response code for PATCH. My API responds with recommended HTTP status codes in the 2xx/3xx/4xx/5xx ranges.`,
         },
       ]);
     }
@@ -182,7 +182,7 @@ describe('hasRecommendedStatusCodes', () => {
     for (const res of badCodes) {
       expect(hasRecommendedStatusCodes(res, { method: 'delete' })).toEqual([
         {
-          message: `${ res } is not an acceptable response code for DELETE. My API responds with recommended HTTP status codes in the 2xx/3xx/4xx/5xx ranges`,
+          message: `${ res } is not an acceptable response code for DELETE. My API responds with recommended HTTP status codes in the 2xx/3xx/4xx/5xx ranges.`,
         },
       ]);
     }
