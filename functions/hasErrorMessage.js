@@ -42,7 +42,7 @@ export default function (input, opts, context) {
   if (!errorMessage) {
     return [
       {
-        message: 'Error representations include a useful human-readable message. (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+        message: 'Error representations include a useful human-readable message.',
       },
     ];
   }

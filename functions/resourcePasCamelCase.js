@@ -67,7 +67,7 @@ export default function (input, opts) {
     if (_node && !isPascalOrCamelCase(_node)) {
       // user will have to iteratively resolve issues in the same string
       result.push({
-        message: `${ _node } must be PasCamelCase: (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)`,
+        message: `${ _node } must be PasCamelCase`,
       });
     }
   }

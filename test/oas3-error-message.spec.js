@@ -37,7 +37,7 @@ describe(ruleName, () => {
     expect(res).toEqual([
       {
         code: ruleName,
-        message: 'Error representations include a useful human-readable message. (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+        message: 'Error representations include a useful human-readable message.',
         path: [
           'paths',
           '/test',
@@ -59,7 +59,7 @@ describe(ruleName, () => {
       },
       {
         code: ruleName,
-        message: 'Error representations include a useful human-readable message. (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+        message: 'Error representations include a useful human-readable message.',
         path: [
           'paths',
           '/test',
@@ -100,7 +100,7 @@ describe(ruleName, () => {
     expect(res).toEqual([
       {
         code: ruleName,
-        message: 'Error representations include a useful human-readable message. (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+        message: 'Error representations include a useful human-readable message.',
         path: [
           'paths',
           '/test',
@@ -122,7 +122,7 @@ describe(ruleName, () => {
       },
       {
         code: ruleName,
-        message: 'Error representations include a useful human-readable message. (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+        message: 'Error representations include a useful human-readable message.',
         path: [
           'paths',
           '/test',

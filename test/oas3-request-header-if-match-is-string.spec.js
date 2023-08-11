@@ -38,7 +38,7 @@ describe(ruleName, () => {
     expect(res).toEqual([
       {
         code: ruleName,
-        message: 'If-Match must be a string (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+        message: 'HTTP headers follow the syntax specified in the corresponding RFCs.; "integer" must match the pattern "^string$"',
         path: [
           'paths',
           '/test',

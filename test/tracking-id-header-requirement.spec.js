@@ -36,7 +36,7 @@ describe(ruleName, () => {
     expect(res).toEqual([
       {
         code: ruleName,
-        message: 'All responses must include a \'TrackingID\' header (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+        message: 'All responses must include a \'TrackingID\' header.',
         path: [
           'paths',
           '/test',
@@ -65,7 +65,7 @@ describe(ruleName, () => {
     expect(res).toEqual([
       {
         code: ruleName,
-        message: 'All responses must include a \'TrackingID\' header (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+        message: 'All responses must include a \'TrackingID\' header.',
         path: [
           'paths',
           '/test',

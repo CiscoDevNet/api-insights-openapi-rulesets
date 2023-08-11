@@ -37,7 +37,7 @@ describe(ruleName, () => {
     expect(res).toEqual([
       {
         code: ruleName,
-        message: 'Ordering collections is designed with an \'order\' query parameter specifying \'asc\' or \'desc\' (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+        message: 'Ordering collections is designed with an \'order\' query parameter specifying \'asc\' or \'desc\'.; "integer" must match the pattern "^string$"',
         path: [
           'paths',
           '/test',
@@ -67,7 +67,7 @@ describe(ruleName, () => {
     expect(res).toEqual([
       {
         code: ruleName,
-        message: 'Ordering collections is designed with an \'order\' query parameter specifying \'asc\' or \'desc\' (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+        message: 'Ordering collections is designed with an \'order\' query parameter specifying \'asc\' or \'desc\'.; Given does not match target enums.',
         path: [
           'paths',
           '/test',

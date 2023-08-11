@@ -55,7 +55,7 @@ export default function (input, opts) {
   if (errStatusCodes.length) {
     return [
       {
-        message: `Status Code(s) [${ errStatusCodes.toString() }] must be in the ${ rangeString } ranges: (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)`,
+        message: `Status Code(s) [${ errStatusCodes.toString() }] must be in the ${ rangeString } ranges`,
       },
     ];
   }

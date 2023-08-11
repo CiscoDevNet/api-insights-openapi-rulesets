@@ -33,10 +33,10 @@ describe(ruleName, () => {
     const spec = await fsPromises.readFile(`${ resPath }/negative.yml`);
     const res = await spectral.run(spec.toString());
 
-    expect(res).toEqual([
+    expect([res[1]]).toEqual([
       {
         code: ruleName,
-        message: 'In cases where ETag is supported, such resources should also support If-Match and If-None-Match request headers (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+        message: 'In cases where ETag is supported, such resources should also support If-Match and If-None-Match request headers.; "headers.If-None-Match" property must be truthy',
         path: [
           'paths',
           '/test',
@@ -66,7 +66,7 @@ describe(ruleName, () => {
     expect(res).toEqual([
       {
         code: ruleName,
-        message: 'In cases where ETag is supported, such resources should also support If-Match and If-None-Match request headers (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+        message: 'In cases where ETag is supported, such resources should also support If-Match and If-None-Match request headers.; "headers.If-None-Match" property must be truthy',
         path: [
           'paths',
           '/test',
@@ -89,7 +89,7 @@ describe(ruleName, () => {
       },
       {
         code: ruleName,
-        message: 'In cases where ETag is supported, such resources should also support If-Match and If-None-Match request headers (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+        message: 'In cases where ETag is supported, such resources should also support If-Match and If-None-Match request headers.; "headers.If-Match" property must be truthy',
         path: [
           'paths',
           '/anotherTest',

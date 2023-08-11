@@ -169,7 +169,7 @@ function handleCollectionResponse(input, opts, context, isOAS2Collection, isOAS3
 
     if (!maxQueryParameter) {
       messages.push({
-        message: 'When returning a paginated collection, include a "max" query parameter (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+        message: 'When returning a paginated collection, include a "max" query parameter',
         path: [...prettyPath],
       });
     }
@@ -178,14 +178,14 @@ function handleCollectionResponse(input, opts, context, isOAS2Collection, isOAS3
     if (severity === 1 && !offsetQueryParameter) {
 
       messages.push({
-        message: 'When supporting offset-based pagination, operations include a "offset" query parameter (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+        message: 'When supporting offset-based pagination, operations include a "offset" query parameter',
         path: [...prettyPath],
       });
     }
 
     if (!linkResponseHeader) {
       messages.push({
-        message: 'When returning a paginated collection, include a "Link" header in the response (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+        message: 'When returning a paginated collection, include a "Link" header in the response',
         path: [
           ...prettyPath,
           'responses',

@@ -43,7 +43,7 @@ export default function (input) {
       if (!regex.exec(sample)) {
         return [
           {
-            message: `The regex pattern used does not pass basic linting sample checks - should have matched case ${ sample } (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)`,
+            message: `The regex pattern used does not pass basic linting sample checks - should have matched case ${ sample }`,
           },
         ];
       }
@@ -54,7 +54,7 @@ export default function (input) {
       if (regex.exec(sample)) {
         return [
           {
-            message: `The regex pattern used does not pass basic linting sample checks - should not have matched case ${ sample } (${ msg }) (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)`,
+            message: `The regex pattern used does not pass basic linting sample checks - should not have matched case ${ sample } (${ msg })`,
           },
         ];
       }
@@ -62,7 +62,7 @@ export default function (input) {
   } catch (err) {
     return [
       {
-        message: 'Failed to parse regex (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+        message: 'Failed to parse regex',
       },
     ];
   }

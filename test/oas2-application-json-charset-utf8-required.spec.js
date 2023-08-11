@@ -37,7 +37,7 @@ describe('ruleName', () => {
     expect(res).toEqual([
       {
         code: ruleName,
-        message: 'JSON representations should be declared using \'application/json\' or \'application/json; charset=UTF-8\' media types (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+        message: 'JSON representations should be declared using \'application/json\' or \'application/json; charset=UTF-8\' media types.; "application/json; charset=utf-16" must not match the pattern "^application/json; charset=(?![Uu][Tt][Ff]-8$)"',
         path: [
           'paths',
           '/test',
@@ -59,7 +59,7 @@ describe('ruleName', () => {
       },
       {
         code: ruleName,
-        message: 'JSON representations should be declared using \'application/json\' or \'application/json; charset=UTF-8\' media types (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+        message: 'JSON representations should be declared using \'application/json\' or \'application/json; charset=UTF-8\' media types.; "application/json; charset=utf-16" must not match the pattern "^application/json; charset=(?![Uu][Tt][Ff]-8$)"',
         path: [
           'paths',
           '/test',

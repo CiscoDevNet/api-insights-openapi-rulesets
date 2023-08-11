@@ -38,7 +38,7 @@ describe(ruleName, () => {
     expect(res).toEqual([
       {
         code: ruleName,
-        message: 'Date header should not use the built-in OpenAPI format. Instead, \'pattern\' should be used to specify a custom format (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+        message: 'HTTP headers follow the syntax specified in the corresponding RFCs.; The regex pattern used does not pass basic linting sample checks - should not have matched case Thu 8 Apr 2021 19:06:27 GMT (Comma required after Day of Week)',
         path: [
           'paths',
           '/test',

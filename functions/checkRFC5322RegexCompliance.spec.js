@@ -28,7 +28,7 @@ describe('checkRFC5322RegexCompliance', () => {
 
     expect(res).toEqual([
       {
-        message: 'The regex pattern used does not pass basic linting sample checks - should not have matched case Thu 8 Apr 2021 19:06:27 GMT (Comma required after Day of Week) (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+        message: 'The regex pattern used does not pass basic linting sample checks - should not have matched case Thu 8 Apr 2021 19:06:27 GMT (Comma required after Day of Week)',
       },
     ]);
   });

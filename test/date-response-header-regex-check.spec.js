@@ -36,7 +36,7 @@ describe(ruleName, () => {
     expect(res).toEqual([
       {
         code: ruleName,
-        message: 'The regex pattern used does not pass basic linting sample checks - should not have matched case Thu 8 Apr 2021 19:06:27 GMT (Comma required after Day of Week) (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+        message: 'All responses include a \'Date\' header in the GMT timezone and RFC 5322 format.; The regex pattern used does not pass basic linting sample checks - should not have matched case Thu 8 Apr 2021 19:06:27 GMT (Comma required after Day of Week)',
         path: [
           'paths',
           '/test',

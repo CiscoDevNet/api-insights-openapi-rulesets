@@ -38,7 +38,7 @@ describe(ruleName, () => {
     expect(res).toEqual([
       {
         code: ruleName,
-        message: 'Accept-Encoding accepts a value that is not valid per RFC 7231. (The following values must be removed: notvalid.) (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer) Please see https://www.iana.org/assignments/http-parameters/http-parameters.xhtml',
+        message: 'HTTP headers follow the syntax specified in the corresponding RFCs.; The following values must be removed: notvalid.',
         path: [
           'paths',
           '/test',

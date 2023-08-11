@@ -38,7 +38,7 @@ describe(ruleName, () => {
     expect(res).toEqual([
       {
         code: ruleName,
-        message: 'Accept-Charset must have a default defined (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+        message: 'HTTP headers follow the syntax specified in the corresponding RFCs.; "[0].default" property must be truthy',
         path: [
           'paths',
           '/test',

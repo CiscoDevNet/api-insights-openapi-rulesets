@@ -17,8 +17,8 @@
  */
 
 import checkPathBasedVersioning from './checkPathBasedVersioning.js';
-const hasVersionErrorMsg = 'API uses path-based versioning. (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)';
-const onlyMajorErrorMsg = 'API shows only major version numbers on the path; not the revision numbers. (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)';
+const hasVersionErrorMsg = 'API uses path-based versioning.';
+const onlyMajorErrorMsg = 'API shows only major version numbers on the path; not the revision numbers.';
 
 describe('checkPathBasedVersioning', () => {
   test('should check version in servers - oas3', () => {

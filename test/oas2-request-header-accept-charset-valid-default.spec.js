@@ -38,7 +38,7 @@ describe(ruleName, () => {
     expect(res).toEqual([
       {
         code: ruleName,
-        message: 'Default for Accept-Charset must be UTF-8 (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+        message: 'HTTP headers follow the syntax specified in the corresponding RFCs.; "test" must match the pattern "^[Uu][Tt][Ff]-8$"',
         path: [
           'paths',
           '/test',

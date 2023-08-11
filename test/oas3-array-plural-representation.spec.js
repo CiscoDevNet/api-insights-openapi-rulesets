@@ -38,7 +38,7 @@ describe(ruleName, () => {
     expect(res).toEqual([
       {
         code: ruleName,
-        message: 'Representation fields use plural noun names for collections (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+        message: 'Representation fields use plural noun names for collections.; device should be plural.',
         path: [
           'paths',
           '/test',
@@ -65,7 +65,7 @@ describe(ruleName, () => {
       },
       {
         code: ruleName,
-        message: 'Representation fields use plural noun names for collections (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+        message: 'Representation fields use plural noun names for collections.; contract should be plural.',
         path: [
           'paths',
           '/test',
@@ -95,7 +95,7 @@ describe(ruleName, () => {
       },
       {
         code: ruleName,
-        message: 'Representation fields use plural noun names for collections (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+        message: 'Representation fields use plural noun names for collections.; balance should be plural.',
         path: [
           'paths',
           '/test',

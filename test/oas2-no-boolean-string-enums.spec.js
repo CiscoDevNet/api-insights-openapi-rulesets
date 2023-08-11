@@ -37,7 +37,7 @@ describe(ruleName, () => {
     expect(res).toEqual([
       {
         code: ruleName,
-        message: 'Representation fields use format-native true/false values for booleans (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+        message: 'Representation fields use format-native true/false values for booleans.; Given matches target enums.',
         path: [
           'paths',
           '/test',
@@ -70,7 +70,7 @@ describe(ruleName, () => {
     expect(res).toEqual([
       {
         code: ruleName,
-        message: 'Representation fields use format-native true/false values for booleans (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+        message: 'Representation fields use format-native true/false values for booleans.; Given matches target enums.',
         path: [
           'paths',
           '/test',
@@ -103,7 +103,7 @@ describe(ruleName, () => {
     expect(res).toEqual([
       {
         code: ruleName,
-        message: 'Representation fields use format-native true/false values for booleans (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+        message: 'Representation fields use format-native true/false values for booleans.; Given matches target enums.',
         path: [
           'paths',
           '/test',
@@ -137,7 +137,7 @@ describe(ruleName, () => {
       },
       {
         code: ruleName,
-        message: 'Representation fields use format-native true/false values for booleans (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+        message: 'Representation fields use format-native true/false values for booleans.; Given matches target enums.',
         path: [
           'paths',
           '/test',
@@ -174,7 +174,7 @@ describe(ruleName, () => {
     expect(res).toEqual([
       {
         code: ruleName,
-        message: 'Representation fields use format-native true/false values for booleans (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+        message: 'Representation fields use format-native true/false values for booleans.; Given matches target enums.',
         path: [
           'paths',
           '/test',
@@ -208,7 +208,7 @@ describe(ruleName, () => {
       },
       {
         code: ruleName,
-        message: 'Representation fields use format-native true/false values for booleans (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+        message: 'Representation fields use format-native true/false values for booleans.; Given matches target enums.',
         path: [
           'paths',
           '/test',

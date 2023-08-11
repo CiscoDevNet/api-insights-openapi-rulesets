@@ -36,7 +36,7 @@ describe(ruleName, () => {
     expect(res).toEqual([
       {
         code: ruleName,
-        message: 'PUT operations return either \'200 OK\' with full representation or \'204 No Content\' (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+        message: 'PUT operations return either \'200 OK\' with full representation or \'204 No Content\'.',
         path: [
           'paths',
           '/test',
@@ -63,7 +63,7 @@ describe(ruleName, () => {
     expect(res).toEqual([
       {
         code: ruleName,
-        message: 'PUT operations return either \'200 OK\' with full representation or \'204 No Content\' (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+        message: 'PUT operations return either \'200 OK\' with full representation or \'204 No Content\'.',
         path: [
           'paths',
           '/test',
@@ -90,7 +90,7 @@ describe(ruleName, () => {
     expect(res).toEqual([
       {
         code: ruleName,
-        message: 'PUT operations return either \'200 OK\' with full representation or \'204 No Content\' (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+        message: 'PUT operations return either \'200 OK\' with full representation or \'204 No Content\'.',
         path: [
           'paths',
           '/test',
@@ -117,7 +117,7 @@ describe(ruleName, () => {
     expect(res).toEqual([
       {
         code: ruleName,
-        message: 'PUT operations return either \'200 OK\' with full representation or \'204 No Content\' (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+        message: 'PUT operations return either \'200 OK\' with full representation or \'204 No Content\'.',
         path: [
           'paths',
           '/test',

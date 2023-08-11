@@ -37,7 +37,7 @@ describe(ruleName, () => {
     expect(res).toEqual([
       {
         code: ruleName,
-        message: '\'TrackingID\' header should be a string in order to accommodate a UUID (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+        message: '\'TrackingID\' header should be a string in order to accommodate a UUID.; "integer" must match the pattern "^string$"',
         path: [
           'paths',
           '/test',

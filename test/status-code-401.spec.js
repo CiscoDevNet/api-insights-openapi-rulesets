@@ -36,7 +36,7 @@ describe(ruleName, () => {
     expect(res).toEqual([
       {
         code: 'status-code-401',
-        message: 'A 401 status code is returned when authentication fails. (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+        message: 'A 401 status code is returned when authentication fails.',
         path: [
           'paths',
           '/myResource',

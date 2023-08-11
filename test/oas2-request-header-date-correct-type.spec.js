@@ -39,7 +39,7 @@ describe(ruleName, () => {
     expect(res).toEqual([
       {
         code: ruleName,
-        message: 'Date header should be type \'string\' and should not use the built-in OpenAPI format. Instead, \'pattern\' should be used to specify a custom format (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+        message: 'HTTP headers follow the syntax specified in the corresponding RFCs.; "[0].pattern" property must be truthy',
         path: [
           'paths',
           '/test',
@@ -61,7 +61,7 @@ describe(ruleName, () => {
       },
       {
         code: ruleName,
-        message: 'Date header should be type \'string\' and should not use the built-in OpenAPI format. Instead, \'pattern\' should be used to specify a custom format (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+        message: 'HTTP headers follow the syntax specified in the corresponding RFCs.; "integer" must match the pattern "^string$"',
         path: [
           'paths',
           '/test',
@@ -92,7 +92,7 @@ describe(ruleName, () => {
     expect(res).toEqual([
       {
         code: ruleName,
-        message: 'Date header should be type \'string\' and should not use the built-in OpenAPI format. Instead, \'pattern\' should be used to specify a custom format (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+        message: 'HTTP headers follow the syntax specified in the corresponding RFCs.; "[0].pattern" property must be truthy',
         path: [
           'paths',
           '/test',
@@ -114,7 +114,7 @@ describe(ruleName, () => {
       },
       {
         code: ruleName,
-        message: 'Date header should be type \'string\' and should not use the built-in OpenAPI format. Instead, \'pattern\' should be used to specify a custom format (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+        message: 'HTTP headers follow the syntax specified in the corresponding RFCs.; "format" property must be falsy',
         path: [
           'paths',
           '/test',

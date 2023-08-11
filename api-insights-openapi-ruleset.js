@@ -82,7 +82,7 @@ export default {
     },
     'patch-200-204-success': {
       'description': "PATCH operations return either '200 OK' with full representation or '204 No Content'.",
-      'message': '{{description}}; {{error}}',
+      'message': '{{error}}',
       'severity': 'error',
       'given': "$.paths.*[?( @property === 'patch' )]",
       'then': {
@@ -91,7 +91,7 @@ export default {
     },
     'put-200-204-success': {
       'description': "PUT operations return either '200 OK' with full representation or '204 No Content'.",
-      'message': '{{description}}; {{error}}',
+      'message': '{{error}}',
       'severity': 'error',
       'given': '$.paths.*[?( @property === \'put\' )]',
       'then': {
@@ -254,7 +254,7 @@ export default {
     },
     'date-response-header-requirement': {
       'description': "All responses include a 'Date' header in the GMT timezone and RFC 5322 format.",
-      'message': '{{description}}; {{error}}',
+      'message': '{{description}}',
       'severity': 'error',
       'given': '$.paths.*.*.responses[*]',
       'then': {
@@ -352,7 +352,7 @@ export default {
     },
     'tracking-id-header-requirement': {
       'description': "All responses must include a 'TrackingID' header.",
-      'message': '{{description}}; {{error}}',
+      'message': '{{description}}',
       'severity': 'warn',
       'given': '$.paths.*.*.responses[*]',
       'then': {
@@ -561,7 +561,7 @@ export default {
     },
     'no-crud-verbs': {
       'description': 'Standard CRUD lifecycle operations map to HTTP verbs; Functional resources are used when non-standard CRUD are needed.',
-      'message': '{{description}}; {{error}}',
+      'message': '{{error}}',
       'severity': 'error',
       'given': '$.paths[*~]',
       'then': {
@@ -570,7 +570,7 @@ export default {
     },
     'respond-with-recommended-get-codes': {
       'description': 'My API responds with recommended HTTP status codes in the 2xx/3xx/4xx/5xx ranges',
-      'message': '{{description}}; {{error}}',
+      'message': '{{error}}',
       'severity': 'error',
       'given': "$.paths.*.[?(@property === 'get')].responses.*~",
       'then': [
@@ -584,7 +584,7 @@ export default {
     },
     'respond-with-recommended-post-codes': {
       'description': 'My API responds with recommended HTTP status codes in the 2xx/3xx/4xx/5xx ranges',
-      'message': '{{description}}; {{error}}',
+      'message': '{{error}}',
       'severity': 'error',
       'given': "$.paths.*.[?(@property === 'post')].responses.*~",
       'then': [
@@ -598,7 +598,7 @@ export default {
     },
     'respond-with-recommended-patch-codes': {
       'description': 'My API responds with recommended HTTP status codes in the 2xx/3xx/4xx/5xx ranges',
-      'message': '{{description}}; {{error}}',
+      'message': '{{error}}',
       'severity': 'error',
       'given': "$.paths.*.[?(@property === 'patch')].responses.*~",
       'then': [
@@ -612,7 +612,7 @@ export default {
     },
     'respond-with-recommended-put-codes': {
       'description': 'My API responds with recommended HTTP status codes in the 2xx/3xx/4xx/5xx ranges',
-      'message': '{{description}}; {{error}}',
+      'message': '{{error}}',
       'severity': 'error',
       'given': "$.paths.*.[?(@property === 'put')].responses.*~",
       'then': [
@@ -626,7 +626,7 @@ export default {
     },
     'respond-with-recommended-delete-codes': {
       'description': 'My API responds with recommended HTTP status codes in the 2xx/3xx/4xx/5xx ranges',
-      'message': '{{description}}; {{error}}',
+      'message': '{{error}}',
       'severity': 'error',
       'given': "$.paths.*.[?(@property === 'delete')].responses.*~",
       'then': [
@@ -640,7 +640,7 @@ export default {
     },
     'sort-recommend-order': {
       'description': "Consider using 'order' with 'sort' in this operation.",
-      'message': '{{description}}; {{error}}',
+      'message': '{{error}}',
       'severity': 'hint',
       'given': '$.paths.*.get.parameters',
       'then': {
@@ -649,7 +649,7 @@ export default {
     },
     'oas2-error-message': {
       'description': 'Error representations include a useful human-readable message.',
-      'message': '{{description}}; {{error}}',
+      'message': '{{error}}',
       'severity': 'error',
       'formats': [oas2],
       'given': "$.paths.*[?(@property != 'head')].responses[?(/^4\\d\\d.*$/i.test(@property) || /^5\\d\\d.*$/i.test(@property))]",
@@ -661,7 +661,7 @@ export default {
     },
     'oas3-error-message': {
       'description': 'Error representations include a useful human-readable message.',
-      'message': '{{description}}; {{error}}',
+      'message': '{{error}}',
       'severity': 'error',
       'formats': [oas3],
       'given': "$.paths.*[?(@property != 'head')].responses[?(/^4\\d\\d.*$/i.test(@property) || /^5\\d\\d.*$/i.test(@property))]",
@@ -673,7 +673,7 @@ export default {
     },
     'oas2-error-response-identifier': {
       'description': 'Error representations include an identifier to help with troubleshooting.',
-      'message': '{{description}}; {{error}}',
+      'message': '{{error}}',
       'severity': 'warn',
       'given': "$.paths.*[?(@property !== 'head')].responses[?(/^4\\d\\d.*$/i.test(@property) || /^5\\d\\d.*$/i.test(@property))]",
       'formats': [oas2],
@@ -685,7 +685,7 @@ export default {
     },
     'oas3-error-response-identifier': {
       'description': 'Error representations include an identifier to help with troubleshooting.',
-      'message': '{{description}}; {{error}}',
+      'message': '{{error}}',
       'severity': 'warn',
       'given': "$.paths.*[?(@property !== 'head')].responses[?(/^4\\d\\d.*$/i.test(@property) || /^5\\d\\d.*$/i.test(@property))]",
       'formats': [oas3],
@@ -1049,7 +1049,7 @@ export default {
     },
     'oas2-path-based-versioning-error': {
       'description': 'API uses path-based versioning.',
-      'message': '{{description}}; {{error}}',
+      'message': '{{error}}',
       'severity': 'error',
       'formats': [oas2],
       'given': '$',
@@ -1063,7 +1063,7 @@ export default {
     },
     'oas3-path-based-versioning-error': {
       'description': 'API uses path-based versioning.',
-      'message': '{{description}}; {{error}}',
+      'message': '{{error}}',
       'severity': 'error',
       'formats': [oas3],
       'given': '$',
@@ -1089,7 +1089,7 @@ export default {
     },
     'oas2-path-based-versioning-major-only': {
       'description': 'API shows only major version numbers on the path; not the revision numbers.',
-      'message': '{{description}}; {{error}}',
+      'message': '{{error}}',
       'severity': 'error',
       'formats': [oas2],
       'given': '$',
@@ -1184,7 +1184,7 @@ export default {
     },
     'oas2-acceptable-auth': {
       'description': 'My API authenticates requests using access tokens; NOT username/passwords.',
-      'message': '{{description}}; {{error}}',
+      'message': '{{error}}',
       'severity': 'error',
       'formats': [oas2],
       'given': '$.securityDefinitions.*',
@@ -1194,7 +1194,7 @@ export default {
     },
     'oas3-acceptable-auth': {
       'description': 'My API authenticates requests using access tokens; NOT username/passwords.',
-      'message': '{{description}}; {{error}}',
+      'message': '{{error}}',
       'severity': 'error',
       'formats': [oas3],
       'given': '$.components.securitySchemes.*',
@@ -1236,7 +1236,7 @@ export default {
     },
     'status-code-401': {
       'description': 'A 401 status code is returned when authentication fails.',
-      'message': '{{description}}; {{error}}',
+      'message': '{{description}}',
       'severity': 'error',
       'given': '$.paths.*[?(@.security && @.security.length)]',
       'then': [
@@ -1251,7 +1251,7 @@ export default {
     },
     'status-code-403': {
       'description': 'A 403 status code is returned if a consumer is not authorized to access an operation.',
-      'message': '{{description}}; {{error}}',
+      'message': '{{description}}',
       'severity': 'error',
       'given': '$.paths.*[?(@.security && @.security.length)]',
       'then': [
@@ -1305,7 +1305,7 @@ export default {
       },
     },
     'authenticate-requests': {
-      'description': 'API.REST.SECURITY.03: My API authenticates and authorizes all requests',
+      'description': 'My API authenticates and authorizes all requests.',
       'message': '{{description}}; {{error}}',
       'severity': 'error',
       'given': '$.paths.*.*',
@@ -1325,7 +1325,7 @@ export default {
     },
     'reason-phrase': {
       'description': 'Reason phrase needs to match',
-      'message': '{{description}}; {{error}}',
+      'message': '{{error}}',
       'severity': 'error',
       'given': '$.paths.*.*.responses.*.description',
       'then': [

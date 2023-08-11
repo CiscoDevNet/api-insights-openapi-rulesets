@@ -37,7 +37,7 @@ describe(ruleName, () => {
     expect(res).toEqual([
       {
         code: ruleName,
-        message: 'user_id (paths./test.post.parameters.0.name) field is not PasCamelCase (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+        message: 'Representation field names use PasCamelCase.; user_id (paths./test.post.parameters.0.name)',
         path: [
           'paths',
           '/test',
@@ -59,7 +59,7 @@ describe(ruleName, () => {
       },
       {
         code: ruleName,
-        message: 'MYData (paths./test.post.requestBody.content.application/json.schema.properties.MYData) field is not PasCamelCase (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+        message: 'Representation field names use PasCamelCase.; MYData (paths./test.post.requestBody.content.application/json.schema.properties.MYData)',
         path: [
           'paths',
           '/test',
@@ -86,7 +86,7 @@ describe(ruleName, () => {
       },
       {
         code: ruleName,
-        message: 'MYData (paths./test.post.responses.200.content.application/json.schema.items.properties.MYData) field is not PasCamelCase (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+        message: 'Representation field names use PasCamelCase.; MYData (paths./test.post.responses.200.content.application/json.schema.items.properties.MYData)',
         path: [
           'paths',
           '/test',
@@ -123,7 +123,7 @@ describe(ruleName, () => {
     expect(res).toEqual([
       {
         code: ruleName,
-        message: 'snake_case (paths./test.get.responses.200.content.application/json.schema.items.properties.snake_case) field is not PasCamelCase (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+        message: 'Representation field names use PasCamelCase.; snake_case (paths./test.get.responses.200.content.application/json.schema.items.properties.snake_case)',
         path: [
           'paths',
           '/test',

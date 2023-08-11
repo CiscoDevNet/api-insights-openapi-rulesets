@@ -36,7 +36,7 @@ describe(ruleName, () => {
     expect(res).toEqual([
       {
         code: ruleName,
-        message: '"veryLongEndpoint" is longer than allowed maximum of 15 (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+        message: 'Resource names are consistent and succinct; do not use abbreviations.; "veryLongEndpoint" is longer than allowed maximum of 15',
         path: [
           'paths',
           '/veryLongEndpoint',
@@ -55,7 +55,7 @@ describe(ruleName, () => {
       },
       {
         code: ruleName,
-        message: '"someLongEndpoint" is longer than allowed maximum of 15 (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+        message: 'Resource names are consistent and succinct; do not use abbreviations.; "someLongEndpoint" is longer than allowed maximum of 15',
         path: [
           'paths',
           '/veryLongEndpoint/someLongEndpoint',
@@ -74,7 +74,7 @@ describe(ruleName, () => {
       },
       {
         code: 'resource-name-too-long',
-        message: '"veryLongEndpoint" is longer than allowed maximum of 15 (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+        message: 'Resource names are consistent and succinct; do not use abbreviations.; "veryLongEndpoint" is longer than allowed maximum of 15',
         path: [
           'paths',
           '/other/veryLongEndpoint',
@@ -93,7 +93,7 @@ describe(ruleName, () => {
       },
       {
         code: 'resource-name-too-long',
-        message: '"veryVeryVeryLongEndpoint" is longer than allowed maximum of 15 (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+        message: 'Resource names are consistent and succinct; do not use abbreviations.; "veryVeryVeryLongEndpoint" is longer than allowed maximum of 15',
         path: [
           'paths',
           '/veryVeryVeryLongEndpoint',

@@ -37,7 +37,7 @@ describe(ruleName, () => {
     expect(res).toEqual([
       {
         code: ruleName,
-        message: 'My API access tokens are passed via the HTTP \'Authorization\' header, with a \'Bearer\' prefix. Need to add "bearerFormat: jwt". (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+        message: 'My API access tokens are passed via the HTTP \'Authorization\' header, with a \'Bearer\' prefix.; "Bearer.bearerFormat" property must be truthy',
         path: [
           'components',
           'securitySchemes',

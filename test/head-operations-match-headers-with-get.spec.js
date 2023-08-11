@@ -37,7 +37,7 @@ describe(ruleName, () => {
       expect(res).toEqual([
         {
           code: ruleName,
-          message: 'The following headers are missing from the HEAD operation for response code 200: X-RateLimit-Limit (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+          message: 'HEAD operations must return response headers identical to the corresponding GET.; The following headers are missing from the HEAD operation for response code 200: X-RateLimit-Limit',
           path: [
             'paths',
             '/test',
@@ -67,7 +67,7 @@ describe(ruleName, () => {
       expect(res).toEqual([
         {
           code: ruleName,
-          message: 'The HEAD operation for response code 200 is missing a "headers" definition (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+          message: 'HEAD operations must return response headers identical to the corresponding GET.; The HEAD operation for response code 200 is missing a "headers" definition',
           path: [
             'paths',
             '/test',
@@ -116,7 +116,7 @@ describe(ruleName, () => {
       expect(res).toEqual([
         {
           code: ruleName,
-          message: 'The following headers are missing from the HEAD operation for response code 200: X-RateLimit-Limit (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+          message: 'HEAD operations must return response headers identical to the corresponding GET.; The following headers are missing from the HEAD operation for response code 200: X-RateLimit-Limit',
           path: [
             'paths',
             '/test',
@@ -146,7 +146,7 @@ describe(ruleName, () => {
       expect(res).toEqual([
         {
           code: ruleName,
-          message: 'The HEAD operation for response code 200 is missing a "headers" definition (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+          message: 'HEAD operations must return response headers identical to the corresponding GET.; The HEAD operation for response code 200 is missing a "headers" definition',
           path: [
             'paths',
             '/test',

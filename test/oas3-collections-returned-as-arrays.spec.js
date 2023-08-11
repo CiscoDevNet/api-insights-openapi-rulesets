@@ -37,7 +37,7 @@ describe(ruleName, () => {
     expect(res).toEqual([
       {
         code: ruleName,
-        message: 'Collections should be encapsulated within an object. Do not return un-encapsulated arrays (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+        message: 'Collections are returned as arrays encapsulated with a named field such as \'items\'.; "array" must not match the pattern "^array$"',
         path: [
           'paths',
           '/test',
@@ -63,7 +63,7 @@ describe(ruleName, () => {
       },
       {
         code: ruleName,
-        message: 'Collections should be encapsulated within an object. Do not return un-encapsulated arrays (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+        message: 'Collections are returned as arrays encapsulated with a named field such as \'items\'.; "array" must not match the pattern "^array$"',
         path: [
           'paths',
           '/test',
@@ -96,7 +96,7 @@ describe(ruleName, () => {
     expect(res).toEqual([
       {
         code: ruleName,
-        message: 'Collections should be encapsulated within an object. Do not return un-encapsulated arrays (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+        message: 'Collections are returned as arrays encapsulated with a named field such as \'items\'.; "array" must not match the pattern "^array$"',
         path: [
           'paths',
           '/test',
@@ -129,7 +129,7 @@ describe(ruleName, () => {
     expect(res).toEqual([
       {
         code: ruleName,
-        message: 'Collections should be encapsulated within an object. Do not return un-encapsulated arrays (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+        message: 'Collections are returned as arrays encapsulated with a named field such as \'items\'.; "array" must not match the pattern "^array$"',
         path: [
           'paths',
           '/test',
@@ -155,7 +155,7 @@ describe(ruleName, () => {
       },
       {
         code: ruleName,
-        message: 'Collections should be encapsulated within an object. Do not return un-encapsulated arrays (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+        message: 'Collections are returned as arrays encapsulated with a named field such as \'items\'.; "array" must not match the pattern "^array$"',
         path: [
           'paths',
           '/test',

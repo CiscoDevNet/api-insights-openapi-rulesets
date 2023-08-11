@@ -38,7 +38,7 @@ describe(ruleName, () => {
     expect(res).toEqual([
       {
         code: ruleName,
-        message: 'It is recommended to add a "sort" query parameter to sort this collection (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+        message: 'Sorting collections is designed with a \'sort\' query parameter.; It is recommended to add a "sort" query parameter to sort this collection',
         path: [
           'paths',
           '/test',
@@ -65,7 +65,7 @@ describe(ruleName, () => {
     expect(res).toEqual([
       {
         code: ruleName,
-        message: 'It is recommended to add a "sort" query parameter to sort this collection (https://developer.cisco.com/docs/api-insights/#!api-guidelines-analyzer)',
+        message: 'Sorting collections is designed with a \'sort\' query parameter.; It is recommended to add a "sort" query parameter to sort this collection',
         path: [
           'paths',
           '/test',
