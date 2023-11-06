@@ -24,6 +24,8 @@ import completedSchema from './functions/completedSchema.js';
 import ensureField from './functions/ensureField.js';
 import includeAll from './functions/includeAll.js';
 import keyMatchAnyPattern from './functions/keyMatchAnyPattern.js';
+import multiVersion from './functions/multiVersion.js';
+import operationIdCheck from './functions/operationIdCheck.js';
 export default {
   'extends': [
     [
@@ -160,5 +162,45 @@ export default {
         },
       },
     },
+    'multi-versions-server-url-missing-version': {
+      'description': 'No version is specified in the server object of the OpenAPI Document. Best practices recommend specifying the version in the server object only once',
+      'message': '{{description}}; {{error}}',
+      'severity': 'warn',
+      'given': [
+        '$',
+      ],
+      'then': {
+        'function': multiVersion,
+        'functionOptions': {
+          'check': 'server-url-missing',
+        },
+      },
+    },
+    'multi-versions': {
+      'description': 'should only contain a single API version at a time.',
+      'message': '{{description}}; {{error}}',
+      'severity': 'error',
+      'given': [
+        '$',
+      ],
+      'then': {
+        'function': multiVersion,
+      },
+    },
+    'operationId-required-uniq-verb-noun': {
+      'description': 'operationId must exist and uniq',
+      'message': '{{description}}; {{error}}',
+      'severity': 'warn',
+      'given': [
+        '$',
+      ],
+      'then': [
+        {
+          'function': operationIdCheck,
+        },
+      ],
+    },
+
+
   },
 };

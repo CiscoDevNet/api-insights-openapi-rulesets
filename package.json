@@ -5,6 +5,8 @@
   "scripts": {
     "build": "echo build tbd",
     "test": "jest --config ./jest.config.js",
+    "test0": "jest -t 'operationIdCheck'",
+    "test1": "jest -t 'should pass with provided returned representation'",
     "lint": "npx eslint --cache --ext '.js' .",
     "lint-strict": "npx eslint --cache --quiet --ext '.js' .",
     "lint-fix": "npx eslint --cache --quiet --ext '.js' --fix ."
@@ -28,6 +30,7 @@
     "@stoplight/spectral-functions": "^1.7.1",
     "@stoplight/spectral-ruleset-migrator": "^1.7.3",
     "@stoplight/spectral-rulesets": "^1.12.0",
+    "compromise": "^14.10.0",
     "lodash": "^4.17.21",
     "pluralize": "^8.0.0"
   },

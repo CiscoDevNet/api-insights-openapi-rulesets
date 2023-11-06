@@ -51,7 +51,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Pets"
+                  "$ref": "#/components/schemas/Pet"
                 }
               }
             }

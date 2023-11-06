@@ -29,7 +29,7 @@ module.exports = {
   rules: {
     'accessor-pairs': 'error',
     'array-bracket-newline': [
-      'error',
+      'warn',
       {
         multiline: true,
       },
@@ -40,7 +40,7 @@ module.exports = {
     ],
     'array-callback-return': 'error',
     'array-element-newline': [
-      'error',
+      'warn',
       {
         ArrayExpression: 'always',
         ArrayPattern: 'consistent',
