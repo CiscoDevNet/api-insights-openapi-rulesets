@@ -19,6 +19,7 @@
 import { oas } from '@stoplight/spectral-rulesets';
 import ensureExamples from './functions/ensureExamples.js';
 import ensureField from './functions/ensureField.js';
+import operationIdCheck from './functions/operationIdCheck.js';
 export default {
   'extends': [
     [
@@ -67,6 +68,19 @@ export default {
       'then': {
         'function': ensureExamples,
       },
+    },
+    'doc-operationId-required-uniq-verb-noun': {
+      'description': 'operationId must exist and uniq',
+      'message': '{{description}}; {{error}}',
+      'severity': 'error',
+      'given': [
+        '$',
+      ],
+      'then': [
+        {
+          'function': operationIdCheck,
+        },
+      ],
     },
   },
 };

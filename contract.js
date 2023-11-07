@@ -200,7 +200,5 @@ export default {
         },
       ],
     },
-
-
   },
 };

@@ -5,6 +5,9 @@ info:
   version: '1.0'
   contact:
     name: Dan Hayduk
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
 servers:
   - url: http://api.example.com/v1
 tags:
