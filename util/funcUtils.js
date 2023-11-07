@@ -33,8 +33,8 @@ export function isVerb(word) {
  * @returns {Boolean} if word is a noun.
  */
 export function isNoun(word) {
-  // 'pet can be verb or noun. This function will think single pet as verb. So use this trick to solve it.
-  return nlp('my ' + word).nouns().out('array').length > 0;
+  // pet can be verb or noun. This function will think single pet as verb.
+  return nlp(word).nouns().out('array').length > 0;
   // return nlp(word).nouns().out('array').length > 0;
 }
 

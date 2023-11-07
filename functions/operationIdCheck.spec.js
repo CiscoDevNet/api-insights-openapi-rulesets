@@ -33,13 +33,13 @@ describe('operationIdCheck', () => {
       '/test2': {
         'get': {
           'description': 'Get some test data1.',
-          'operationId': 'getPet',
+          'operationId': 'getData',
         },
       },
       '/test3': {
         'get': {
           'description': 'Get some test data1.',
-          'operationId': 'get-pet',
+          'operationId': 'get-data',
         },
       },
     },

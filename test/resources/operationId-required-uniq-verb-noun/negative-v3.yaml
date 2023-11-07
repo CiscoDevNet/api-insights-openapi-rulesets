@@ -119,6 +119,36 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
+    post:
+      description: Modify some test data.
+      operationId: TestData1
+      tags:
+        - Sample
+      requestBody:
+        description: descllla
+        content:
+          application/merge-patch+json:
+            schema:
+              type: string
+              example: s
+          application/json:
+            schema:
+              type: string
+              example: s
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: string
+                example: s
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
 components:
   schemas:
     Pet:

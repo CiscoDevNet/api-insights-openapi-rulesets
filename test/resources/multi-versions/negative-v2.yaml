@@ -8,6 +8,8 @@ info:
   license:
     name: Apache 2.0
     url: https://www.apache.org/licenses/LICENSE-2.0
+consumes:
+  - application/json
 host: api.example.com
 basePath: /v1/app
 schemes:
@@ -148,7 +150,7 @@ paths:
       tags:
         - Sample
       description: Modify some test data.
-      operationId: patchTestData
+      operationId: patchTestData2
 definitions:
   Error:
     example:

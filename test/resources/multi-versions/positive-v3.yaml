@@ -141,7 +141,7 @@ paths:
                 $ref: '#/components/schemas/Error'
     patch:
       description: Modify some test data.
-      operationId: patchTestData
+      operationId: patchTestData2
       tags:
         - Sample
       requestBody:

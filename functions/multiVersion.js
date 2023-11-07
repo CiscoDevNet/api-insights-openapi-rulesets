@@ -55,6 +55,10 @@ export default function (targetVal, opts) {
   for (const { url } of getAllServerURLs(targetVal)) {
     const version = getVersion(url);
 
+    if (version === '') {
+      continue;
+    }
+
     if (serverFirstVersion === '') {
       serverFirstVersion = version;
     }
