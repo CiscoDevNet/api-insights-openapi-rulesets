@@ -17,6 +17,8 @@
  */
 
 import { oas } from '@stoplight/spectral-rulesets';
+import { oas3_1 } from '@stoplight/spectral-formats';
+import defaultInEnum from './functions/defaultInEnum.js';
 export default {
   'extends': [
     [
@@ -29,5 +31,19 @@ export default {
     'oas2-schema': 'error',
     'oas3-operation-security-defined': 'error',
     'oas2-operation-security-defined': 'error',
+    'server-variable-default': {
+      'description': 'default must be within the enum',
+      'message': '{{description}}; {{error}}',
+      'severity': 'error',
+      'formats': [oas3_1],
+      'given': [
+        '$.servers[*].variables',
+      ],
+      'then': [
+        {
+          'function': defaultInEnum,
+        },
+      ],
+    },
   },
 };
