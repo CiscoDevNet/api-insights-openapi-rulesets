@@ -17,6 +17,7 @@
  */
 
 import { oas } from '@stoplight/spectral-rulesets';
+import { xor } from '@stoplight/spectral-functions/dist';
 import ensureExamples from './functions/ensureExamples.js';
 import ensureField from './functions/ensureField.js';
 import operationIdCheck from './functions/operationIdCheck.js';
@@ -31,7 +32,23 @@ export default {
     'info-contact': 'warn',
     'info-description': 'warn',
     'info-license': 'warn',
-    'license-url': 'warn',
+    'license-url': {
+      'description': 'License object must include "url" or "identifier"',
+      'message': '{{description}}; {{error}}',
+      'severity': 'warn',
+      'given': [
+        '$.info.license',
+      ],
+      'then': {
+        'function': xor,
+        'functionOptions': {
+          'properties': [
+            'url',
+            'identifier',
+          ],
+        },
+      },
+    },
     'description-for-every-attribute': {
       'description': 'DEA - Descriptions for Every Attribute',
       'message': 'For every attribute that is present in the OAS document, if a description is proposed as optional to complement that attribute, then yes it must be present; {{error}}',
