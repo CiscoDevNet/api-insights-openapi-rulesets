@@ -187,10 +187,10 @@ export default {
         'function': multiVersion,
       },
     },
-    'operationId-required-uniq-verb-noun': {
-      'description': 'operationId must exist and uniq',
+    'operationId-required-and-unique': {
+      'description': 'operationId must be required and uniq',
       'message': '{{description}}; {{error}}',
-      'severity': 'warn',
+      'severity': 'error',
       'given': [
         '$',
       ],

@@ -5,8 +5,6 @@
   "scripts": {
     "build": "echo build tbd",
     "test": "jest --config ./jest.config.js",
-    "test0": "jest -t 'operationIdCheck'",
-    "test1": "jest -t 'should pass with provided returned representation'",
     "lint": "npx eslint --cache --ext '.js' .",
     "lint-strict": "npx eslint --cache --quiet --ext '.js' .",
     "lint-fix": "npx eslint --cache --quiet --ext '.js' --fix ."

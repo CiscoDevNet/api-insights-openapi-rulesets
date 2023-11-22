@@ -20,7 +20,6 @@ import { oas } from '@stoplight/spectral-rulesets';
 import { xor } from '@stoplight/spectral-functions/dist';
 import ensureExamples from './functions/ensureExamples.js';
 import ensureField from './functions/ensureField.js';
-import operationIdCheck from './functions/operationIdCheck.js';
 export default {
   'extends': [
     [
@@ -32,6 +31,9 @@ export default {
     'info-contact': 'warn',
     'info-description': 'warn',
     'info-license': 'warn',
+    'operation-operationId-unique': 'error',
+    'operation-operationId': 'error',
+    'operation-operationId-valid-in-url': 'error',
     'license-url': {
       'description': 'License object must include "url" or "identifier"',
       'message': '{{description}}; {{error}}',
@@ -85,19 +87,6 @@ export default {
       'then': {
         'function': ensureExamples,
       },
-    },
-    'doc-operationId-required-uniq-verb-noun': {
-      'description': 'operationId must exist and uniq',
-      'message': '{{description}}; {{error}}',
-      'severity': 'error',
-      'given': [
-        '$',
-      ],
-      'then': [
-        {
-          'function': operationIdCheck,
-        },
-      ],
     },
   },
 };

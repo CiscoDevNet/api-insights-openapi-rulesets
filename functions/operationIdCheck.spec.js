@@ -45,13 +45,13 @@ describe('operationIdCheck', () => {
     },
   };
 
-  test('should pass if operationId uniq and in verb noun format', () => {
+  test('should pass if operationId uniq', () => {
     const res = operationIdCheck(targetVal, opts);
 
     expect(res).toEqual([]);
   });
 
-  test('should fail when operationId missing, not in verb noun format', () => {
+  test('should fail when operationId missing', () => {
     const targetVal = {
       'paths': {
         '/test1': {
@@ -75,15 +75,6 @@ describe('operationIdCheck', () => {
         path: [
           'paths',
           '/test1',
-          'get',
-          'operationId',
-        ],
-      },
-      {
-        message: 'operationId is not in verb noun format.',
-        path: [
-          'paths',
-          '/test2',
           'get',
           'operationId',
         ],

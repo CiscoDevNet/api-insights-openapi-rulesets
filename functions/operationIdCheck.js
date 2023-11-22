@@ -18,9 +18,7 @@
 
 'use strict';
 
-import {
-  isObject, isVerb, isNoun,
-} from '../util/funcUtils.js';
+import { isObject } from '../util/funcUtils.js';
 
 /**
  * Checks operationId is uniq and use the verbNoun format
@@ -55,15 +53,6 @@ export default function (targetVal) {
     }
 
     const { operationId } = operationValue;
-
-    const [verb, noun] = split(operationId);
-
-    if (!verb || !noun || !isVerb(verb) || !isNoun(noun)) {
-      results.push({
-        message: 'operationId is not in verb noun format.',
-        path: ['paths', path, operation, 'operationId'],
-      });
-    }
 
     if (seenIds.includes(operationId)) {
       results.push({
