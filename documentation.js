@@ -31,9 +31,6 @@ export default {
     'info-contact': 'warn',
     'info-description': 'warn',
     'info-license': 'warn',
-    'operation-operationId-unique': 'error',
-    'operation-operationId': 'error',
-    'operation-operationId-valid-in-url': 'error',
     'license-url': {
       'description': 'License object must include "url" or "identifier"',
       'message': '{{description}}; {{error}}',
