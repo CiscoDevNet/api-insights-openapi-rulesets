@@ -1,6 +1,6 @@
 # api-insights-openapi-rulesets
 
-The API Insights OpenAPI ruleset is a project to programatically check conformance of API specification against REST API Guidelines. These guidelines are developed and supported as part of [API Insights](https://github.com/cisco-developer/api-insights). 
+The Cisco OpenAPI ruleset is a project to programatically check conformance of API specification against REST API Guidelines. These guidelines are developed and supported as part of Cisco's internal API experience program. 
 
 This module implements a set of lintable REST API best practices, linters can be used validate API Specs in Swagger2 or OAS3 format. The project implements 2 linter rulesets. 
 1. REST Guidelines :  Lintable REST API best practices related to API Design, API implementation, API testing and developer experience. For details refer [rest-guidelines.md](docs/rest-guidelines.md)
@@ -9,7 +9,7 @@ This module implements a set of lintable REST API best practices, linters can be
 
 These custom rulesets are implemented using [Spectral](https://github.com/stoplightio/spectral) open source linter. 
 
-Note: In addition to the above rulesets [API Insights](https://github.com/cisco-developer/api-insights) also includes an "Inclusive Language" analyzer. [cisco-open/inclusive-language project](https://github.com/cisco-open/inclusive-language) is a collection of tools and resources for working on eliminating biased language.
+Note: In addition to the above rulesets you may want to consider an "Inclusive Language" analyzer. Check the [cisco-open/inclusive-language project](https://github.com/cisco-open/inclusive-language) for a collection of tools and resources for working on eliminating biased language. See also linter projects like [Woke](https://getwoke.tech) and [AlexJS](https://alexjs.com/).
 
 ## Installation
 
