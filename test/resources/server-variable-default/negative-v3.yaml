@@ -2,7 +2,7 @@ openapi: 3.1.0
 info:
   title: Sample API
   description: This is a sample API.
-  version: '1.0'
+  version: '1.0.0'
   contact:
     name: Dan Hayduk
   license:
