@@ -141,7 +141,17 @@ function* getAllServerURLs(doc) {
 
   for (let i = 0; i < doc.servers.length; i++) {
     item.path = ['servers', i];
-    item.url = doc.servers[i].url;
+
+    let { url } = doc.servers[i];
+    const vars = url.match(/{([^}]+)}/g);
+
+    if (vars) {
+      for (const v of vars) {
+        url = url.replace(v, doc.servers[i].variables?.[v.slice(1, -1)]?.default);
+      }
+    }
+
+    item.url = url;
     yield item;
   }
 }

@@ -12,6 +12,12 @@ servers:
   - url: http://api.example.com/v1
   - url: http://api.example3.com/v1
   - url: http://api.example2.com/v1/
+  - url: https://api.example4.com:{port}/{basePath}
+    variables:
+      basePath:
+        default: api/v1
+      port:
+        default: '80'
 tags:
   - name: Sample
 paths:
