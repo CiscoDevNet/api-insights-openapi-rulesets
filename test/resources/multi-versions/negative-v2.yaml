@@ -1,0 +1,192 @@
+swagger: '2.0'
+info:
+  contact:
+    name: Dan Hayduk
+  description: This is a sample API.
+  title: Sample API
+  version: '1.0.0'
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+consumes:
+  - application/json
+host: api.example.com
+basePath: /v1/app
+schemes:
+  - http
+paths:
+  /v2/test1:
+    get:
+      produces:
+        - application/json
+      parameters:
+        - description: How many items to return at one time (max 100)
+          format: int32
+          in: query
+          name: limit
+          required: false
+          type: integer
+      responses:
+        '200':
+          description: OK
+          headers:
+            X-RateLimit-Limit:
+              type: integer
+          schema:
+            example:
+              id: 1
+              name: tom
+              tag: man
+            properties:
+              id:
+                format: int64
+                type: integer
+              name:
+                type: string
+              tag:
+                type: string
+            required:
+              - id
+              - name
+        '500':
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+      tags:
+        - Sample
+      description: Get some test data1.
+      operationId: getTestData1
+    patch:
+      consumes:
+        - application/merge-patch+json
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - description: descllla
+          in: body
+          name: body
+          schema:
+            example: s
+            type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            example: s
+            type: string
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+      tags:
+        - Sample
+      description: Modify some test data.
+      operationId: patchTestData
+  /v3/test:
+    get:
+      produces:
+        - application/json
+      parameters:
+        - description: How many items to return at one time (max 100)
+          format: int32
+          in: query
+          name: limit
+          required: false
+          type: integer
+      responses:
+        '200':
+          description: OK
+          headers:
+            X-RateLimit-Limit:
+              type: integer
+          schema:
+            example:
+              id: 1
+              name: tom
+              tag: man
+            properties:
+              id:
+                format: int64
+                type: integer
+              name:
+                type: string
+              tag:
+                type: string
+            required:
+              - id
+              - name
+        '500':
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+      tags:
+        - Sample
+      description: Get some test data.
+      operationId: getTestData
+    patch:
+      consumes:
+        - application/merge-patch+json
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - description: descllla
+          in: body
+          name: body
+          schema:
+            example: s
+            type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            example: s
+            type: string
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+      tags:
+        - Sample
+      description: Modify some test data.
+      operationId: patchTestData2
+definitions:
+  Error:
+    example:
+      code: 2
+      message: m
+    properties:
+      code:
+        format: int32
+        type: integer
+      message:
+        type: string
+    required:
+      - code
+      - message
+  Pet:
+    properties:
+      id:
+        format: int64
+        type: integer
+      name:
+        type: string
+      tag:
+        type: string
+    required:
+      - id
+      - name
+  Pets:
+    items:
+      $ref: '#/definitions/Pet'
+    type: array
+securityDefinitions:
+  api_key:
+    description: desc
+    in: header
+    name: api_key
+    type: apiKey
+tags:
+  - name: Sample
+x-components: {}

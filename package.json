@@ -28,6 +28,7 @@
     "@stoplight/spectral-functions": "^1.7.1",
     "@stoplight/spectral-ruleset-migrator": "^1.7.3",
     "@stoplight/spectral-rulesets": "^1.12.0",
+    "compromise": "^14.10.0",
     "lodash": "^4.17.21",
     "pluralize": "^8.0.0"
   },
