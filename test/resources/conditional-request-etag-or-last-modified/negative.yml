@@ -1,0 +1,51 @@
+openapi: '3.0.3'
+info:
+  title: Sample API
+  description: This is a sample API.
+  version: '1.0'
+  contact:
+    name: Scott Hardin
+servers:
+  - url: http://api.example.com
+tags:
+  - name: Sample
+    description: This is a sample tag.
+paths:
+  /test/{testId}:
+    get:
+      description: get some test data.
+      operationId: getTestData
+      tags:
+        - Sample
+      parameters:
+        - in: header
+          name: If-Range
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Created
+          headers:
+            SomeHeader:
+              schema:
+                type: string
+        '404':
+          description: Not Found
+  /anotherTest:
+    get:
+      description: get some more test data.
+      operationId: getAnotherTestData
+      tags:
+        - Sample
+      parameters:
+        - in: header
+          name: If-Range
+          schema:
+            type: string
+      responses:
+        '200':
+          description: No Content
+          headers:
+            Etag:
+              schema:
+                type: string
