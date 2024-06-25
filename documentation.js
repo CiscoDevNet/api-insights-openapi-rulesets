@@ -57,7 +57,7 @@ export default {
         '$.server',
         '$.externalDocs',
         '$.paths.*.*.parameters.*',
-        '$.paths.*.*.requestBody',
+        '$.paths.*.*.requestBody.content.*.schema.properties.*',
         '$.paths.*.*.responses.*',
         '$.paths.*.*.examples.*',
         '$.paths.*.*.responses.links.*',
