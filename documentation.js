@@ -78,7 +78,6 @@ export default {
       'given': [
         '$.paths.*.*.*.*.content[?(@ && @.schema)]',
         '$.paths.*.*.*.content[?(@ && @.schema)]',
-        '$.paths.*.*.responses[*].headers[?(@ && @.schema)]',
         '$.paths.*.*.responses[?(@ && @.schema)]',
       ],
       'then': {
