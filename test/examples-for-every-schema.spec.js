@@ -35,7 +35,7 @@ describe(ruleName, () => {
     const expected = [
       {
         "code": "examples-for-every-schema",
-        "message": "For every schema provided in the OAS document, at least one example must be present; example or examples is missing in the object",
+        "message": "Examples should be provided.  The schema is missing an example. Update the schema to include an example.",
         "path": [
           "paths",
           "/test",
@@ -59,7 +59,7 @@ describe(ruleName, () => {
       },
       {
         "code": "examples-for-every-schema",
-        "message": "For every schema provided in the OAS document, at least one example must be present; example or examples is missing in the object",
+        "message": "Examples should be provided.  The schema is missing an example. Update the schema to include an example.",
         "path": [
           "paths",
           "/test",
@@ -83,7 +83,7 @@ describe(ruleName, () => {
       },
       {
         "code": "examples-for-every-schema",
-        "message": "For every schema provided in the OAS document, at least one example must be present; example or examples is missing in the object",
+        "message": "Examples should be provided.  The schema is missing an example. Update the schema to include an example.",
         "path": [
           "paths",
           "/test",
@@ -107,7 +107,7 @@ describe(ruleName, () => {
       },
       {
         "code": "examples-for-every-schema",
-        "message": "For every schema provided in the OAS document, at least one example must be present; example or examples is missing in the object",
+        "message": "Examples should be provided.  The schema is missing an example. Update the schema to include an example.",
         "path": [
           "paths",
           "/test",
