@@ -42,7 +42,7 @@ module.exports = function (targetVal) {
 
   return [
     {
-      message: 'example or examples is missing in the object',
+      message: 'The schema is missing an example',
     },
   ];
 };
