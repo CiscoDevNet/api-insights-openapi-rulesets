@@ -73,7 +73,7 @@ export default {
     },
     'examples-for-every-schema': {
       'description': 'For every schema provided in the OAS document, at least one example must be present',
-      'message': '{{description}}; {{error}}',
+      'message': 'Examples should be provided.  {{error}}. Update the schema to include an example.',
       'severity': 'warn',
       'given': [
         '$.paths.*.*.*.*.content[?(@ && @.schema)]',
