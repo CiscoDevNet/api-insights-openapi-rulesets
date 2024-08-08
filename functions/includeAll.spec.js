@@ -16,7 +16,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-const includeAll = require('./includeAll');
+import includeAll from './includeAll.js';
 
 describe('includeAll', () => {
 

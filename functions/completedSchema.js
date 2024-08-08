@@ -23,7 +23,7 @@
  * @param {string} targetVal The string to lint
  * @param {Options} opts String requirements given by the linter ruleset
  */
-module.exports = function (targetVal) {
+export default function (targetVal) {
   if (typeof targetVal !== 'object') {
     return;
   }
@@ -46,4 +46,4 @@ module.exports = function (targetVal) {
       message: 'properties missing for object schema',
     },
   ];
-};
+}

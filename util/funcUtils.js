@@ -15,8 +15,7 @@
  *
  * SPDX-License-Identifier: Apache-2.0
  */
-
-const nlp = require('compromise');
+import nlp from 'compromise';
 
 /**
  * Determines if a word is a verb.

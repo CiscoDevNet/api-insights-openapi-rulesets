@@ -23,7 +23,7 @@
  * @param {string} targetVal The string to lint
  * @param {Options} opts String requirements given by the linter ruleset
  */
-module.exports = function (targetVal) {
+export default function (targetVal) {
   if (typeof targetVal !== 'object') {
     return;
   }
@@ -45,7 +45,7 @@ module.exports = function (targetVal) {
       message: 'example or examples is missing in the object',
     },
   ];
-};
+}
 
 function hasExample(target) {
   if (target == null || target.examples || target.example) {
