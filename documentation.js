@@ -20,6 +20,11 @@ import { oas } from '@stoplight/spectral-rulesets';
 import { xor } from '@stoplight/spectral-functions/dist';
 import ensureExamples from './functions/ensureExamples.js';
 import ensureField from './functions/ensureField.js';
+import ensureUniqueErrorDescriptions from './functions/ensureUniqueErrorDescriptions.js';
+import ensureErrorConsistency from './functions/ensureErrorConsistency.js';
+import ensureTagConsistency from './functions/ensureTagConsistency.js';
+import ensureOperationIdConsistency from './functions/ensureOperationIdConsistency.js';
+
 export default {
   'extends': [
     [
@@ -85,5 +90,44 @@ export default {
         'function': ensureExamples,
       },
     },
+    'error-description-unique-for-method': {
+      'description': 'Error descriptions should be unique.',
+      'message': '{{description}} {{error}}',
+      'severity': 'warn',
+      'given': '$.paths',
+      'then': {
+        'function': ensureUniqueErrorDescriptions,
+      },
+    },
+    'error-code-description-consistent': {
+      'description': 'For each error code, the description should be consistent across the API.',
+      'message': '{{description}} {{error}}',
+      'severity': 'warn',
+      'given': '$',
+      'then': {
+        'function': ensureErrorConsistency,
+      },
+    },
+    'tag-name-case-consistent': {
+      'description': 'Tags should have consistent casing for the same tag.',
+      'message': '{{description}} {{error}}',
+      'severity': 'warn',
+      'given': '$',
+      'then': {
+        'function': ensureTagConsistency,
+      },
+    },
+    'operationId-name-case-consistent': {
+      'description': 'OperationIds should have consistent casing.',
+      'message': '{{description}} {{error}}',
+      'severity': 'warn',
+      'given': '$',
+      'then': {
+        'function': ensureOperationIdConsistency,
+      },
+    },
+    'oas3-valid-media-example': 'error',
+    'oas2-valid-media-example': 'error',
+    'oas3-valid-schema-example': 'error',
   },
 };

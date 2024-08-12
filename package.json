@@ -2,9 +2,10 @@
   "name": "@cisco-developer/api-insights-openapi-rulesets",
   "version": "v0.0.0",
   "description": "API Insights Spectral rulesets",
+  "type": "module",
   "scripts": {
     "build": "echo build tbd",
-    "test": "jest --config ./jest.config.js",
+    "test": "jest --config ./jest.config.cjs",
     "lint": "npx eslint --cache --ext '.js' .",
     "lint-strict": "npx eslint --cache --quiet --ext '.js' .",
     "lint-fix": "npx eslint --cache --quiet --ext '.js' --fix ."
