@@ -22,12 +22,12 @@
   "author": "DevRel",
   "dependencies": {
     "@jest/globals": "^29.0.3",
-    "@stoplight/spectral-cli": "^6.4.1",
-    "@stoplight/spectral-core": "^1.12.2",
-    "@stoplight/spectral-formats": "^1.2.0",
-    "@stoplight/spectral-functions": "^1.7.1",
-    "@stoplight/spectral-ruleset-migrator": "^1.7.3",
-    "@stoplight/spectral-rulesets": "^1.12.0",
+    "@stoplight/spectral-cli": "6.9.0",
+    "@stoplight/spectral-core": "1.18.3",
+    "@stoplight/spectral-formats": "1.6.0",
+    "@stoplight/spectral-functions": "1.8.0",
+    "@stoplight/spectral-ruleset-migrator": "1.9.5",
+    "@stoplight/spectral-rulesets": "1.19.1",
     "compromise": "^14.10.0",
     "lodash": "^4.17.21",
     "pluralize": "^8.0.0"
