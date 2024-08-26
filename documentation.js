@@ -68,6 +68,8 @@ export default {
         '$.paths.*.*.responses.links.*',
         '$.*.securitySchemes.*',
         '$.securityDefinitions.*',
+        '$.components.schemas.[*].properties.*',
+        '$.components.schemas.*',
       ],
       'then': {
         'function': ensureField,
