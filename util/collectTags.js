@@ -1,4 +1,3 @@
-
 /**
  * Copyright 2022 Cisco Systems, Inc. and its affiliates.
  *
@@ -17,9 +16,9 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 'use strict';
-const isObject = value => value !== null && typeof value === 'object';
+const isObject = (value) => value !== null && typeof value === 'object';
 
-export default function collectTags (targetVal) {
+export default function collectTags(targetVal) {
   if (!isObject(targetVal)) {
     return new Map();
   }
@@ -45,5 +44,5 @@ export default function collectTags (targetVal) {
   }, new Map());
 
   return allTags;
-};
+}
 

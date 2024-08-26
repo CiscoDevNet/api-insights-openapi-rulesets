@@ -36,7 +36,7 @@ describe(ruleName, () => {
     expect(res).toEqual([
       {
         code: ruleName,
-        message: '2XX (except 204) responses must have a response schema defined; schema is missing in the object',
+        message: '2XX (except 204) responses must have a response schema defined.; schema is missing in the object',
         path: [
           'paths',
           '/test',

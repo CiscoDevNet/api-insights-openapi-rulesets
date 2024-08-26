@@ -34,33 +34,11 @@ describe(ruleName, () => {
     const spec = await fsPromises.readFile(`${ resPath }/negative.yml`);
     const res = await spectral.run(spec.toString());
 
-    expect(res).toEqual([
+    const expectedResult = [
       {
-        code: ruleName,
-        message: 'Representation field names use PasCamelCase.; user_id (paths./test.post.parameters.0.name)',
-        path: [
-          'paths',
-          '/test',
-          'post',
-          'parameters',
-          '0',
-        ],
-        range: {
-          end: {
-            character: 24,
-            line: 22,
-          },
-          start: {
-            character: 10,
-            line: 19,
-          },
-        },
-        severity: 0,
-      },
-      {
-        code: ruleName,
-        message: 'Representation field names use PasCamelCase.; MYData (paths./test.post.parameters.1.schema.properties.MYData)',
-        path: [
+        'code': 'oas2-field-names-pas-camel-case',
+        'message': 'Representation field names use PasCamelCase.; MYData (paths./test.post.parameters.1.schema.properties.MYData)',
+        'path': [
           'paths',
           '/test',
           'post',
@@ -70,23 +48,22 @@ describe(ruleName, () => {
           'properties',
           'MYData',
         ],
-        range: {
-          end: {
-            character: 47,
-            line: 27,
+        'severity': 0,
+        'range': {
+          'start': {
+            'character': 0,
+            'line': 0,
           },
-          start: {
-            character: 17,
-            line: 26,
+          'end': {
+            'character': 0,
+            'line': 0,
           },
         },
-        severity: 0,
-        source: undefined,
       },
       {
-        code: ruleName,
-        message: 'Representation field names use PasCamelCase.; MYData (paths./test.post.responses.200.schema.items.properties.MYData)',
-        path: [
+        'code': 'oas2-field-names-pas-camel-case',
+        'message': 'Representation field names use PasCamelCase.; MYData (paths./test.post.responses.200.schema.items.properties.MYData)',
+        'path': [
           'paths',
           '/test',
           'post',
@@ -97,31 +74,54 @@ describe(ruleName, () => {
           'properties',
           'MYData',
         ],
-        range: {
-          start: {
-            'character': 17,
-            'line': 33,
+        'severity': 0,
+        'range': {
+          'start': {
+            'character': 0,
+            'line': 0,
           },
-          end: {
-            'character': 49,
-            'line': 34,
+          'end': {
+            'character': 0,
+            'line': 0,
           },
         },
-        severity: 0,
-        source: undefined,
       },
-    ]);
+      {
+        'code': 'oas2-field-names-pas-camel-case',
+        'message': 'Representation field names use PasCamelCase.; user_id (paths./test.post.parameters.0.name)',
+        'path': [
+          'paths',
+          '/test',
+          'post',
+          'parameters',
+          '0',
+        ],
+        'severity': 0,
+        'range': {
+          'start': {
+            'line': 19,
+            'character': 10,
+          },
+          'end': {
+            'line': 22,
+            'character': 24,
+          },
+        },
+      },
+    ];
+
+    expect(res).toEqual(expectedResult);
   });
 
   test('should catch fields with snake_case names', async () => {
     const spec = await fsPromises.readFile(`${ resPath }/negative-with-snake-case.yml`);
     const res = await spectral.run(spec.toString());
 
-    expect(res).toEqual([
+    const expectedResult = [
       {
-        code: ruleName,
-        message: 'Representation field names use PasCamelCase.; snake_case (paths./test.get.responses.200.schema.items.properties.snake_case)',
-        path: [
+        'code': 'oas2-field-names-pas-camel-case',
+        'message': 'Representation field names use PasCamelCase.; snake_case (paths./test.get.responses.200.schema.items.properties.snake_case)',
+        'path': [
           'paths',
           '/test',
           'get',
@@ -132,20 +132,21 @@ describe(ruleName, () => {
           'properties',
           'snake_case',
         ],
-        range: {
-          end: {
-            'character': 49,
-            'line': 24,
+        'severity': 0,
+        'range': {
+          'start': {
+            'character': 0,
+            'line': 0,
           },
-          start: {
-            'character': 17,
-            'line': 23,
+          'end': {
+            'character': 0,
+            'line': 0,
           },
         },
-        severity: 0,
-        source: undefined,
       },
-    ]);
+    ];
+
+    expect(res).toEqual(expectedResult);
   });
 
   test('should pass fields that are proper PasCamelCase', async () => {

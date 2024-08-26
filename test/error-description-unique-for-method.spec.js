@@ -38,7 +38,7 @@ describe(ruleName, () => {
     const expectedTestResult = [
       {
         'code': 'error-description-unique-for-method',
-        'message': 'Error descriptions should be unique. Error Description "error" should be unique within each API operation but is duplicated for these codes: 401, 429, 500',
+        'message': 'For each Error status-code defined, the description must be unique.; Error Description \"error\" should be unique within each API operation but is duplicated for these codes: 401, 429, 500',
         'path': [
           'paths',
           '/organizations',

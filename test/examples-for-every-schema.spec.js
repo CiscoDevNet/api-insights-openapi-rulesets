@@ -32,12 +32,11 @@ describe(ruleName, () => {
   test('should throw an error if missing example', async () => {
     const spec = await fsPromises.readFile(`${ resPath }/negative.json`);
     const res = await spectral.run(spec.toString());
-
-    expect(res).toEqual([
+    const expectedResult = [
       {
-        code: ruleName,
-        message: 'For every schema provided in the OAS document, at least one example must be present; example or examples is missing in the object',
-        path: [
+        'code': 'examples-for-every-schema',
+        'message': 'For every schema provided in the OAS document, at least one example must be present.; example or examples is missing in the object',
+        'path': [
           'paths',
           '/test',
           'get',
@@ -46,22 +45,22 @@ describe(ruleName, () => {
           'headers',
           'X-RateLimit-Limit',
         ],
-        range: {
-          end: {
-            character: 35,
-            line: 47,
+        'severity': 1,
+        'range': {
+          'start': {
+            'line': 45,
+            'character': 34,
           },
-          start: {
-            character: 34,
-            line: 45,
+          'end': {
+            'line': 47,
+            'character': 35,
           },
         },
-        severity: 1,
       },
       {
-        code: ruleName,
-        message: 'For every schema provided in the OAS document, at least one example must be present; example or examples is missing in the object',
-        path: [
+        'code': 'examples-for-every-schema',
+        'message': 'For every schema provided in the OAS document, at least one example must be present.; example or examples is missing in the object',
+        'path': [
           'paths',
           '/test',
           'get',
@@ -70,22 +69,22 @@ describe(ruleName, () => {
           'content',
           'application/json',
         ],
-        range: {
-          end: {
-            character: 38,
-            line: 67,
+        'severity': 1,
+        'range': {
+          'start': {
+            'line': 52,
+            'character': 33,
           },
-          start: {
-            character: 33,
-            line: 52,
+          'end': {
+            'line': 67,
+            'character': 38,
           },
         },
-        severity: 1,
       },
       {
-        code: ruleName,
-        message: 'For every schema provided in the OAS document, at least one example must be present; example or examples is missing in the object',
-        path: [
+        'code': 'examples-for-every-schema',
+        'message': 'For every schema provided in the OAS document, at least one example must be present.; example or examples is missing in the object',
+        'path': [
           'paths',
           '/test',
           'get',
@@ -94,22 +93,22 @@ describe(ruleName, () => {
           'content',
           'application/json',
         ],
-        range: {
-          end: {
-            character: 61,
-            line: 79,
+        'severity': 1,
+        'range': {
+          'start': {
+            'line': 77,
+            'character': 33,
           },
-          start: {
-            character: 33,
-            line: 77,
+          'end': {
+            'line': 79,
+            'character': 61,
           },
         },
-        severity: 1,
       },
       {
-        code: ruleName,
-        message: 'For every schema provided in the OAS document, at least one example must be present; example or examples is missing in the object',
-        path: [
+        'code': 'examples-for-every-schema',
+        'message': 'For every schema provided in the OAS document, at least one example must be present.; example or examples is missing in the object',
+        'path': [
           'paths',
           '/test',
           'get',
@@ -118,22 +117,22 @@ describe(ruleName, () => {
           'content',
           'application/json',
         ],
-        range: {
-          end: {
-            character: 63,
-            line: 91,
+        'severity': 1,
+        'range': {
+          'start': {
+            'line': 87,
+            'character': 33,
           },
-          start: {
-            character: 33,
-            line: 87,
+          'end': {
+            'line': 91,
+            'character': 63,
           },
         },
-        severity: 1,
       },
       {
-        code: ruleName,
-        message: 'For every schema provided in the OAS document, at least one example must be present; example or examples is missing in the object',
-        path: [
+        'code': 'examples-for-every-schema',
+        'message': 'For every schema provided in the OAS document, at least one example must be present.; example or examples is missing in the object',
+        'path': [
           'paths',
           '/test',
           'patch',
@@ -142,19 +141,21 @@ describe(ruleName, () => {
           'content',
           'application/json',
         ],
-        range: {
-          end: {
-            character: 38,
-            line: 160,
+        'severity': 1,
+        'range': {
+          'start': {
+            'line': 147,
+            'character': 33,
           },
-          start: {
-            character: 33,
-            line: 147,
+          'end': {
+            'line': 160,
+            'character': 38,
           },
         },
-        severity: 1,
       },
-    ]);
+    ];
+
+    expect(res).toEqual(expectedResult);
   });
   test('should pass with provided example', async () => {
     const spec = await fsPromises.readFile(`${ resPath }/positive.json`);

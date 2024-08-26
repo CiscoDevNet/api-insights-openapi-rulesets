@@ -32,10 +32,11 @@ describe(ruleName, () => {
   test('should throw an error if ...', async () => {
     const spec = await fsPromises.readFile(`${ resPath }/negative.yml`);
     const res = await spectral.run(spec.toString());
-    const expectedTestResult =     [
+
+    const expectedTestResult = [
       {
         'code': 'operationId-name-case-consistent',
-        'message': 'OperationIds should have consistent casing. Inconsistent casing types detected. Found: Pascal, camel.',
+        'message': 'OperationIds should have consistent casing.; Inconsistent casing types detected. Found: Pascal, camel.',
         'path': [],
         'severity': 1,
         'range': {

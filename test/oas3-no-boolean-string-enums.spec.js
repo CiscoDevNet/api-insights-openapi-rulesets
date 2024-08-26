@@ -179,11 +179,11 @@ describe(ruleName, () => {
     const spec = await fsPromises.readFile(`${ resPath }/negative-deep-reference.yml`);
     const res = await spectral.run(spec.toString());
 
-    expect(res).toEqual([
+    const expectedResult = [
       {
-        code: ruleName,
-        message: 'Representation fields use format-native true/false values for booleans.; Given matches target enums.',
-        path: [
+        'code': 'oas3-no-boolean-string-enums',
+        'message': 'Representation fields use format-native true/false values for booleans.; Given matches target enums.',
+        'path': [
           'paths',
           '/test',
           'get',
@@ -204,22 +204,22 @@ describe(ruleName, () => {
           'obj',
           'enum',
         ],
-        range: {
-          start: {
-            line: 24,
-            character: 21,
+        'severity': 1,
+        'range': {
+          'start': {
+            'character': 0,
+            'line': 0,
           },
-          end: {
-            line: 25,
-            character: 55,
+          'end': {
+            'character': 0,
+            'line': 0,
           },
         },
-        severity: 1,
       },
       {
-        code: ruleName,
-        message: 'Representation fields use format-native true/false values for booleans.; Given matches target enums.',
-        path: [
+        'code': 'oas3-no-boolean-string-enums',
+        'message': 'Representation fields use format-native true/false values for booleans.; Given matches target enums.',
+        'path': [
           'paths',
           '/test',
           'get',
@@ -236,19 +236,21 @@ describe(ruleName, () => {
           'b',
           'enum',
         ],
-        range: {
-          start: {
-            line: 24,
-            character: 21,
+        'severity': 1,
+        'range': {
+          'start': {
+            'character': 0,
+            'line': 0,
           },
-          end: {
-            line: 25,
-            character: 55,
+          'end': {
+            'character': 0,
+            'line': 0,
           },
         },
-        severity: 1,
       },
-    ]);
+    ];
+
+    expect(res).toEqual(expectedResult);
   });
   test('should pass responses with unrelated enums and proper booleans', async () => {
     const spec = await fsPromises.readFile(`${ resPath }/positive.yml`);

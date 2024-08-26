@@ -18,7 +18,7 @@
 
 'use strict';
 
-const isObject = value => value !== null && typeof value === 'object';
+const isObject = (value) => value !== null && typeof value === 'object';
 
 /**
  * Main function to ensure unique error descriptions across API operations.

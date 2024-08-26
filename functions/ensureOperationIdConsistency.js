@@ -20,7 +20,7 @@
 
 import  checkConsistency  from '../util/checkCasingConsistency.js';
 
-const isObject = value => value !== null && typeof value === 'object';
+const isObject = (value) => value !== null && typeof value === 'object';
 
 /**
  * Checks the targetVal object for consistent casing in operationIds across the document.

@@ -6,6 +6,7 @@
   "scripts": {
     "build": "echo build tbd",
     "test": "jest --config ./jest.config.cjs",
+    "test-failures": "jest --config ./jest.config.cjs --onlyFailures",
     "lint": "npx eslint --cache --ext '.js' .",
     "lint-strict": "npx eslint --cache --quiet --ext '.js' .",
     "lint-fix": "npx eslint --cache --quiet --ext '.js' --fix ."

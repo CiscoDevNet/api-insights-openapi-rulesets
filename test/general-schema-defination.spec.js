@@ -32,12 +32,11 @@ describe(ruleName, () => {
   test('should throw an error if missing schema', async () => {
     const spec = await fsPromises.readFile(`${ resPath }/negative.json`);
     const res = await spectral.run(spec.toString());
-
-    expect(res).toEqual([
+    const expectedResult = [
       {
-        code: ruleName,
-        message: 'Some of the defined schema use object as a final field when describing their object structure.; properties missing for object schema',
-        path: [
+        'code': 'general-schema-definition',
+        'message': 'Some of the defined schema use object as a final field when describing their object structure; properties missing for object schema',
+        'path': [
           'paths',
           '/test',
           'get',
@@ -47,19 +46,21 @@ describe(ruleName, () => {
           'application/json',
           'schema',
         ],
-        range: {
-          end: {
-            character: 32,
-            line: 63,
+        'severity': 0,
+        'range': {
+          'start': {
+            'line': 55,
+            'character': 25,
           },
-          start: {
-            character: 25,
-            line: 55,
+          'end': {
+            'line': 63,
+            'character': 32,
           },
         },
-        severity: 0,
       },
-    ]);
+    ];
+
+    expect(res).toEqual(expectedResult);
   });
   test('should pass with provided schema', async () => {
     const spec = await fsPromises.readFile(`${ resPath }/positive.json`);

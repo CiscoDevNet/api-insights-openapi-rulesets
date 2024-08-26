@@ -17,7 +17,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-const isObject = value => value !== null && typeof value === 'object';
+const isObject = (value) => value !== null && typeof value === 'object';
 
 export const collectTags = (targetVal) => {
   if (!isObject(targetVal)) {

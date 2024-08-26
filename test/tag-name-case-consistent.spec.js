@@ -32,10 +32,11 @@ describe(ruleName, () => {
   test('should throw an error if tag casing varies throughout the document', async () => {
     const spec = await fsPromises.readFile(`${ resPath }/negative.yml`);
     const res = await spectral.run(spec.toString());
-    const expectedTestResult =     [
+
+    const expectedTestResult = [
       {
         'code': 'tag-name-case-consistent',
-        'message': 'Tags should have consistent casing for the same tag. Inconsistent casing types detected. Found: Pascal, camel.',
+        'message': 'Tags should have consistent casing for the same tag.; Inconsistent casing types detected. Found: Pascal, camel.',
         'path': [],
         'severity': 1,
         'range': {

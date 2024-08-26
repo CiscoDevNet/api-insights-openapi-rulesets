@@ -33,10 +33,11 @@ describe(ruleName, () => {
   test('should throw an error if error code descriptions are not consistent between paths', async () => {
     const spec = await fsPromises.readFile(`${ resPath }/negative.yml`);
     const res = await spectral.run(spec.toString());
+
     const expectedTestResult = [
       {
         'code': 'error-code-description-consistent',
-        'message': "For each error code, the description should be consistent across the API. Inconsistent descriptions for status code 500. Found 'Service down', 'internal service error'.",
+        'message': "For each error code, the description should be consistent across the API.; Inconsistent descriptions for status code 500. Found 'Service down', 'internal service error'.",
         'path': [],
         'severity': 1,
         'range': {
