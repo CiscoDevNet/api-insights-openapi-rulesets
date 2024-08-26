@@ -37,7 +37,7 @@ export default {
     'info-description': 'warn',
     'info-license': 'warn',
     'license-url': {
-      'description': 'License object must include "url" or "identifier"',
+      'description': 'License object must include "url" or "identifier".',
       'message': '{{description}}; {{error}}',
       'severity': 'warn',
       'given': [
@@ -54,8 +54,8 @@ export default {
       },
     },
     'description-for-every-attribute': {
-      'description': 'DEA - Descriptions for Every Attribute',
-      'message': 'For every attribute that is present in the OAS document, if a description is proposed as optional to complement that attribute, then yes it must be present; {{error}}',
+      'description': 'Every attribute in the OpenAPI document must have a description. Description fields that are marked as optional must be filled.',
+      'message': '{{description}}; {{error}}',
       'severity': 'error',
       'given': [
         '$.info',
@@ -77,7 +77,7 @@ export default {
       },
     },
     'examples-for-every-schema': {
-      'description': 'For every schema provided in the OAS document, at least one example must be present',
+      'description': 'For every schema provided in the OAS document, at least one example must be present.',
       'message': '{{description}}; {{error}}',
       'severity': 'warn',
       'given': [
@@ -91,8 +91,8 @@ export default {
       },
     },
     'error-description-unique-for-method': {
-      'description': 'Error descriptions should be unique.',
-      'message': '{{description}} {{error}}',
+      'description': 'For each Error status-code defined, the description must be unique.',
+      'message': '{{description}}; {{error}}',
       'severity': 'warn',
       'given': '$.paths',
       'then': {
@@ -101,7 +101,7 @@ export default {
     },
     'error-code-description-consistent': {
       'description': 'For each error code, the description should be consistent across the API.',
-      'message': '{{description}} {{error}}',
+      'message': '{{description}}; {{error}}',
       'severity': 'warn',
       'given': '$',
       'then': {
@@ -110,7 +110,7 @@ export default {
     },
     'tag-name-case-consistent': {
       'description': 'Tags should have consistent casing for the same tag.',
-      'message': '{{description}} {{error}}',
+      'message': '{{description}}; {{error}}',
       'severity': 'warn',
       'given': '$',
       'then': {
@@ -119,7 +119,7 @@ export default {
     },
     'operationId-name-case-consistent': {
       'description': 'OperationIds should have consistent casing.',
-      'message': '{{description}} {{error}}',
+      'message': '{{description}}; {{error}}',
       'severity': 'warn',
       'given': '$',
       'then': {
