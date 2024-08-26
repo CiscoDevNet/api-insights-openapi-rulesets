@@ -32,95 +32,96 @@ describe(ruleName, () => {
   test('should throw an error if missing description', async () => {
     const spec = await fsPromises.readFile(`${ resPath }/negative.json`);
     const res = await spectral.run(spec.toString());
+    const expectResult = [
+      {
+        "code": "description-for-every-attribute",
+        "message": "Every attribute in the OpenAPI document must have a description. Description fields that are marked as optional must be filled.; description is missing in the object",
+        "path": [
+          "paths",
+          "/test",
+          "get",
+          "parameters",
+          "0"
+        ],
+        "severity": 0,
+        "range": {
+          "start": {
+            "line": 29,
+            "character": 11
+          },
+          "end": {
+            "line": 36,
+            "character": 29
+          }
+        }
+      },
+      {
+        "code": "description-for-every-attribute",
+        "message": "Every attribute in the OpenAPI document must have a description. Description fields that are marked as optional must be filled.; description is missing in the object",
+        "path": [
+          "paths",
+          "/test",
+          "get",
+          "responses",
+          "200"
+        ],
+        "severity": 0,
+        "range": {
+          "start": {
+            "line": 41,
+            "character": 16
+          },
+          "end": {
+            "line": 72,
+            "character": 32
+          }
+        }
+      },
+      {
+        "code": "description-for-every-attribute",
+        "message": "Every attribute in the OpenAPI document must have a description. Description fields that are marked as optional must be filled.; description is missing in the object",
+        "path": [
+          "components",
+          "schemas",
+          "Pet"
+        ],
+        "severity": 0,
+        "range": {
+          "start": {
+            "line": 143,
+            "character": 12
+          },
+          "end": {
+            "line": 160,
+            "character": 28
+          }
+        }
+      },
+      {
+        "code": "description-for-every-attribute",
+        "message": "Every attribute in the OpenAPI document must have a description. Description fields that are marked as optional must be filled.; description is missing in the object",
+        "path": [
+          "components",
+          "schemas",
+          "Error",
+          "properties",
+          "message"
+        ],
+        "severity": 0,
+        "range": {
+          "start": {
+            "line": 183,
+            "character": 20
+          },
+          "end": {
+            "line": 184,
+            "character": 28
+          }
+        }
+      }
+    ];
 
-    expect(res).toEqual([
-      {
-        code: ruleName,
-        message: 'For every attribute that is present in the OAS document, if a description is proposed as optional to complement that attribute, then yes it must be present; description is missing in the object',
-        path: [
-          'paths',
-          '/test',
-          'get',
-          'parameters',
-          '0',
-        ],
-        range: {
-          end: {
-            character: 29,
-            line: 36,
-          },
-          start: {
-            character: 11,
-            line: 29,
-          },
-        },
-        severity: 0,
-      },
-      {
-        code: ruleName,
-        message: 'For every attribute that is present in the OAS document, if a description is proposed as optional to complement that attribute, then yes it must be present; description is missing in the object',
-        path: [
-          'paths',
-          '/test',
-          'get',
-          'responses',
-          '200',
-        ],
-        range: {
-          end: {
-            character: 32,
-            line: 72,
-          },
-          start: {
-            character: 16,
-            line: 41,
-          },
-        },
-        severity: 0,
-      },
-      {
-        code: ruleName,
-        message: 'For every attribute that is present in the OAS document, if a description is proposed as optional to complement that attribute, then yes it must be present; description is missing in the object',
-        path: [
-          'components',
-          'schemas',
-          'Pet',
-        ],
-        range: {
-          end: {
-            character: 28,
-            line: 160,
-          },
-          start: {
-            character: 12,
-            line: 143,
-          },
-        },
-        severity: 0,
-      },
-      {
-        code: ruleName,
-        message: 'For every attribute that is present in the OAS document, if a description is proposed as optional to complement that attribute, then yes it must be present; description is missing in the object',
-        path: [
-          'components',
-          'schemas',
-          'Error',
-          'properties',
-          'message',
-        ],
-        range: {
-          end: {
-            character: 28,
-            line: 184,
-          },
-          start: {
-            character: 20,
-            line: 183,
-          },
-        },
-        severity: 0,
-      },
-    ]);
+    expect(res).toEqual(expectResult);
   });
   test('should pass with provided description', async () => {
     const spec = await fsPromises.readFile(`${ resPath }/positive.json`);
