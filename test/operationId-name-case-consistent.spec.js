@@ -29,7 +29,7 @@ describe(ruleName, () => {
   beforeAll(() => {
     spectral = prepLinter(ruleset, ruleName);
   });
-  test('should throw an error if ...', async () => {
+  test('should throw an error if operationId varies', async () => {
     const spec = await fsPromises.readFile(`${ resPath }/negative.yml`);
     const res = await spectral.run(spec.toString());
 
