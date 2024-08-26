@@ -37,81 +37,81 @@ describe(ruleName, () => {
 
     const expectedResult = [
       {
-        'code': 'oas3-field-names-pas-camel-case',
-        'message': 'Representation field names use PasCamelCase.; MYData (paths./test.post.requestBody.content.application/json.schema.properties.MYData)',
-        'path': [
-          'paths',
-          '/test',
-          'post',
-          'requestBody',
-          'content',
-          'application/json',
-          'schema',
-          'properties',
-          'MYData',
+        "code": "oas3-field-names-pas-camel-case",
+        "message": "Representation field names use PasCamelCase.; user_id (paths./test.post.parameters.0.name)",
+        "path": [
+          "paths",
+          "/test",
+          "post",
+          "parameters",
+          "0"
         ],
-        'severity': 0,
-        'range': {
-          'start': {
-            'character': 0,
-            'line': 0,
+        "severity": 0,
+        "range": {
+          "start": {
+            "line": 18,
+            "character": 10
           },
-          'end': {
-            'character': 0,
-            'line': 0,
-          },
-        },
+          "end": {
+            "line": 23,
+            "character": 53
+          }
+        }
       },
       {
-        'code': 'oas3-field-names-pas-camel-case',
-        'message': 'Representation field names use PasCamelCase.; MYData (paths./test.post.responses.200.content.application/json.schema.items.properties.MYData)',
-        'path': [
-          'paths',
-          '/test',
-          'post',
-          'responses',
-          '200',
-          'content',
-          'application/json',
-          'schema',
-          'items',
-          'properties',
-          'MYData',
+        "code": "oas3-field-names-pas-camel-case",
+        "message": "Representation field names use PasCamelCase.; MYData (paths./test.post.requestBody.content.application/json.schema.properties.MYData)",
+        "path": [
+          "paths",
+          "/test",
+          "post",
+          "requestBody",
+          "content",
+          "application/json",
+          "schema",
+          "properties",
+          "MYData"
         ],
-        'severity': 0,
-        'range': {
-          'start': {
-            'character': 0,
-            'line': 0,
+        "severity": 0,
+        "range": {
+          "start": {
+            "line": 30,
+            "character": 19
           },
-          'end': {
-            'character': 0,
-            'line': 0,
-          },
-        },
+          "end": {
+            "line": 31,
+            "character": 56
+          }
+        }
       },
       {
-        'code': 'oas3-field-names-pas-camel-case',
-        'message': 'Representation field names use PasCamelCase.; user_id (paths./test.post.parameters.0.name)',
-        'path': [
-          'paths',
-          '/test',
-          'post',
-          'parameters',
-          '0',
+        "code": "oas3-field-names-pas-camel-case",
+        "message": "Representation field names use PasCamelCase.; MYData (paths./test.post.responses.200.content.application/json.schema.items.properties.MYData)",
+        "path": [
+          "paths",
+          "/test",
+          "post",
+          "responses",
+          "200",
+          "content",
+          "application/json",
+          "schema",
+          "items",
+          "properties",
+          "MYData"
         ],
-        'severity': 0,
-        'range': {
-          'start': {
-            'line': 18,
-            'character': 10,
+        "severity": 0,
+        "range": {
+          "start": {
+            "line": 37,
+            "character": 21
           },
-          'end': {
-            'line': 23,
-            'character': 53,
-          },
-        },
-      },
+          "end": {
+            "line": 38,
+            "character": 60
+          }
+        }
+      }
     ];
 
     expect(res).toEqual(expectedResult);
@@ -123,33 +123,33 @@ describe(ruleName, () => {
 
     const expectedResult = [
       {
-        'code': 'oas3-field-names-pas-camel-case',
-        'message': 'Representation field names use PasCamelCase.; snake_case (paths./test.get.responses.200.content.application/json.schema.items.properties.snake_case)',
-        'path': [
-          'paths',
-          '/test',
-          'get',
-          'responses',
-          '200',
-          'content',
-          'application/json',
-          'schema',
-          'items',
-          'properties',
-          'snake_case',
+        "code": "oas3-field-names-pas-camel-case",
+        "message": "Representation field names use PasCamelCase.; snake_case (paths./test.get.responses.200.content.application/json.schema.items.properties.snake_case)",
+        "path": [
+          "paths",
+          "/test",
+          "get",
+          "responses",
+          "200",
+          "content",
+          "application/json",
+          "schema",
+          "items",
+          "properties",
+          "snake_case"
         ],
-        'severity': 0,
-        'range': {
-          'start': {
-            'character': 0,
-            'line': 0,
+        "severity": 0,
+        "range": {
+          "start": {
+            "line": 24,
+            "character": 21
           },
-          'end': {
-            'character': 0,
-            'line': 0,
-          },
-        },
-      },
+          "end": {
+            "line": 25,
+            "character": 60
+          }
+        }
+      }
     ];
 
     expect(res).toEqual(expectedResult);

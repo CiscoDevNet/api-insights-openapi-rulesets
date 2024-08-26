@@ -139,72 +139,71 @@ describe(ruleName, () => {
   test('should catch referenced responses with a string enum for booleans hidden deeply', async () => {
     const spec = await fsPromises.readFile(`${ resPath }/negative-deep-reference.yml`);
     const res = await spectral.run(spec.toString());
-
-    const expectedResult = [
+    const expectedResult =  [
       {
-        'code': 'oas2-no-boolean-string-enums',
-        'message': 'Representation fields use format-native true/false values for booleans.; Given matches target enums.',
-        'path': [
-          'paths',
-          '/test',
-          'get',
-          'responses',
-          '200',
-          'schema',
-          'properties',
-          'this',
-          'properties',
-          'is',
-          'properties',
-          'a',
-          'properties',
-          'deep',
-          'properties',
-          'obj',
-          'enum',
+        "code": "oas2-no-boolean-string-enums",
+        "message": "Representation fields use format-native true/false values for booleans.; Given matches target enums.",
+        "path": [
+          "paths",
+          "/test",
+          "get",
+          "responses",
+          "200",
+          "schema",
+          "properties",
+          "this",
+          "properties",
+          "is",
+          "properties",
+          "a",
+          "properties",
+          "deep",
+          "properties",
+          "obj",
+          "enum"
         ],
-        'severity': 1,
-        'range': {
-          'start': {
-            'character': 0,
-            'line': 0,
+        "severity": 1,
+        "range": {
+          "start": {
+            "line": 23,
+            "character": 17
           },
-          'end': {
-            'character': 0,
-            'line': 0,
-          },
-        },
+          "end": {
+            "line": 24,
+            "character": 44
+          }
+        }
       },
       {
-        'code': 'oas2-no-boolean-string-enums',
-        'message': 'Representation fields use format-native true/false values for booleans.; Given matches target enums.',
-        'path': [
-          'paths',
-          '/test',
-          'get',
-          'responses',
-          '200',
-          'schema',
-          'properties',
-          'this',
-          'properties',
-          'is',
-          'properties',
-          'b',
-          'enum',
+        "code": "oas2-no-boolean-string-enums",
+        "message": "Representation fields use format-native true/false values for booleans.; Given matches target enums.",
+        "path": [
+          "paths",
+          "/test",
+          "get",
+          "responses",
+          "200",
+          "schema",
+          "properties",
+          "this",
+          "properties",
+          "is",
+          "properties",
+          "b",
+          "enum"
         ],
-        'severity': 1,
-        'range': {
-          'start': {
-            'character': 0,
-            'line': 0,
+        "severity": 1,
+        "range": {
+          "start": {
+            "line": 23,
+            "character": 17
           },
-          'end': {
-            'character': 0,
-            'line': 0,
-          },
-        },
-      },
+          "end": {
+            "line": 24,
+            "character": 44
+          }
+        }
+      }
     ];
 
     expect(res).toEqual(expectedResult);
