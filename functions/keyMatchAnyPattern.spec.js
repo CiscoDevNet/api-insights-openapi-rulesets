@@ -16,7 +16,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-const keyMatchAnyPattern = require('./keyMatchAnyPattern');
+import keyMatchAnyPattern from './keyMatchAnyPattern';
 
 describe('keyMatchAnyPattern', () => {
 

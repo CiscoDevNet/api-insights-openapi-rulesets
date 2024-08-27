@@ -27,66 +27,66 @@ describe(ruleName, () => {
   let spectral;
 
   beforeAll(() => {
-  spectral = prepLinter(ruleset, ruleName);
+    spectral = prepLinter(ruleset, ruleName);
   });
   test('should throw an error if missing success schema', async () => {
-  const spec = await fsPromises.readFile(`${ resPath }/negative.json`);
-  const res = await spectral.run(spec.toString());
+    const spec = await fsPromises.readFile(`${ resPath }/negative.json`);
+    const res = await spectral.run(spec.toString());
 
-  expect(res).toEqual([
-    {
-    code: ruleName,
-    message: 'There is no schema attribute for a component.; schema is missing in the object',
-    path: [
-      'paths',
-      '/test',
-      'get',
-      'responses',
-      '200',
-      'content',
-      'application/json',
-    ],
-    range: {
-      end: {
-      character: 15,
-      line: 46,
+    expect(res).toEqual([
+      {
+        code: ruleName,
+        message: 'There is no schema attribute for a component.; schema is missing in the object',
+        path: [
+          'paths',
+          '/test',
+          'get',
+          'responses',
+          '200',
+          'content',
+          'application/json',
+        ],
+        range: {
+          end: {
+            character: 15,
+            line: 46,
+          },
+          start: {
+            character: 33,
+            line: 45,
+          },
+        },
+        severity: 0,
       },
-      start: {
-      character: 33,
-      line: 45,
+      {
+        code: ruleName,
+        message: 'There is no schema attribute for a component.; schema is missing in the object',
+        path: [
+          'paths',
+          '/test',
+          'patch',
+          'requestBody',
+          'content',
+          'application/json',
+        ],
+        range: {
+          end: {
+            character: 13,
+            line: 77,
+          },
+          start: {
+            character: 31,
+            line: 76,
+          },
+        },
+        severity: 0,
       },
-    },
-    severity: 0,
-    },
-    {
-    code: ruleName,
-    message: 'There is no schema attribute for a component.; schema is missing in the object',
-    path: [
-      'paths',
-      '/test',
-      'patch',
-      'requestBody',
-      'content',
-      'application/json',
-    ],
-    range: {
-      end: {
-      character: 13,
-      line: 77,
-      },
-      start: {
-      character: 31,
-      line: 76,
-      },
-    },
-    severity: 0,
-    },
-  ]);
+    ]);
   });
   test('should pass with provided success schema', async () => {
-  const spec = await fsPromises.readFile(`${ resPath }/positive.json`);
-  const res = await spectral.run(spec.toString());
+    const spec = await fsPromises.readFile(`${ resPath }/positive.json`);
+    const res = await spectral.run(spec.toString());
 
-  expect(res).toEqual([]);
+    expect(res).toEqual([]);
   });
 });

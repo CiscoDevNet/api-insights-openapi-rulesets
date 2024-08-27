@@ -19,8 +19,8 @@
 import fsPromises from 'fs/promises';
 import path from 'path';
 import { prepLinter } from '../util/testUtils';
-import ruleset from '../contract';
-const ruleName = 'oas2-missing-returned-representation';
+import ruleset from '../documentation';
+const ruleName = 'tag-name-case-consistent';
 const resPath = path.join(__dirname, `resources/${ ruleName }`);
 
 describe(ruleName, () => {
@@ -29,39 +29,36 @@ describe(ruleName, () => {
   beforeAll(() => {
     spectral = prepLinter(ruleset, ruleName);
   });
-  test('should throw an error if missing returned representation', async () => {
-    const spec = await fsPromises.readFile(`${ resPath }/negative.json`);
+  test('should throw an error if tag casing varies throughout the document', async () => {
+    const spec = await fsPromises.readFile(`${ resPath }/negative.yml`);
     const res = await spectral.run(spec.toString());
 
-    expect(res).toEqual([
+    const expectedTestResult = [
       {
-        code: ruleName,
-        message: '2XX (except 204) responses must have a response schema defined.; schema is missing in the object',
-        path: [
-          'paths',
-          '/test',
-          'get',
-          'responses',
-          '200',
-        ],
-        range: {
-          end: {
-            character: 33,
-            line: 39,
+        'code': 'tag-name-case-consistent',
+        'message': 'Tags should have consistent casing for the same tag.; Inconsistent casing types detected. Found: Pascal, camel.',
+        'path': [],
+        'severity': 1,
+        'range': {
+          'start': {
+            'line': 0,
+            'character': 0,
           },
-          start: {
-            character: 16,
-            line: 35,
+          'end': {
+            'line': 130,
+            'character': 40,
           },
         },
-        severity: 0,
       },
-    ]);
-  });
-  test('should pass with provided returned representation', async () => {
-    const spec = await fsPromises.readFile(`${ resPath }/positive.json`);
-    const res = await spectral.run(spec.toString());
+    ];
 
-    expect(res).toEqual([]);
+    expect(res).toEqual(expectedTestResult);
+  });
+  test('should pass with provided example', async () => {
+    const spec = await fsPromises.readFile(`${ resPath }/positive.yml`);
+    const res = await spectral.run(spec.toString());
+    const expectedTestResult = [];
+
+    expect(res).toEqual(expectedTestResult);
   });
 });

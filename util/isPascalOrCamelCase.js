@@ -17,51 +17,7 @@
  */
 
 import casing from '@stoplight/spectral-functions/dist/casing';
-
-const commonAbbreviations = [
-  'ASN',
-  'VPC',
-  'CP',
-  'ID',
-  'IO',
-  'SN',
-/** Other possible abbreviations
- * JSON
- * HTML
- * XML
- * YAML
- * XAML
- * SQL
- * CSS
- * UUID
- * UTC
- * JS
- * TS
- * ES
- * OK
- * API
- * IDE
- * SDK
- * JDK
- * JRE
- * JVM
- * UI
- * UX
- * SSH
- * OOP
- * AJAX
- * CRUD
- * REST
- * MVC
- * EOF
- * FTP
- * GNU
- * CC
- * BCC
- * PHP
- * REGEX
- */
-];
+import commonAbbreviations from './commonAbbreviations.js';
 
 /**
  * Common abbreviations are removed from each value before a casing check, such

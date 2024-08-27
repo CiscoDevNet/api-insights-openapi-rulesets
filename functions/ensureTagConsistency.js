@@ -18,32 +18,16 @@
 
 'use strict';
 
-/**
- * Checks targetVal array has at least one of the opts.patterns
- * @param {string} targetVal The string to lint
- * @param {Options} opts String requirements given by the linter ruleset
- */
-export default function (targetVal) {
-  if (typeof targetVal !== 'object') {
-    return;
-  }
+import collectTags  from '../util/collectTags.js';
+import  checkConsistency from '../util/checkCasingConsistency.js';
 
-  if (targetVal.type && targetVal.type !== 'object') {
-    return;
-  }
+export default function ensureTagConsistency(targetVal) {
+  const allTags = Array.from(collectTags(targetVal), ([tag]) => tag);
+  const inconsistencyResult = checkConsistency(allTags);
 
-  if (targetVal.properties && Object.keys(targetVal.properties).length > 0) {
-    return;
-  }
+  const report = inconsistencyResult
+    ? [{ message: inconsistencyResult.message, path: [] }]
+    : [];
 
-  // TODO: test
-  if (targetVal.anyOf || targetVal.allOf || targetVal.oneOf || targetVal.not) {
-    return;
-  }
-
-  return [
-    {
-      message: 'properties missing for object schema',
-    },
-  ];
+  return report;
 }

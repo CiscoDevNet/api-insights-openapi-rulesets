@@ -19,9 +19,10 @@
 import fsPromises from 'fs/promises';
 import path from 'path';
 import { prepLinter } from '../util/testUtils';
-import ruleset from '../contract';
-const ruleName = 'oas2-missing-returned-representation';
+import ruleset from '../documentation';
+const ruleName = 'error-description-unique-for-method';
 const resPath = path.join(__dirname, `resources/${ ruleName }`);
+
 
 describe(ruleName, () => {
   let spectral;
@@ -29,39 +30,41 @@ describe(ruleName, () => {
   beforeAll(() => {
     spectral = prepLinter(ruleset, ruleName);
   });
-  test('should throw an error if missing returned representation', async () => {
-    const spec = await fsPromises.readFile(`${ resPath }/negative.json`);
+  test('should throw an error if the same description is used for more than one error code', async () => {
+    const spec = await fsPromises.readFile(`${ resPath }/negative.yml`);
     const res = await spectral.run(spec.toString());
 
-    expect(res).toEqual([
+
+    const expectedTestResult = [
       {
-        code: ruleName,
-        message: '2XX (except 204) responses must have a response schema defined.; schema is missing in the object',
-        path: [
+        'code': 'error-description-unique-for-method',
+        'message': 'For each Error status-code defined, the description must be unique.; Error Description \"error\" should be unique within each API operation but is duplicated for these codes: 401, 429, 500',
+        'path': [
           'paths',
-          '/test',
+          '/organizations',
           'get',
-          'responses',
-          '200',
         ],
-        range: {
-          end: {
-            character: 33,
-            line: 39,
+        'severity': 1,
+        'range': {
+          'start': {
+            'line': 23,
+            'character': 8,
           },
-          start: {
-            character: 16,
-            line: 35,
+          'end': {
+            'line': 44,
+            'character': 18,
           },
         },
-        severity: 0,
       },
-    ]);
-  });
-  test('should pass with provided returned representation', async () => {
-    const spec = await fsPromises.readFile(`${ resPath }/positive.json`);
-    const res = await spectral.run(spec.toString());
+    ];
 
-    expect(res).toEqual([]);
+    expect(res).toEqual(expectedTestResult);
+  });
+  test('should pass with provided example', async () => {
+    const spec = await fsPromises.readFile(`${ resPath }/positive.yml`);
+    const res = await spectral.run(spec.toString());
+    const expectedTestResult = [];
+
+    expect(res).toEqual(expectedTestResult);
   });
 });

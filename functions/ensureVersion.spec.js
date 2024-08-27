@@ -16,7 +16,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-const ensureVersion = require('./ensureVersion');
+import ensureVersion from './ensureVersion';
 
 describe('ensureVersion', () => {
 

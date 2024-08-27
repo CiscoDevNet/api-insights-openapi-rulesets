@@ -1,0 +1,131 @@
+openapi: 3.0.0
+info:
+  version: 1.26.0-Rev.4
+  title: Incremental Dashboard API
+  description: >
+    The Incremental Dashboard API is a modern REST API based on the OpenAPI
+    specification. Date: 04 January, 2023. [Recent
+    Updates](https://mini.io/whats-new/)
+  contact:
+    name: Developer Community
+    url: https://cisco.com
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+servers:
+  - url: https://api.mini.com/api/v1
+
+security:
+  - mini_api_key: []
+
+      
+paths:
+  /organizations:
+    get:
+      description: List the organizations that the user has privileges on
+      operationId: GetOrganizations
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  $ref: '#/components/schemas/Organization'
+        '401': 
+          description: unauthorized
+        '429': 
+          description: too many requests
+        '500':
+          description: internal service error
+      summary: List the organizations that the user has privileges on
+      tags:
+        - readOnly
+    post:
+      description: Create a new organization
+      operationId: createOrganization
+      requestBody:
+        description: organization to create
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: The name of the organization
+              required:
+                - name
+            example:
+              name: My organization
+        required: true
+      responses:
+        '201':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/Organization'
+        '400': 
+          description: bad request
+        '500':
+          description: internal service error
+      summary: Create a new organization
+      tags:
+        - configureOperations
+  /organizations/{organizationId}:
+    get:
+      description: Return an organization
+      operationId: getOrganization
+      parameters:
+        - name: organizationId
+          in: path
+          required: true
+          schema:
+            type: string
+          description: Organization Identifier
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/Organization'
+        '401': 
+          description: unauthorized
+        '404': 
+          description: not found
+        '500':
+          description: internal service error
+      summary: Return an organization
+      tags:
+        - readOnly
+components:
+  securitySchemes:
+    mini_api_key:
+      type: apiKey
+      name: X-Incremental-Dashboard-API-Key
+      in: header
+      description: "API Key HTTP Header"
+  schemas: 
+    Organization:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Organization ID
+        name:
+          type: string
+          description: Organization name
+      example:
+        id: '2930418'
+        name: My organization
+tags:
+  - name: readOnly
+    description: "Read Operations"
+  - name: configureOperations
+    description: "Read/Write Operations"

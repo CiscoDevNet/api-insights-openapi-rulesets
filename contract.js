@@ -69,7 +69,7 @@ export default {
       },
     },
     'general-schema-definition': {
-      'description': 'Some of the defined schema use object as a final field when describing their object structure.',
+      'description': 'Some of the defined schema use object as a final field when describing their object structure',
       'message': '{{description}}; {{error}}',
       'severity': 'error',
       'given': [
@@ -100,7 +100,7 @@ export default {
       },
     },
     'oas2-missing-returned-representation': {
-      'description': '2XX (except 204) responses must have a response schema defined',
+      'description': '2XX (except 204) responses must have a response schema defined.',
       'message': '{{description}}; {{error}}',
       'severity': 'error',
       'formats': [oas2],

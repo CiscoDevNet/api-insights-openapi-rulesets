@@ -16,34 +16,11 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-'use strict';
-
-/**
- * Checks targetVal array has at least one of the opts.patterns
- * @param {string} targetVal The string to lint
- * @param {Options} opts String requirements given by the linter ruleset
- */
-export default function (targetVal) {
-  if (typeof targetVal !== 'object') {
-    return;
-  }
-
-  if (targetVal.type && targetVal.type !== 'object') {
-    return;
-  }
-
-  if (targetVal.properties && Object.keys(targetVal.properties).length > 0) {
-    return;
-  }
-
-  // TODO: test
-  if (targetVal.anyOf || targetVal.allOf || targetVal.oneOf || targetVal.not) {
-    return;
-  }
-
-  return [
-    {
-      message: 'properties missing for object schema',
-    },
-  ];
-}
+module.exports = {
+  roots: [
+    '<rootDir>/test/',
+    '<rootDir>/functions/',
+    '<rootDir>/util/',
+  ],
+  verbose: true,
+};

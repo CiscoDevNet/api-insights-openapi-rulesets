@@ -16,7 +16,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-const completedSchema = require('./completedSchema');
+import completedSchema from './completedSchema';
 
 describe('completedSchema', () => {
 

@@ -16,7 +16,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-const ensureField = require('./ensureField');
+import ensureField from './ensureField.js';
 
 describe('ensureField', () => {
 

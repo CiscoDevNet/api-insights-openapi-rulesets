@@ -24,7 +24,7 @@
  * @param {*} opts The options for the utility function
  * @returns Any linting errors found
  */
-module.exports = function (targetVal, opts) {
+export default function (targetVal, opts) {
   if (typeof targetVal !== 'object') {
     return;
   }
@@ -57,7 +57,7 @@ module.exports = function (targetVal, opts) {
       },
     ];
   }
-};
+}
 
 // This is to suport a.b
 function match(targetVal, val) {
