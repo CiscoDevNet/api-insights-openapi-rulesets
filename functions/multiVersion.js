@@ -19,32 +19,7 @@
 'use strict';
 
 import { isObject } from '../util/funcUtils.js';
-
-/**
- * Items that cause false positives when checking for versions.
- */
-const VERSION_EXCEPTIONS = [
-  /* <sd-wan> */
-  "dhcpv6",
-  "dataipv6prefix",
-  "ikev1",
-  "v4fib",
-  "v6fib",
-  "v3interface",
-  "ipv6",
-  "ipv4",
-  "ipv6prefix",
-  "dhcpv4",
-  "v3interface",
-  "v3neighbor",
-  "deviceaccesspolicyv6",
-  "ipv6Stats",
-  /* </sd-wan> */
-  /* <meraki> */
-  "dhcp/v4",
-  "dhcp/v6"
-  /* </meraki> */ 
-];
+import getVersion from '../util/getVersion.js';
 
 /**
  * Checks if there is only one version in server urls and paths.
@@ -180,24 +155,4 @@ function* getAllServerURLs(doc) {
     item.url = url;
     yield item;
   }
-}
-
-function getVersion(str) {
-
-  // Replace exceptions with placeholders and then check for version
-  for (const exception of VERSION_EXCEPTIONS) {
-    if (str.includes(exception)) {
-      str = str.replace(exception, '');
-    }
-  }
-
-  const versionRegex = /v\d+[^/]*/;
-  let version = '';
-  const parts = str.match(versionRegex);
-
-  if (parts) {
-    version =  parts[0];
-  }
-
-  return version;
 }
