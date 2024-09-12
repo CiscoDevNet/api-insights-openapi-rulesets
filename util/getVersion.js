@@ -1,8 +1,6 @@
 
 export default function getVersion(str) {
 
-    //const versionRegex = /v\d+[^/]*/;
-    // const versionRegex = /\b\/?v\d+(\.\d+)*\//;
     const versionRegex = /\b\/?v\d+(\.\d+)*\/?(\b|$)/;
     let version = '';
     const parts = str.match(versionRegex);
