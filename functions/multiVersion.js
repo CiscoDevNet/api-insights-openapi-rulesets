@@ -21,6 +21,13 @@
 import { isObject } from '../util/funcUtils.js';
 import getVersion from '../util/getVersion.js';
 
+// Corner cases of API paths that are indeed versions on the url BUT should not be flagged by the rule
+const PATH_EXCEPTIONS = [ 
+  // Meraki: /networks/{networkId}/switch/dhcp/v4/servers/seen
+  "dhcp/v1" ,
+];
+
+
 /**
  * Checks if there is only one version in server urls and paths.
  * @param {string} targetVal The string to lint
@@ -79,7 +86,7 @@ export default function (targetVal, opts) {
   let pathFirstVersion = '';
 
   for (const { path } of getAllPaths(paths)) {
-    const version = getVersion(path);
+    const version = getVersion(path, PATH_EXCEPTIONS);
 
     if (version === '') {
       continue;
