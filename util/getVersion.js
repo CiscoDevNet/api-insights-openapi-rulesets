@@ -10,16 +10,17 @@ export default function getVersion(str, exceptionList) {
         }
     }
 
-    // The version regex is pretty complex to address most use cases at Cisco, check this asana issue for context:
-    // The regexp requires to remove leading or trailing '/' if any.
-    const versionRegex = /\b\/?v\d+(\.\d+)*\/?(\b|$)/;
+    // The version regex is pretty complex to address all use cases at Cisco
+    // Please check this Asana issue for full context and explorations: https://app.asana.com/0/1206872740398257/1206657704786474
+    //const versionRegex = /\b\/?v\d+(\.\d+)*\/?(\b|$)/;  // does not fully work, captures v6 as a version number for path: "/device/cedgecflowd/app-fwd-cflowd-v6-flows"
+    const versionRegex = /(?<![-\w])\/?v\d+(\.\d+)*\/?(\b|$)/;    // does NOT capture v6 as a version number for path: "/device/cedgecflowd/app-fwd-cflowd-v6-flows"
 
     let version = '';
     const parts = str.match(versionRegex);
     if (parts) {
         version = parts[0];
 
-        // Remove leading or trailing '/' 
+        // The latest regexp captures /v1 in some cases, let's remove leading or trailing '/' if any
         version = version.charAt(0) === '/' ? version.slice(1) : version;
         version = version.charAt(version.length - 1) === '/' ? version.slice(0, -1) : version;
     }

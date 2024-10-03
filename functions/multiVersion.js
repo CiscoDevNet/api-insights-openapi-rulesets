@@ -21,12 +21,6 @@
 import { isObject } from '../util/funcUtils.js';
 import getVersion from '../util/getVersion.js';
 
-// Corner cases of API paths that are indeed versions on the url BUT should not be flagged by the rule
-const PATH_EXCEPTIONS = [ 
-  // Meraki: /networks/{networkId}/switch/dhcp/v4/servers/seen
-  "dhcp/v1" ,
-];
-
 
 /**
  * Checks if there is only one version in server urls and paths.
@@ -86,16 +80,24 @@ export default function (targetVal, opts) {
   let pathFirstVersion = '';
 
   for (const { path } of getAllPaths(paths)) {
-    const version = getVersion(path, PATH_EXCEPTIONS);
 
+    // Is there a version identified on the path, considering the path fragments exceptions if any
+    let version;
+    if (opts && opts.exceptions) {
+      version = getVersion(path, opts.exceptions);
+    }
+    else {
+      version = getVersion(path);
+    }
     if (version === '') {
       continue;
     }
 
+    // Check if the version detected is acceptable
     if (pathFirstVersion === '') {
       if (serverFirstVersion !== '') {
         results.push({
-          message: 'path should not have version while server object has one.',
+          message: `the path should not include a version number when the \'servers.url\' attribute already does: \'servers.url\' version detected is /${serverFirstVersion}`,
           path: ['paths', path],
         });
       }
@@ -105,7 +107,7 @@ export default function (targetVal, opts) {
 
     if (pathFirstVersion !== version) {
       results.push({
-        message: 'multi versions in paths.',
+        message: `more than one version has been detected across paths: /${pathFirstVersion} and /${version}`,
         path: ['paths', path],
       });
     }
