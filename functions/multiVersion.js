@@ -97,7 +97,7 @@ export default function (targetVal, opts) {
     if (pathFirstVersion === '') {
       if (serverFirstVersion !== '') {
         results.push({
-          message: `the path should not include a version number when the \'servers.url\' attribute already does: \'servers.url\' version detected is /${serverFirstVersion}`,
+          message: `path should not have version while server object has one.`,
           path: ['paths', path],
         });
       }
@@ -107,7 +107,7 @@ export default function (targetVal, opts) {
 
     if (pathFirstVersion !== version) {
       results.push({
-        message: `more than one version has been detected across paths: /${pathFirstVersion} and /${version}`,
+        message: `multi versions in paths.`,
         path: ['paths', path],
       });
     }

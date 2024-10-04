@@ -37,7 +37,7 @@ export default {
     'oas3-schema': 'error',
     'oas2-schema': 'error',
     'oas3-missing-schema-definition': {
-      'description': 'a schema must describe the structure of responses (except 204s) and request bodies if any',
+      'description': 'There is no schema attribute for a component.',
       'message': '{{description}}; {{error}}',
       'severity': 'error',
       'formats': [oas3],
@@ -53,7 +53,7 @@ export default {
       },
     },
     'oas2-missing-schema-definition': {
-      'description': 'a schema must describe the structure of responses (except 204s) and request bodies if any',
+      'description': 'There is no schema attribute for a component.',
       'message': '{{description}}; {{error}}',
       'severity': 'error',
       'formats': [oas2],
@@ -69,7 +69,7 @@ export default {
       },
     },
     'general-schema-definition': {
-      'description': 'schemas must be fully defined and should not use \'object\' as a final type',
+      'description': 'Some of the defined schema use object as a final field when describing their object structure',
       'message': '{{description}}; {{error}}',
       'severity': 'error',
       'given': [
@@ -87,7 +87,7 @@ export default {
       ],
     },
     'oas3-missing-returned-representation': {
-      'description': 'a response schema must be defined for 2xx responses (except 204)',
+      'description': '2XX (except 204) responses must have a response schema defined',
       'message': '{{description}}; {{error}}',
       'severity': 'error',
       'formats': [oas3],
@@ -100,7 +100,7 @@ export default {
       },
     },
     'oas2-missing-returned-representation': {
-      'description': 'a response schema must be defined for 2xx responses (except 204)',
+      'description': '2XX (except 204) responses must have a response schema defined.',
       'message': '{{description}}; {{error}}',
       'severity': 'error',
       'formats': [oas2],
@@ -113,7 +113,7 @@ export default {
       },
     },
     'success-status-code': {
-      'description': 'responses must include a success status code in the 1xx, 2xx or 3xx range (generally 200, 201 or 204)',
+      'description': 'For every operation in the OAS document, there should be at least one success status code defined. A successful status code is in the 1xx, 2xx or 3xx range series, and generally a 200, 201 or 204.',
       'message': '{{description}}; {{error}}',
       'severity': 'error',
       'given': '$.paths.*.*.responses',
@@ -141,7 +141,7 @@ export default {
       },
     },
     'oas2-meta-info': {
-      'description': 'some meta fields are missing',
+      'description': 'Some meta fields must be present.',
       'message': '{{description}}; {{error}}',
       'severity': 'error',
       'formats': [oas2],
@@ -162,8 +162,8 @@ export default {
         },
       },
     },
-    'server-url-missing-version': {
-      'description': 'the API version should be specified in the \'server.url\' field',
+    'multi-versions-server-url-missing-version': {
+      'description': 'path should not have version while server object has one',
       'message': '{{description}}; {{error}}',
       'severity': 'warn',
       'given': [
@@ -177,7 +177,7 @@ export default {
       },
     },
     'multi-versions': {
-      'description': 'all paths should reference a single API version',
+      'description': 'should only contain a single API version at a time.',
       'message': '{{description}}; {{error}}',
       'severity': 'error',
       'given': [
@@ -191,7 +191,7 @@ export default {
       },
     },
     'operationId-required-and-unique': {
-      'description': 'an \'operationId\' field must be present for every operation and must be unique',
+      'description': 'operationId must be required and uniq',
       'message': '{{description}}; {{error}}',
       'severity': 'error',
       'given': [
