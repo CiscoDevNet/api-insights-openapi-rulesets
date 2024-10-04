@@ -113,7 +113,7 @@ export default {
       },
     },
     'success-status-code': {
-      'description': 'For every operation in the OAS document, there should be at least one success status code defined.  A successful status code is in the 1xx, 2xx or 3xx range series, and generally a 200, 201 or 204.',
+      'description': 'For every operation in the OAS document, there should be at least one success status code defined. A successful status code is in the 1xx, 2xx or 3xx range series, and generally a 200, 201 or 204.',
       'message': '{{description}}; {{error}}',
       'severity': 'error',
       'given': '$.paths.*.*.responses',
@@ -125,7 +125,7 @@ export default {
       },
     },
     'error-status-code': {
-      'description': 'There should be at least one error status code either 4xx or 5xx.',
+      'description': 'responses should include at least one error status code (4xx or 5xx)',
       'message': '{{description}}; {{error}}',
       'severity': 'warn',
       'given': '$.paths.*.*.responses',
@@ -163,7 +163,7 @@ export default {
       },
     },
     'multi-versions-server-url-missing-version': {
-      'description': 'No version is specified in the server object of the OpenAPI Document. Best practices recommend specifying the version in the server object only once',
+      'description': 'path should not have version while server object has one',
       'message': '{{description}}; {{error}}',
       'severity': 'warn',
       'given': [
@@ -172,7 +172,7 @@ export default {
       'then': {
         'function': multiVersion,
         'functionOptions': {
-          'check': 'server-url-missing',
+          'check': 'server-url-missing'
         },
       },
     },
@@ -185,6 +185,9 @@ export default {
       ],
       'then': {
         'function': multiVersion,
+        'functionOptions': {
+          'exceptions' : [ "networks/{networkId}/switch/dhcp/v4" ]
+        },
       },
     },
     'operationId-required-and-unique': {

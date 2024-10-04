@@ -19,6 +19,8 @@
 'use strict';
 
 import { isObject } from '../util/funcUtils.js';
+import getVersion from '../util/getVersion.js';
+
 
 /**
  * Checks if there is only one version in server urls and paths.
@@ -78,16 +80,24 @@ export default function (targetVal, opts) {
   let pathFirstVersion = '';
 
   for (const { path } of getAllPaths(paths)) {
-    const version = getVersion(path);
 
+    // Is there a version identified on the path, considering the path fragments exceptions if any
+    let version;
+    if (opts && opts.exceptions) {
+      version = getVersion(path, opts.exceptions);
+    }
+    else {
+      version = getVersion(path);
+    }
     if (version === '') {
       continue;
     }
 
+    // Check if the version detected is acceptable
     if (pathFirstVersion === '') {
       if (serverFirstVersion !== '') {
         results.push({
-          message: 'path should not have version while server object has one.',
+          message: `path should not have version while server object has one.`,
           path: ['paths', path],
         });
       }
@@ -97,7 +107,7 @@ export default function (targetVal, opts) {
 
     if (pathFirstVersion !== version) {
       results.push({
-        message: 'multi versions in paths.',
+        message: `multi versions in paths.`,
         path: ['paths', path],
       });
     }
@@ -154,15 +164,4 @@ function* getAllServerURLs(doc) {
     item.url = url;
     yield item;
   }
-}
-
-function getVersion(str) {
-  let version = '';
-  const parts = str.match(/v\d+[^/]*/);
-
-  if (parts) {
-    version =  parts[0];
-  }
-
-  return version;
 }

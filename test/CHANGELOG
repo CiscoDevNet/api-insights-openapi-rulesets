@@ -1,0 +1,11 @@
+# Changelog
+
+## October 24th, 2024
+
+The 'multi-version' rule received several updates:
+- it does not consider any more 'v*' patterns in path such as 'ipv6' as version number.
+- the rule also support expections for paths such as '/api/dhcp/v4' where v4 should not be considered as a version number per the API design.
+
+The 'Contract' ruleset has been updated to include an exception for path "networks/{networkId}/switch/dhcp/v4" of the Meraki API.
+
+
