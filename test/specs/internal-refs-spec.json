@@ -1,0 +1,175 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Test API with Internal References Only",
+    "version": "1.0.0",
+    "description": "Test specification with only internal references to verify normal operation"
+  },
+  "paths": {
+    "/users": {
+      "get": {
+        "summary": "Get users",
+        "description": "Retrieve a list of users",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserList"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Create user",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/User"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "User created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/users/{userId}": {
+      "get": {
+        "summary": "Get user by ID",
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "User": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Unique user identifier"
+          },
+          "name": {
+            "type": "string",
+            "description": "User's full name"
+          },
+          "email": {
+            "type": "string",
+            "format": "email",
+            "description": "User's email address"
+          },
+          "profile": {
+            "$ref": "#/components/schemas/UserProfile"
+          },
+          "department": {
+            "type": "string",
+            "description": "User's department"
+          }
+        },
+        "required": ["id", "name", "email"]
+      },
+      "UserProfile": {
+        "type": "object",
+        "properties": {
+          "bio": {
+            "type": "string",
+            "description": "User's biography"
+          },
+          "avatar": {
+            "type": "string",
+            "format": "uri",
+            "description": "URL to user's avatar image"
+          },
+          "preferences": {
+            "$ref": "#/components/schemas/UserPreferences"
+          }
+        }
+      },
+      "UserPreferences": {
+        "type": "object",
+        "properties": {
+          "theme": {
+            "type": "string",
+            "enum": ["light", "dark"],
+            "default": "light"
+          },
+          "notifications": {
+            "type": "boolean",
+            "default": true
+          }
+        }
+      },
+      "UserList": {
+        "type": "object",
+        "properties": {
+          "users": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/User"
+            }
+          },
+          "total": {
+            "type": "integer",
+            "description": "Total number of users"
+          },
+          "pagination": {
+            "$ref": "#/components/schemas/PaginationInfo"
+          }
+        }
+      },
+      "PaginationInfo": {
+        "type": "object",
+        "properties": {
+          "page": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 100
+          },
+          "hasNext": {
+            "type": "boolean"
+          }
+        }
+      }
+    }
+  }
+}

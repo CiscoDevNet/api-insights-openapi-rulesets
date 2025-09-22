@@ -1,0 +1,155 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Test API with External References",
+    "version": "1.0.0",
+    "description": "Test specification to verify external reference handling in API Insights"
+  },
+  "paths": {
+    "/users": {
+      "get": {
+        "summary": "Get users",
+        "description": "Retrieve a list of users with manager references",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserList"
+                },
+                "examples": {
+                  "user-list": {
+                    "summary": "User list example with external manager reference",
+                    "value": {
+                      "users": [
+                        {
+                          "id": "user-123",
+                          "name": "John Doe",
+                          "email": "john.doe@example.com",
+                          "manager": {
+                            "$ref": "https://example.com/v2/Users/manager-456"
+                          }
+                        },
+                        {
+                          "id": "user-789",
+                          "name": "Jane Smith",
+                          "email": "jane.smith@example.com",
+                          "manager": {
+                            "$ref": "https://api.example.com/scim/v2/Users/manager-123"
+                          }
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Create user",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/User"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "User created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/users/{userId}": {
+      "get": {
+        "summary": "Get user by ID",
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "User": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Unique user identifier"
+          },
+          "name": {
+            "type": "string",
+            "description": "User's full name"
+          },
+          "email": {
+            "type": "string",
+            "format": "email",
+            "description": "User's email address"
+          },
+          "manager": {
+            "description": "Reference to user's manager",
+            "$ref": "https://example.com/v2/Users/manager-reference"
+          },
+          "department": {
+            "type": "string",
+            "description": "User's department"
+          }
+        },
+        "required": ["id", "name", "email"]
+      },
+      "UserList": {
+        "type": "object",
+        "properties": {
+          "users": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/User"
+            }
+          },
+          "total": {
+            "type": "integer",
+            "description": "Total number of users"
+          },
+          "next": {
+            "type": "string",
+            "format": "uri",
+            "description": "URL for next page of results"
+          }
+        }
+      }
+    }
+  }
+}
