@@ -3,6 +3,7 @@
 ## Problem Statement
 
 The Spectral validator `validation.js` was not catching the broken `$ref` references like `#/components/schemas/PolicySeverity` in the [spec file](/test/resources/broken-refs/broken-internal-refs-3.0.x.yml), specifically when they appeared in nested structures within sibling properties of another `$ref`.
+The original issue #48 reported is [here](https://wwwin-github.cisco.com/DevNet/api-insights-support/issues/48). 
 
 ## Root Cause Analysis
 
@@ -50,7 +51,7 @@ It warns that `$ref must not be placed next to any other properties` in case of 
 - Ignores external references (HTTP/HTTPS/file paths)
 - Only validates internal references (starting with `#/`)
 
-### 2. Updated `validation.js` Ruleset
+### 3. Updated `validation.js` Ruleset
 
 **File**: [validation.js](/validation.js) 
 
@@ -62,7 +63,7 @@ It warns that `$ref must not be placed next to any other properties` in case of 
 - Error severity for broken references
 
 
-### 3. Comprehensive Test Suites
+### 4. Comprehensive Test Suites
 
 #### Unit Tests: `validateRefSiblings.spec.js`
 
