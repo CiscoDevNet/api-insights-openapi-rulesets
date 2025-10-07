@@ -1,0 +1,99 @@
+swagger: '2.0'
+info:
+  contact:
+    name: Scott Hardin
+  description: This is a sample API.
+  title: Sample API
+  version: '1.0'
+host: api.example.com
+basePath: /
+schemes:
+- http
+paths:
+  /anotherTest:
+    get:
+      parameters:
+      - in: header
+        name: If-Unmodified-Since
+        type: string
+      responses:
+        '200':
+          description: No Content
+          headers:
+            Last-Modified:
+              type: string
+      tags:
+      - Sample
+      description: get some more test data.
+      operationId: getAnotherTestData
+  /correctTest/{testId}:
+    get:
+      parameters:
+      - in: header
+        name: If-Match
+        type: string
+      responses:
+        '200':
+          description: No Content
+          headers:
+            Etag:
+              type: string
+      tags:
+      - Sample
+      description: This is an endpoint that shouldn't raise an error.
+      operationId: getCorrectTestData
+  /correctTest2/{testId}:
+    get:
+      parameters:
+      - in: header
+        name: If-Modified-Since
+        type: string
+      responses:
+        '200':
+          description: No Content
+          headers:
+            Last-Modified:
+              type: string
+      tags:
+      - Sample
+      description: This is an endpoint that shouldn't raise an error.
+      operationId: getCorrectTestData2
+  /correctTest3/{testId}:
+    get:
+      parameters:
+      - in: header
+        name: If-None-Match
+        type: string
+      responses:
+        '200':
+          description: No Content
+          headers:
+            Etag:
+              type: string
+      tags:
+      - Sample
+      description: This is an endpoint that shouldn't raise an error.
+      operationId: getCorrectTestData3
+  /test:
+    post:
+      parameters:
+      - in: header
+        name: If-Range
+        type: string
+      responses:
+        '201':
+          description: Created
+          headers:
+            Last-Modified:
+              type: string
+            Location:
+              type: string
+        '404':
+          description: Not Found
+      tags:
+      - Sample
+      description: Create some test data.
+      operationId: postTestData
+tags:
+- description: This is a sample tag.
+  name: Sample
