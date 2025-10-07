@@ -1,6 +1,6 @@
 {
   "name": "@cisco-developer/api-insights-openapi-rulesets",
-  "version": "0.1.23",
+  "version": "0.0.0",
   "description": "API Insights Spectral rulesets",
   "type": "module",
   "scripts": {
