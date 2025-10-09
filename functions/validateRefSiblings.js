@@ -127,7 +127,7 @@ function validateRef(ref, documentData, pathContext) {
     } else {
       // Broken reference found
       return {
-        message: `Broken reference in sibling property '${pathContext}': ${ref}`,
+        message: `broken reference '${ref}'`,
       };
     }
   }

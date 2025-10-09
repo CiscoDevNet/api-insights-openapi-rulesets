@@ -175,7 +175,7 @@ describe('validateRefSiblings', () => {
       const result = validateRefSiblings(input, {}, mockContext);
       expect(result).toEqual([
         {
-          message: "Broken reference in sibling property 'additionalProp.$ref': #/components/schemas/NonExistent"
+          message: "broken reference '#/components/schemas/NonExistent'"
         }
       ]);
     });
@@ -193,7 +193,7 @@ describe('validateRefSiblings', () => {
       const result = validateRefSiblings(input, {}, mockContext);
       expect(result).toEqual([
         {
-          message: "Broken reference in sibling property 'severities.items.$ref': #/components/schemas/PolicySeverity"
+          message: "broken reference '#/components/schemas/PolicySeverity'"
         }
       ]);
     });
@@ -211,10 +211,10 @@ describe('validateRefSiblings', () => {
       const result = validateRefSiblings(input, {}, mockContext);
       expect(result).toHaveLength(2);
       expect(result).toContainEqual({
-        message: "Broken reference in sibling property 'prop1.$ref': #/components/schemas/NonExistent1"
+        message: "broken reference '#/components/schemas/NonExistent1'"
       });
       expect(result).toContainEqual({
-        message: "Broken reference in sibling property 'prop2.$ref': #/components/schemas/NonExistent2"
+        message: "broken reference '#/components/schemas/NonExistent2'"
       });
     });
 
@@ -234,7 +234,7 @@ describe('validateRefSiblings', () => {
       const result = validateRefSiblings(input, {}, mockContext);
       expect(result).toEqual([
         {
-          message: "Broken reference in sibling property 'properties.nested.deep.value.$ref': #/components/schemas/DeepNonExistent"
+          message: "broken reference '#/components/schemas/DeepNonExistent'"
         }
       ]);
     });
@@ -251,7 +251,7 @@ describe('validateRefSiblings', () => {
       const result = validateRefSiblings(input, {}, mockContext);
       expect(result).toEqual([
         {
-          message: "Broken reference in sibling property 'arrayProp[0].$ref': #/components/schemas/NonExistent"
+          message: "broken reference '#/components/schemas/NonExistent'"
         }
       ]);
     });
@@ -272,7 +272,7 @@ describe('validateRefSiblings', () => {
       expect(result).toHaveLength(1);
       expect(result).toEqual([
         {
-          message: "Broken reference in sibling property 'brokenProp.$ref': #/components/schemas/NonExistent"
+          message: "broken reference '#/components/schemas/NonExistent'"
         }
       ]);
     });
@@ -300,7 +300,7 @@ describe('validateRefSiblings', () => {
       expect(result).toHaveLength(1);
       expect(result).toEqual([
         {
-          message: "Broken reference in sibling property 'policies.items.$ref': #/components/schemas/Policy"
+          message: "broken reference '#/components/schemas/Policy'"
         }
       ]);
     });
@@ -354,7 +354,7 @@ describe('validateRefSiblings', () => {
       expect(result).toHaveLength(1);
       expect(result).toEqual([
         {
-          message: "Broken reference in sibling property 'internalBroken.$ref': #/components/schemas/NonExistent"
+          message: "broken reference '#/components/schemas/NonExistent'"
         }
       ]);
     });
@@ -408,7 +408,7 @@ describe('validateRefSiblings', () => {
       const result = validateRefSiblings(input, {}, mockContext);
       expect(result).toEqual([
         {
-          message: "Broken reference in sibling property 'brokenPath.$ref': #/nonexistent/path/schema"
+          message: "broken reference '#/nonexistent/path/schema'"
         }
       ]);
     });

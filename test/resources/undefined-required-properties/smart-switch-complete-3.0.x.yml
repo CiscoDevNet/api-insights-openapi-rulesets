@@ -1,0 +1,86 @@
+openapi: 3.0.3
+info:
+  title: Test API
+  version: 1.0.0
+paths:
+  /smartSwitches/{switchId}/integrations:
+    get:
+      parameters:
+        - name: switchId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: options
+          in: query
+          schema:
+            type: object
+            properties:
+              includeStatus:
+                type: boolean
+                description: Include status information
+              # includeMetrics is missing but listed in required
+            required:
+              - includeStatus
+              - includeMetrics # This property is required but not defined in parameter schema
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SmartSwitchIntegrationIdData'
+    put:
+      parameters:
+        - name: switchId
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                integrationId:
+                  type: string
+                  description: Integration ID
+                status:
+                  type: string
+                  description: Integration status
+                # configuration is missing but listed in required
+              required:
+                - integrationId
+                - status
+                - configuration # This property is required but not defined in request body schema
+      responses:
+        '200':
+          description: Updated
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  updatedAt:
+                    type: string
+                    format: date-time
+                    description: Last update timestamp
+                  # result is missing but listed in required
+                required:
+                  - updatedAt
+                  - result # This property is required but not defined in response schema
+components:
+  schemas:
+    SmartSwitchIntegrationIdData:
+      type: object
+      properties:
+        integrationId:
+          type: string
+          description: Integration ID
+        status:
+          type: string
+          description: Integration status
+      required:
+        - integrationId
+        - switchName # This property is required but not defined in properties

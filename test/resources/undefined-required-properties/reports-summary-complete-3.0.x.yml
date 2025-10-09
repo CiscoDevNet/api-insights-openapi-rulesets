@@ -1,0 +1,74 @@
+openapi: 3.0.3
+info:
+  title: Test API
+  version: 1.0.0
+paths:
+  /reports/summary:
+    get:
+      parameters:
+        - name: filters
+          in: query
+          schema:
+            type: object
+            properties:
+              dateRange:
+                type: string
+                description: Date range for the report
+              # groupBy is missing but listed in required
+            required:
+              - dateRange
+              - groupBy # This property is required but not defined in parameter schema
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SummaryProperties'
+    post:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                reportName:
+                  type: string
+                  description: Name of the report
+                count:
+                  type: integer
+                  description: Number of items
+                # format is missing but listed in required
+              required:
+                - reportName
+                - count
+                - format # This property is required but not defined in request body schema
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  reportId:
+                    type: string
+                    description: Created report ID
+                  # metadata is missing but listed in required
+                required:
+                  - reportId
+                  - metadata # This property is required but not defined in response schema
+components:
+  schemas:
+    SummaryProperties:
+      type: object
+      properties:
+        count:
+          type: integer
+          description: Number of items
+        total:
+          type: integer
+          description: Total count
+      required:
+        - count
+        - type # This property is required but not defined in properties

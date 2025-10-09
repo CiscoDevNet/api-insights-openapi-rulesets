@@ -2,36 +2,59 @@
 
 ## Problem Statement
 
-The Spectral validator `validation.js` was not catching the broken `$ref` references like `#/components/schemas/PolicySeverity` in the [spec file](/test/resources/broken-refs/broken-internal-refs-3.0.x.yml), specifically when they appeared in nested structures within sibling properties of another `$ref`.
+The Spectral validator `validation.js` was not catching two types of issues:
+
+1. **Broken `$ref` references** like `#/components/schemas/PolicySeverity` in nested structures within sibling properties of another `$ref`
+2. **Undefined required properties** where properties are listed in the `required` array but not defined in the `properties` object
+
 The original issue #48 reported is [here](https://wwwin-github.cisco.com/DevNet/api-insights-support/issues/48). 
 
 ## Root Cause Analysis
 
-### The Issue
+### Issue 1: Broken Nested References
 
 In OpenAPI 3.1.x, the specification allows `$ref` to have sibling properties at the same level while OAS 3.0.x doesn't allow this:
 
 ```yaml
 commonAnomaly:
   $ref: '#/components/schemas/CommonAnomalyPolicy'
-  severities:  # Sibling property - valid in OAS 3.1.x but invalid in OAS 3.0.x and are genrally ignored by toolings
+  severities:  # Sibling property - valid in OAS 3.1.x but invalid in OAS 3.0.x
     type: array
     items:
       $ref: '#/components/schemas/PolicySeverity'  # Nested ref
 ```
-The broken refrence `#/components/schemas/PolicySeverity` was not being caught in both OAS 3.0.x and 3.1.x specs. Ideally, a broken reference should be reported as `invalid-ref` error as part of `oas3-schema ruleset`.
 
-### Why It Wasn't Caught
+The broken reference `#/components/schemas/PolicySeverity` was not being caught in both OAS 3.0.x and 3.1.x specs.
 
-1. **In OAS 3.0.x**: With respect to the parent commonAnomaly, Spectral simply ignored sibling property `severities` of `#ref`. Hence, validation never reached to `#/components/schemas/PolicySeverity`.
-2. **In OAS 3.1.x**: Spectral resolves `$ref` references during document parsing. When a `$ref` has sibling properties, Spectral merges them during resolution. By the time inbuilt `invalid-ref` validation rule runs, the nested and broken `$ref` has been absorbed into the resolved schema structure and hence is not caught as an error.
+### Issue 2: Undefined Required Properties
+
+Properties listed in the `required` array but not defined in the `properties` object:
+
+```yaml
+TestSchema:
+  type: object
+  properties:
+    commonAnomaly:
+      type: object
+    # severities property is missing but listed in required
+  required:
+    - commonAnomaly
+    - severities  # This property is required but not defined in properties
+```
+
+### Why These Issues Weren't Caught
+
+1. **Broken References**: 
+   - **In OAS 3.0.x**: Spectral ignored sibling properties of `$ref`, so validation never reached nested `$ref`
+   - **In OAS 3.1.x**: Spectral resolves `$ref` references during parsing, merging siblings. By the time validation runs, nested broken `$ref` is absorbed into resolved schema
+
+2. **Undefined Required Properties**:
+   - Spectral's default `oas3-schema` ruleset does not validate that all properties in `required` array are defined in `properties` object
+   - This is a common issue in real-world OpenAPI specifications
 
 ## Solution Implemented
 
-### 1. Added a rule `no-$ref-siblings` in validation.js 
-It warns that `$ref must not be placed next to any other properties` in case of OAS 3.0.x specs.
-
-### 2. Created `validateRefSiblings.js` Preprocessor
+### 1. `broken-internal-refs` Rule
 
 **File**: [functions/validateRefSiblings.js](/functions/validateRefSiblings.js)
 
@@ -42,7 +65,7 @@ It warns that `$ref must not be placed next to any other properties` in case of 
 2. Identifies objects that have both a `$ref` and sibling properties
 3. Recursively searches sibling properties for nested `$ref` references
 4. Validates each nested `$ref` against the document data
-5. Reports broken references with detailed path information
+5. Reports broken references with clean error messages
 
 **Key Features**:
 - Works with `resolved: false` flag to run before reference resolution
@@ -50,74 +73,88 @@ It warns that `$ref must not be placed next to any other properties` in case of 
 - Supports arrays and complex object hierarchies
 - Ignores external references (HTTP/HTTPS/file paths)
 - Only validates internal references (starting with `#/`)
+- Clean error message format: `"broken reference '#/components/schemas/Reference'"`
+
+### 2. `undefined-required-properties` Rule
+
+**File**: [functions/validateRequiredProperties.js](/functions/validateRequiredProperties.js)
+
+**Purpose**: Validates that all properties listed in the `required` array are defined in the `properties` object.
+
+**How It Works**:
+1. Identifies object schemas with both `required` array and `properties` object
+2. Compares required properties against defined properties
+3. Reports missing properties with clear error messages
+4. Works across all schema locations (components, responses, request bodies, parameters)
+
+**Key Features**:
+- Validates all OpenAPI schema locations
+- Clean error message format: `"'propertyName' is not defined"`
+- Handles edge cases (empty arrays, non-object schemas)
+- Works with both OpenAPI 3.0.x and 3.1.x
 
 ### 3. Updated `validation.js` Ruleset
 
 **File**: [validation.js](/validation.js) 
 
 **Changes**:
-- Added import for `validateRefSiblings`
-- Created new rule: `broken-refs-in-siblings`
-- Configured with `resolved: false` to run on unresolved document
-- Uses `$..' JSONPath to match all objects
-- Error severity for broken references
-
+- Added import for `validateRefSiblings` and `validateRequiredProperties`
+- Created `broken-internal-refs` rule with `resolved: false`
+- Created `undefined-required-properties` rule for comprehensive schema validation
+- Configured both rules with appropriate `given` paths and error severity
 
 ### 4. Comprehensive Test Suites
 
-#### Unit Tests: `validateRefSiblings.spec.js`
+#### Unit Tests
 
-**File**: [functions/validateRefSiblings.spec.js](/functions/validateRefSiblings.spec.js)
+**Files**: 
+- [functions/validateRefSiblings.spec.js](/functions/validateRefSiblings.spec.js)
+- [functions/validateRequiredProperties.spec.js](/functions/validateRequiredProperties.spec.js)
 
 **Coverage**:
-- Basic validation (null inputs, missing $ref, no siblings)
-- Valid nested references (should pass)
-- Broken nested references (should fail)
-- Multiple broken references
+- Basic validation (null inputs, missing data)
+- Valid references/properties (should pass)
+- Broken references/missing properties (should fail)
+- Multiple errors in single schema
 - Deeply nested structures
 - External references (should be ignored)
 - Edge cases (null values, primitives, empty objects)
 
-#### Integration Tests: `validation-nested-refs.spec.js`
+#### Integration Tests
 
-**File**: [test/validation-nested-refs.spec.js](/test/validation-nested-refs.spec.js)
+**Files**:
+- [test/integration/broken-internal-refs.test.js](/test/integration/broken-internal-refs.test.js)
+- [test/integration/broken-refs-yaml.test.js](/test/integration/broken-refs-yaml.test.js)
+- [test/integration/undefined-required-properties.test.js](/test/integration/undefined-required-properties.test.js)
+- [test/integration/undefined-properties-yaml.test.js](/test/integration/undefined-properties-yaml.test.js)
 
 **Coverage**:
-- OpenAPI 3.0.3 scenarios
-- OpenAPI 3.1.0 scenarios (where $ref+siblings is valid per spec)
-- Real-world ThresholdAnomaly/PolicySeverity scenario
-- Multiple broken references
-- Mixed valid and broken references
+- OpenAPI 3.0.3 and 3.1.0 scenarios
+- Real-world scenarios from `manage.yaml`
+- Request/response/parameter schema validation
+- Mixed valid and invalid scenarios
 - External references handling
-- Edge cases and complex nested structures
-
+- Complex nested structures
 
 #### Test Resource Files
 
-**Directory**: [test/resources/broken-refs/](/test/resources/broken-refs/)
+**Directory**: [test/resources/](/test/resources/)
 
-Test files for different scenarios:
+**Broken References Tests**:
+- [broken-refs/broken-internal-refs-3.0.x.yml](/test/resources/broken-refs/broken-internal-refs-3.0.x.yml)
+- [broken-refs/broken-internal-refs-3.1.x.yml](/test/resources/broken-refs/broken-internal-refs-3.1.x.yml)
+- [broken-refs/no-ref-siblings-3.0.x.yml](/test/resources/broken-refs/no-ref-siblings-3.0.x.yml)
+- [broken-refs/no-ref-siblings-3.1.x.yml](/test/resources/broken-refs/no-ref-siblings-3.1.x.yml)
 
-1. [broken-internal-refs-3.0.x.yml](/test/resources/broken-refs/broken-internal-refs-3.0.x.yml)
-   - OpenAPI 3.0.3 spec with broken `PolicySeverity` reference
-   - Has `$ref` with sibling properties (technically invalid in 3.0.3)
-   - Used to verify preprocessor catches broken nested refs
-
-2. [broken-internal-refs-3.1.x.yml](/test/resources/broken-refs/broken-internal-refs-3.1.x.yml)
-   - OpenAPI 3.1.0 spec with broken `PolicySeverity` reference
-   - Has `$ref` with sibling properties (valid in 3.1.0)
-   - Used to verify preprocessor catches broken nested refs
-
-3. [no-ref-siblings-3.0.x.yml](/test/resources/broken-refs/no-ref-siblings-3.0.x.yml)
-   - OpenAPI 3.0.3 spec with valid `PolicySeverity` reference
-   - Has `$ref` with sibling properties
-   - Used to verify no false positives when ref is valid
-
-4. [no-ref-siblings-3.1.x.yml](/test/resources/broken-refs/no-ref-siblings-3.1.x.yml)
-   - OpenAPI 3.1.0 spec with valid `PolicySeverity` reference
-   - Has `$ref` with sibling properties
-   - Used to verify no false positives when ref is valid
-
+**Undefined Required Properties Tests**:
+- [undefined-required-properties/undefined-required-properties-3.0.x.yml](/test/resources/undefined-required-properties/undefined-required-properties-3.0.x.yml)
+- [undefined-required-properties/undefined-required-properties-3.1.x.yml](/test/resources/undefined-required-properties/undefined-required-properties-3.1.x.yml)
+- [undefined-required-properties/device-interface-scope-3.0.x.yml](/test/resources/undefined-required-properties/device-interface-scope-3.0.x.yml)
+- [undefined-required-properties/smart-switch-integration-3.0.x.yml](/test/resources/undefined-required-properties/smart-switch-integration-3.0.x.yml)
+- [undefined-required-properties/security-policies-complete-3.0.x.yml](/test/resources/undefined-required-properties/security-policies-complete-3.0.x.yml)
+- [undefined-required-properties/reports-summary-complete-3.0.x.yml](/test/resources/undefined-required-properties/reports-summary-complete-3.0.x.yml)
+- [undefined-required-properties/comprehensive-test-3.0.x.yml](/test/resources/undefined-required-properties/comprehensive-test-3.0.x.yml)
+- [undefined-required-properties/valid-schema-3.0.x.yml](/test/resources/undefined-required-properties/valid-schema-3.0.x.yml)
 
 ## OpenAPI Version Differences
 
@@ -125,30 +162,39 @@ Test files for different scenarios:
 
 - `$ref` **SHOULD** be the only property at its level per specification
 - Having sibling properties is **discouraged** but parsers may allow it
-- Our preprocessor **works** and catches broken nested refs
+- Both rules **work** and catch issues effectively
 
 ### OpenAPI 3.1.x
 
 - `$ref` **CAN** have sibling properties 
 - Structure is **VALID** per specification
-- Our preprocessor is **ESSENTIAL** to catch nested broken refs
+- Both rules are **ESSENTIAL** to catch nested broken refs and undefined properties
 
 ## Usage
 
 ### Testing the Solution
 
 ```bash
-# Test on OpenAPI 3.0.3 with broken refs
+# Test broken references on OpenAPI 3.0.3
 spectral lint -r validation.js test/resources/broken-refs/broken-internal-refs-3.0.x.yml
 
-# Test on OpenAPI 3.1.0 with broken refs
+# Test broken references on OpenAPI 3.1.0
 spectral lint -r validation.js test/resources/broken-refs/broken-internal-refs-3.1.x.yml
+
+# Test undefined required properties
+spectral lint -r validation.js test/resources/undefined-required-properties/undefined-required-properties-3.0.x.yml
 
 # Run unit tests
 npm test -- functions/validateRefSiblings.spec.js
+npm test -- functions/validateRequiredProperties.spec.js
 
 # Run integration tests
-npm test -- test/validation-nested-refs.spec.js
+npm test -- test/integration/broken-internal-refs.test.js
+npm test -- test/integration/undefined-required-properties.test.js
+npm test -- test/integration/undefined-properties-yaml.test.js
+
+# Run all tests
+npm test
 ```
 
 ### Expected Behavior
@@ -158,34 +204,50 @@ npm test -- test/validation-nested-refs.spec.js
 $ spectral lint -r validation.js test/resources/broken-refs/broken-internal-refs-3.0.x.yml
 
 /path/to/broken-internal-refs-3.0.x.yml
-  22:23    error  broken-refs-in-siblings  Broken reference in sibling property 'severities.items.$ref': #/components/schemas/PolicySeverity  components.schemas.TestSchema.properties.commonAnomaly
-  24:22  warning  no-$ref-siblings         $ref must not be placed next to any other properties                                               components.schemas.TestSchema.properties.commonAnomaly.severities
-  ✖ 2 problems (1 error, 1 warning, 0 infos, 0 hints)
-```
-```bash
-$ spectral lint -r validation.js test/resources/broken-refs/broken-internal-refs-3.1.x.yml
-
-/path/to/broken-internal-refs-3.1.x.yml
- 22:23  error  broken-refs-in-siblings  Broken reference in sibling property 'severities.items.$ref': #/components/schemas/PolicySeverity
- ✖ 1 problem (1 error, 0 warnings, 0 infos, 0 hints)
+   22:23  error  broken-internal-refs  internal references should exist; broken reference '#/components/schemas/PolicySeverity'  components.schemas.TestSchema.properties.commonAnomaly
+  ✖ 1 problem (1 error, 0 warnings, 0 infos, 0 hints)
 ```
 
-**For files with valid refs**:
+**For files with undefined required properties**:
 ```bash
-$ spectral lint -r validation.js test/resources/broken-refs/no-ref-siblings-3.0.x.yml
-26:22  warning  no-$ref-siblings  $ref must not be placed next to any other properties  components.schemas.TestSchema.properties.commonAnomaly.severities
-✖ 1 problem (0 error, 1 warnings, 0 infos, 0 hints)
+$ spectral lint -r validation.js test/resources/undefined-required-properties/undefined-required-properties-3.0.x.yml
+
+/path/to/undefined-required-properties-3.0.x.yml
+  17:22  error  undefined-required-properties  required properties must be defined; 'severities' is not defined  components.schemas.ThresholdAnomaly
+  ✖ 1 problem (1 error, 0 warnings, 0 infos, 0 hints)
 ```
+
+**For files with valid refs and properties**:
 ```bash
 $ spectral lint -r validation.js test/resources/broken-refs/no-ref-siblings-3.0.x.yml
 No results with a severity of 'error' found!
+```
+
+## Real-World Impact
+
+### Issues Found in `manage.yaml` openAPI spec that was shared along with [issue #48](https://wwwin-github.cisco.com/DevNet/api-insights-support/issues/48)
+
+The rules successfully detect real-world issues:
+
+```bash
+$ spectral lint -r validation.js manage.yaml
+
+/path/to/manage.yaml
+ 11980:22  error  undefined-required-properties  required properties must be defined; 'severities' is not defined                                                                        components.schemas.ThresholdAnomaly
+ 11988:23  error  broken-internal-refs           internal references should point to existing components; broken reference '#/components/schemas/PolicySeverity'  components.schemas.ThresholdAnomaly.properties.commonAnomaly
+ 14023:26  error  undefined-required-properties  required properties must be defined; 'switchid' is not defined                                                                          components.schemas.deviceInterfaceScope
+ 16736:34  error  undefined-required-properties  required properties must be defined; 'switchName' is not defined                                                                        components.schemas.smartSwitchIntegrationIdData
+ 22814:25  error  undefined-required-properties  required properties must be defined; 'protocol' is not defined                                                                          components.schemas.basePermitDenyEntry
+ 25083:23  error  undefined-required-properties  required properties must be defined; 'type' is not defined                                                                              components.schemas.summaryProperties
+
+✖ 6 problems (6 errors, 0 warnings, 0 infos, 0 hints)
 ```
 
 ## Technical Details
 
 ### The `resolved: false` Flag
 
-This is the **critical** configuration that makes the solution work:
+This is the **critical** configuration that makes the broken references solution work:
 
 ```javascript
 'resolved': false  // Run on unresolved document
@@ -193,3 +255,4 @@ This is the **critical** configuration that makes the solution work:
 
 - **Without this**: Rule runs on resolved document, nested refs are already merged and hidden
 - **With this**: Rule runs on raw parsed YAML, before Spectral processes any `$ref` references
+
