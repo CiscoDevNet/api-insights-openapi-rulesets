@@ -1,0 +1,28 @@
+openapi: 3.0.3
+info:
+  title: Test API
+  version: 1.0.0
+paths:
+  /test:
+    get:
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeviceInterfaceScope'
+components:
+  schemas:
+    DeviceInterfaceScope:
+      type: object
+      properties:
+        interfaceName:
+          type: string
+          description: Name of the interface
+        vlanId:
+          type: integer
+          description: VLAN ID
+      required:
+        - interfaceName
+        - switchid # This property is required but not defined in properties

@@ -1,0 +1,82 @@
+openapi: 3.0.3
+info:
+  title: Comprehensive Test API
+  version: 1.0.0
+paths:
+  # Test case 1: Missing properties in response schema
+  /test/response:
+    get:
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  # name is missing but listed in required
+                required:
+                  - id
+                  - name # This property is required but not defined in response schema
+
+  # Test case 2: Missing properties in request body schema
+  /test/request:
+    post:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                # description is missing but listed in required
+              required:
+                - title
+                - description # This property is required but not defined in request body schema
+      responses:
+        '201':
+          description: Created
+
+  # Test case 3: Missing properties in parameter schema
+  /test/parameter:
+    get:
+      parameters:
+        - name: filter
+          in: query
+          schema:
+            type: object
+            properties:
+              category:
+                type: string
+              # status is missing but listed in required
+            required:
+              - category
+              - status # This property is required but not defined in parameter schema
+      responses:
+        '200':
+          description: OK
+
+  # Test case 4: Missing properties in component schema
+  /test/component:
+    get:
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TestComponent'
+components:
+  schemas:
+    TestComponent:
+      type: object
+      properties:
+        id:
+          type: string
+        # name is missing but listed in required
+      required:
+        - id
+        - name # This property is required but not defined in component schema

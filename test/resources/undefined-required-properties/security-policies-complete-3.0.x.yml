@@ -1,0 +1,76 @@
+openapi: 3.0.3
+info:
+  title: Test API
+  version: 1.0.0
+paths:
+  /security/policies:
+    get:
+      parameters:
+        - name: policyType
+          in: query
+          schema:
+            type: object
+            properties:
+              category:
+                type: string
+                description: Policy category
+              # priority is missing but listed in required
+            required:
+              - category
+              - priority # This property is required but not defined in parameter schema
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BasePermitDenyEntry'
+    post:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                action:
+                  type: string
+                  enum: [permit, deny]
+                  description: Action to take
+                source:
+                  type: string
+                  description: Source address
+                # destination is missing but listed in required
+              required:
+                - action
+                - source
+                - destination # This property is required but not defined in request body schema
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  policyId:
+                    type: string
+                    description: Created policy ID
+                  # rules is missing but listed in required
+                required:
+                  - policyId
+                  - rules # This property is required but not defined in response schema
+components:
+  schemas:
+    BasePermitDenyEntry:
+      type: object
+      properties:
+        action:
+          type: string
+          enum: [permit, deny]
+          description: Action to take
+        source:
+          type: string
+          description: Source address
+      required:
+        - action
+        - protocol # This property is required but not defined in properties
