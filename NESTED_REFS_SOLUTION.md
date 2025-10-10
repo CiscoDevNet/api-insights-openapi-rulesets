@@ -13,7 +13,11 @@ The original issue #48 reported is [here](https://wwwin-github.cisco.com/DevNet/
 
 ### Issue 1: Broken Nested References
 
-In OpenAPI 3.1.x, the specification allows `$ref` to have sibling properties at the same level while OAS 3.0.x doesn't allow this:
+The OpenAPI spec file from issue #48 (`manage.yaml`) has an indentation issue in the `CommonAnomaly` property of `components.schemas.ThresholdAnomaly`. The `severities` property should have been defined one level up as a sibling to `commonAnomaly`.
+
+However, this cannot be identified as a schema structure problem because, even with the incorrect indentation in `manage.yaml`, `severities` can rightfully be considered as a property of `commonAnomaly`.
+
+In OpenAPI 3.1.x, the specification allows `$ref` to have sibling properties at the same level, while OAS 3.0.x does not allow this and suggests ignoring such properties if they are present.
 
 ```yaml
 commonAnomaly:
@@ -24,7 +28,7 @@ commonAnomaly:
       $ref: '#/components/schemas/PolicySeverity'  # Nested ref
 ```
 
-The broken reference `#/components/schemas/PolicySeverity` was not being caught in both OAS 3.0.x and 3.1.x specs.
+Broken nested references like `#/components/schemas/PolicySeverity` were not being caught in either OAS 3.0.x or 3.1.x specs by the existing validator. While the validator correctly identifies broken references at the top level, it fails to detect them when they are nested within sibling properties of a `$ref`. 
 
 ### Issue 2: Undefined Required Properties
 
@@ -45,12 +49,12 @@ TestSchema:
 ### Why These Issues Weren't Caught
 
 1. **Broken References**: 
-   - **In OAS 3.0.x**: Spectral ignored sibling properties of `$ref`, so validation never reached nested `$ref`
-   - **In OAS 3.1.x**: Spectral resolves `$ref` references during parsing, merging siblings. By the time validation runs, nested broken `$ref` is absorbed into resolved schema
+   - **In OAS 3.0.x**: Spectral ignores sibling properties of `$ref`, so validation never reaches nested `$ref` references
+   - **In OAS 3.1.x**: Spectral resolves `$ref` references during parsing and merges sibling properties. By the time validation runs, the nested broken `$ref` has been absorbed into the resolved schema structure, making it undetectable
 
 2. **Undefined Required Properties**:
-   - Spectral's default `oas3-schema` ruleset does not validate that all properties in `required` array are defined in `properties` object
-   - This is a common issue in real-world OpenAPI specifications
+   - Spectral's default `oas3-schema` ruleset does not validate that all properties in the `required` array are actually defined in the `properties` object
+   - This validation gap is a common source of errors in real-world OpenAPI specifications
 
 ## Solution Implemented
 
@@ -225,20 +229,20 @@ No results with a severity of 'error' found!
 
 ## Real-World Impact
 
-### Issues Found in `manage.yaml` openAPI spec that was shared along with [issue #48](https://wwwin-github.cisco.com/DevNet/api-insights-support/issues/48)
+### Issues Found in `manage.yaml`
 
-The rules successfully detect real-world issues:
+Using the OpenAPI spec file shared with [issue #48](https://wwwin-github.cisco.com/DevNet/api-insights-support/issues/48), the rules successfully detect the following real-world issues:
 
 ```bash
 $ spectral lint -r validation.js manage.yaml
 
 /path/to/manage.yaml
- 11980:22  error  undefined-required-properties  required properties must be defined; 'severities' is not defined                                                                        components.schemas.ThresholdAnomaly
- 11988:23  error  broken-internal-refs           internal references should point to existing components; broken reference '#/components/schemas/PolicySeverity'  components.schemas.ThresholdAnomaly.properties.commonAnomaly
- 14023:26  error  undefined-required-properties  required properties must be defined; 'switchid' is not defined                                                                          components.schemas.deviceInterfaceScope
- 16736:34  error  undefined-required-properties  required properties must be defined; 'switchName' is not defined                                                                        components.schemas.smartSwitchIntegrationIdData
- 22814:25  error  undefined-required-properties  required properties must be defined; 'protocol' is not defined                                                                          components.schemas.basePermitDenyEntry
- 25083:23  error  undefined-required-properties  required properties must be defined; 'type' is not defined                                                                              components.schemas.summaryProperties
+ 11980:22  error  undefined-required-properties  required properties must be defined; 'severities' is not defined                          components.schemas.ThresholdAnomaly
+ 11988:23  error  broken-internal-refs           internal references should exist; broken reference '#/components/schemas/PolicySeverity'  components.schemas.ThresholdAnomaly.properties.commonAnomaly
+ 14023:26  error  undefined-required-properties  required properties must be defined; 'switchid' is not defined                            components.schemas.deviceInterfaceScope
+ 16736:34  error  undefined-required-properties  required properties must be defined; 'switchName' is not defined                          components.schemas.smartSwitchIntegrationIdData
+ 22814:25  error  undefined-required-properties  required properties must be defined; 'protocol' is not defined                            components.schemas.basePermitDenyEntry
+ 25083:23  error  undefined-required-properties  required properties must be defined; 'type' is not defined                                components.schemas.summaryProperties
 
 ✖ 6 problems (6 errors, 0 warnings, 0 infos, 0 hints)
 ```
@@ -255,4 +259,20 @@ This is the **critical** configuration that makes the broken references solution
 
 - **Without this**: Rule runs on resolved document, nested refs are already merged and hidden
 - **With this**: Rule runs on raw parsed YAML, before Spectral processes any `$ref` references
+
+### Error Message Formats
+
+Both rules provide clear, actionable error messages to help developers quickly identify and fix issues:
+
+**Broken Internal References**:
+```
+internal references should exist; broken reference '#/components/schemas/Reference'
+```
+
+**Undefined Required Properties**:
+```
+required properties must be defined; 'propertyName' is not defined
+```
+
+These concise formats focus on the essential information needed to resolve the issues without cluttering the output with unnecessary details.
 
