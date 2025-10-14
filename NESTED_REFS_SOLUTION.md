@@ -2,21 +2,40 @@
 
 ## Problem Statement
 
-The Spectral validator `validation.js` was not catching two types of issues:
+The OpenAPI spec file (`manage.yaml`) from issue [#48](https://wwwin-github.cisco.com/DevNet/api-insights-support/issues/48) has an indentation issue in the `CommonAnomaly` property of `components.schemas.ThresholdAnomaly`. The `severities` property should have been defined one level up as a sibling to `commonAnomaly`. 
+
+However, this cannot be identified as a schema structure problem because, even with the incorrect indentation in `manage.yaml`, `severities` can rightfully be considered as a property of `commonAnomaly` as in OpenAPI 3.1.x, the specification allows `$ref` to have sibling properties at the same level, while OAS 3.0.x does not allow this and suggests ignoring such properties if they are present.
+
+```yaml
+components:
+  schemas:
+    CommonAnomalyPolicy:
+      type: object
+    ThresholdAnomaly:
+      type: object
+      properties:
+        commonAnomaly:
+          $ref: '#/components/schemas/CommonAnomalyPolicy'
+          severities: # indentation issue; it was intended at one level up
+            description: severity threshold values
+            items:
+              $ref: '#/components/schemas/PolicySeverity' # a broken $ref which be caught if 'severities' is at correct level
+            type: array
+      required:
+        - commonAnomaly
+        - severities
+```
+
+However, to minimize false positive cases of successfully validating such specs with indentation issues, we have focused on catching below two related issues at the time validation: 
 
 1. **Broken `$ref` references** like `#/components/schemas/PolicySeverity` in nested structures within sibling properties of another `$ref`
-2. **Undefined required properties** where properties are listed in the `required` array but not defined in the `properties` object
+2. **Undefined required properties** where properties are listed in the `required` array but not defined in the `properties` object like the `severities` property in this case
 
 The original issue #48 reported is [here](https://wwwin-github.cisco.com/DevNet/api-insights-support/issues/48). 
 
 ## Root Cause Analysis
 
 ### Issue 1: Broken Nested References
-
-The OpenAPI spec file from issue #48 (`manage.yaml`) has an indentation issue in the `CommonAnomaly` property of `components.schemas.ThresholdAnomaly`. The `severities` property should have been defined one level up as a sibling to `commonAnomaly`.
-
-However, this cannot be identified as a schema structure problem because, even with the incorrect indentation in `manage.yaml`, `severities` can rightfully be considered as a property of `commonAnomaly`.
-
 In OpenAPI 3.1.x, the specification allows `$ref` to have sibling properties at the same level, while OAS 3.0.x does not allow this and suggests ignoring such properties if they are present.
 
 ```yaml
@@ -35,7 +54,7 @@ Broken nested references like `#/components/schemas/PolicySeverity` were not bei
 Properties listed in the `required` array but not defined in the `properties` object:
 
 ```yaml
-TestSchema:
+ThresholdAnomaly:
   type: object
   properties:
     commonAnomaly:
@@ -55,6 +74,12 @@ TestSchema:
 2. **Undefined Required Properties**:
    - Spectral's default `oas3-schema` ruleset does not validate that all properties in the `required` array are actually defined in the `properties` object
    - This validation gap is a common source of errors in real-world OpenAPI specifications
+
+## Possible Impact of Implemented Solution
+
+The fix for detecting **Broken References** at nested levels will have a positive impact on existing validations by correctly flagging these issues during the validation step.
+
+However, the fix for **Undefined Required Properties** may impact the validation behavior of existing OpenAPI specifications. Some specifications that previously passed validation successfully may now fail due to the presence of properties that are listed as required but not actually defined in the schema.  
 
 ## Solution Implemented
 
