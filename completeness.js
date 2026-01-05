@@ -155,7 +155,6 @@ export default {
         '$.server',
         '$.externalDocs',
         '$.paths.*.*.parameters.*',
-        '$.paths.*.*.requestBody',
         '$.paths.*.*.responses.*',
         '$.paths.*.*.examples.*',
         '$.paths.*.*.responses.links.*',

@@ -1,0 +1,95 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Sample API",
+    "description": "This is a sample API to test requestBody description requirement.",
+    "version": "1.0"
+  },
+  "servers": [
+    {
+      "url": "https://api.example.com/v1"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Users",
+      "description": "User management operations"
+    }
+  ],
+  "paths": {
+    "/users": {
+      "post": {
+        "summary": "Create a new user",
+        "description": "Creates a new user in the system",
+        "operationId": "createUser",
+        "tags": ["Users"],
+        "parameters": [
+          {
+            "name": "X-Request-ID",
+            "in": "header",
+            "description": "Unique request identifier for tracing",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "email": {
+                    "type": "string"
+                  }
+                }
+              },
+              "example": {
+                "name": "John Doe",
+                "email": "john@example.com"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "User created successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "name": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid request"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "description": "JWT Bearer token authentication"
+      }
+    }
+  }
+}
+
