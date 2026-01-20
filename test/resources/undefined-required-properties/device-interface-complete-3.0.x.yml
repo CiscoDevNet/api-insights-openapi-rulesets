@@ -1,0 +1,81 @@
+openapi: 3.0.3
+info:
+  title: Test API
+  version: 1.0.0
+paths:
+  /devices/{deviceId}/interfaces:
+    get:
+      parameters:
+        - name: deviceId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: filter
+          in: query
+          schema:
+            type: object
+            properties:
+              interfaceType:
+                type: string
+                description: Type of interface
+              # vlanId is missing but listed in required
+            required:
+              - interfaceType
+              - vlanId # This property is required but not defined in parameter schema
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeviceInterfaceScope'
+    post:
+      parameters:
+        - name: deviceId
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                interfaceName:
+                  type: string
+                  description: Name of the interface
+                # portNumber is missing but listed in required
+              required:
+                - interfaceName
+                - portNumber # This property is required but not defined in request body schema
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  interfaceId:
+                    type: string
+                    description: Created interface ID
+                  # configuration is missing but listed in required
+                required:
+                  - interfaceId
+                  - configuration # This property is required but not defined in response schema
+components:
+  schemas:
+    DeviceInterfaceScope:
+      type: object
+      properties:
+        interfaceName:
+          type: string
+          description: Name of the interface
+        vlanId:
+          type: integer
+          description: VLAN ID
+      required:
+        - interfaceName
+        - switchid # This property is required but not defined in properties

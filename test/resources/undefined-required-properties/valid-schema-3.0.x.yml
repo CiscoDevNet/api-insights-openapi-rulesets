@@ -1,0 +1,34 @@
+openapi: 3.0.3
+info:
+  title: Test API
+  version: 1.0.0
+paths:
+  /test:
+    get:
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidSchema'
+components:
+  schemas:
+    ValidSchema:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Name of the item
+        email:
+          type: string
+          format: email
+          description: Email address
+        age:
+          type: integer
+          minimum: 0
+          description: Age in years
+      required:
+        - name
+        - email
+        - age # All required properties are defined in properties

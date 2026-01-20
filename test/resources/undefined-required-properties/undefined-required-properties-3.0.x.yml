@@ -1,0 +1,26 @@
+openapi: 3.0.3
+info:
+  title: Test API
+  version: 1.0.0
+paths:
+  /test:
+    get:
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ThresholdAnomaly'
+components:
+  schemas:
+    ThresholdAnomaly:
+      type: object
+      properties:
+        commonAnomaly:
+          type: object
+          description: Common anomaly configuration
+        # severities property is missing from properties but listed in required
+      required:
+        - commonAnomaly
+        - severities # This property is required but not defined in properties

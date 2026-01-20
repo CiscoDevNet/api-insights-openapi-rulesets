@@ -1,0 +1,28 @@
+openapi: 3.1.0
+info:
+  title: Test API
+  version: 1.0.0
+paths:
+  /test:
+    get:
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TestSchema'
+components:
+  schemas:
+    CommonAnomalyPolicy:
+      type: object
+    TestSchema:
+      type: object
+      properties:
+        commonAnomaly:
+          $ref: '#/components/schemas/CommonAnomalyPolicy'
+          severities: # no no-$ref-siblings warning for openapi 3.1.x
+            description: severity threshold values
+            items:
+              $ref: '#/components/schemas/PolicySeverity' # a broken $ref here should be caught
+            type: array

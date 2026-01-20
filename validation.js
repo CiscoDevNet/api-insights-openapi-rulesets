@@ -19,6 +19,9 @@
 import { oas } from '@stoplight/spectral-rulesets';
 import { oas3_1 } from '@stoplight/spectral-formats';
 import defaultInEnum from './functions/defaultInEnum.js';
+import validateRefSiblings from './functions/validateRefSiblings.js';
+import validateRequiredProperties from './functions/validateRequiredProperties.js';
+
 export default {
   'extends': [
     [
@@ -42,6 +45,36 @@ export default {
       'then': [
         {
           'function': defaultInEnum,
+        },
+      ],
+    },
+  
+    'broken-internal-refs': {
+      'description': 'internal references should exist',
+      'message': '{{description}}; {{error}}',
+      'severity': 'error',
+      'resolved': false,
+      'given': '$..',
+      'then': [
+        {
+          'function': validateRefSiblings,
+        },
+      ],
+    },
+
+    'undefined-required-properties': {
+      'description': 'required properties must be defined',
+      'message': '{{description}}; {{error}}',
+      'severity': 'error',
+      'given': [
+        '$.components.schemas.*',
+        '$.paths.*.*.responses.*.content.*.schema',
+        '$.paths.*.*.requestBody.content.*.schema',
+        '$.paths.*.*.parameters.*.schema'
+      ],
+      'then': [
+        {
+          'function': validateRequiredProperties,
         },
       ],
     },
