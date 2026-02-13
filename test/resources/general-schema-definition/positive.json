@@ -20,6 +20,27 @@
     }
   ],
   "paths": {
+    "/ack": {
+      "get": {
+        "description": "Acknowledge.",
+        "operationId": "ack",
+        "tags": ["Sample"],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "description": "Empty success response"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/test": {
       "get": {
         "description": "Get some test data.",
