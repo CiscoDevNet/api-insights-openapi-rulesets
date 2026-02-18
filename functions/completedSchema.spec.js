@@ -87,4 +87,88 @@ describe('completedSchema', () => {
       },
     ]);
   });
+
+  describe('additionalProperties: false (Issue #57)', () => {
+    test('should pass for empty object with additionalProperties: false', () => {
+      const schema = {
+        type: 'object',
+        additionalProperties: false,
+      };
+      expect(completedSchema(schema)).toBeUndefined();
+    });
+
+    test('should pass for empty object with additionalProperties: false and description', () => {
+      const schema = {
+        type: 'object',
+        description: 'Response for successful operation',
+        additionalProperties: false,
+      };
+      expect(completedSchema(schema)).toBeUndefined();
+    });
+
+    test('should pass for empty object with additionalProperties: false and example', () => {
+      const schema = {
+        type: 'object',
+        example: {},
+        additionalProperties: false,
+      };
+      expect(completedSchema(schema)).toBeUndefined();
+    });
+
+    test('should pass for v1AddOrUpdatePolicyConnectionsResponse pattern', () => {
+      const schema = {
+        type: 'object',
+        example: {},
+        description: 'Response for a successful association/disassociation of connections to a policy',
+        additionalProperties: false,
+      };
+      expect(completedSchema(schema)).toBeUndefined();
+    });
+
+    test('should fail for empty object without additionalProperties: false', () => {
+      const schema = {
+        type: 'object',
+      };
+      expect(completedSchema(schema)).toEqual([
+        { message: 'properties missing for object schema' },
+      ]);
+    });
+
+    test('should fail for empty object with additionalProperties: true', () => {
+      const schema = {
+        type: 'object',
+        additionalProperties: true,
+      };
+      expect(completedSchema(schema)).toEqual([
+        { message: 'properties missing for object schema' },
+      ]);
+    });
+
+    test('should fail for empty object with additionalProperties as schema', () => {
+      const schema = {
+        type: 'object',
+        additionalProperties: { type: 'string' },
+      };
+      expect(completedSchema(schema)).toEqual([
+        { message: 'properties missing for object schema' },
+      ]);
+    });
+
+    test('should pass for object with empty properties and additionalProperties: false', () => {
+      const schema = {
+        type: 'object',
+        properties: {},
+        additionalProperties: false,
+      };
+      expect(completedSchema(schema)).toBeUndefined();
+    });
+  });
+
+  describe('edge cases', () => {
+    test('should pass for non-object input', () => {
+      expect(completedSchema('string')).toBeUndefined();
+      expect(completedSchema(123)).toBeUndefined();
+      expect(completedSchema(null)).toBeUndefined();
+    });
+  });
 });

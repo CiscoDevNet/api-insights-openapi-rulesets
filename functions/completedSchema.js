@@ -24,7 +24,7 @@
  * @param {Options} opts String requirements given by the linter ruleset
  */
 export default function (targetVal) {
-  if (typeof targetVal !== 'object') {
+  if (targetVal == null || typeof targetVal !== 'object') {
     return;
   }
 
@@ -38,6 +38,12 @@ export default function (targetVal) {
 
   // TODO: test
   if (targetVal.anyOf || targetVal.allOf || targetVal.oneOf || targetVal.not) {
+    return;
+  }
+
+  // An object with additionalProperties: false and no properties is a valid
+  // schema representing an intentionally empty object (e.g., {})
+  if (targetVal.additionalProperties === false) {
     return;
   }
 
