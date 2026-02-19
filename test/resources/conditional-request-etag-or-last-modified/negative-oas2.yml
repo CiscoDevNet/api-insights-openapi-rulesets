@@ -1,0 +1,49 @@
+swagger: '2.0'
+info:
+  contact:
+    name: Scott Hardin
+  description: This is a sample API.
+  title: Sample API
+  version: '1.0'
+host: api.example.com
+basePath: /
+schemes:
+- http
+paths:
+  /anotherTest:
+    get:
+      parameters:
+      - in: header
+        name: If-Range
+        type: string
+      responses:
+        '200':
+          description: No Content
+          headers:
+            Etag:
+              type: string
+      tags:
+      - Sample
+      description: get some more test data.
+      operationId: getAnotherTestData
+  /test/{testId}:
+    get:
+      parameters:
+      - in: header
+        name: If-Range
+        type: string
+      responses:
+        '200':
+          description: Created
+          headers:
+            SomeHeader:
+              type: string
+        '404':
+          description: Not Found
+      tags:
+      - Sample
+      description: get some test data.
+      operationId: getTestData
+tags:
+- description: This is a sample tag.
+  name: Sample
